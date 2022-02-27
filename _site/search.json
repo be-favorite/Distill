@@ -3,17 +3,17 @@
     {
       "path": "about.html",
       "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "description": "Statistics, Time Series, Statistical Learning, R",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2022-02-27T17:41:30+09:00"
+      "contents": "\nTaemo Bang\nBS in Statistics from Chungbuk National University\nMS in Statistics from Chungbuk National University\nResearcher (Data Scientist) at G-ABC, Gil Medical Center\n\n\n\n",
+      "last_modified": "2022-02-27T18:42:50+09:00"
     },
     {
       "path": "index.html",
       "title": "Taemo Bang",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-02-27T17:41:30+09:00"
+      "last_modified": "2022-02-27T17:56:50+09:00"
     }
   ],
   "collections": ["posts/posts.json"]

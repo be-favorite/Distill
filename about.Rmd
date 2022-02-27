@@ -1,9 +1,14 @@
 ---
 title: "About this blog"
 description: |
-  Some additional details about the blog
+  Statistics, Time Series, Statistical Learning, R
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+## Taemo Bang
+- BS in Statistics from Chungbuk National University
+- MS in Statistics from Chungbuk National University
+- Researcher (Data Scientist) at [G-ABC](http://www.gilabc.com), Gil Medical Center
