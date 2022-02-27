@@ -2,6 +2,7 @@
 title: "About this blog"
 description: |
   Statistics, Time Series, Statistical Learning, R
+theme: theme.css
 ---
 
 ```{r setup, include=FALSE}
