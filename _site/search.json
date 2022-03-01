@@ -13,6 +13,14 @@
       "author": [],
       "contents": "\n\n\n\n",
       "last_modified": "2022-02-27T20:02:13+09:00"
+    },
+    {
+      "path": "subscribe.html",
+      "title": "Subscribe",
+      "description": "My newsletter will deliver new blogposts straight to your inbox!",
+      "author": [],
+      "contents": "\n\n  \n  \n    Email address\n    \n  \n    First name (Optional)\n    \n  \n    Last name (Optional)\n    \n  \n    \n  By subscribing, you agree with Revue’s Terms and Privacy Policy.\n  \n\n\n\n\n",
+      "last_modified": "2022-03-01T15:51:56+09:00"
     }
   ],
   "collections": ["posts/posts.json"]
