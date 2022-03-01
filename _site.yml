@@ -29,4 +29,4 @@ twitter:
 output:
   distill::distill_article:
     includes:
-      in_header: giscus.html
+      in_header: html/giscus.html
