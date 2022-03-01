@@ -9,3 +9,7 @@ create_post(
 )
 
 usethis::use_github()
+create_theme(name = "theme")
+
+# Postcards로 About 만들기
+postcards::create_postcard("about.Rmd")            
