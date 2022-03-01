@@ -1,7 +1,5 @@
 # Taemo Bang's Blog
-This is my personal blog, you can find it at [taemobang.com](https://taemobang.com)
-
-This the source code for my [personal website](https://taemobang.com/about.html) and
+This the source code for my [personal website](https://taemobang.com) and
 [research blog](https://taemobang.com/index.html). It is created using the 
 [R distill package](https://rstudio.github.io/distill/).
 
