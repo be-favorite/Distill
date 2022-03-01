@@ -628,9 +628,9 @@
                if (!/posts/.test(location.pathname)) {
                  return;
                }
-                
+
                var script = document.createElement("script");
-               script.src = "https://giscus.app/client.js"";
+               script.src = "https://giscus.app/client.js";
                script.setAttribute("data-repo", "be-favorite/Distill");
                script.setAttribute("data-repo-id", "R_kgDOG6lkPQ");
                script.setAttribute("data-category", "Comments");
@@ -640,7 +640,6 @@
                script.setAttribute("data-emit-metadata", "0");
                script.setAttribute("data-theme", "light");
                script.setAttribute("data-lang", "ko");
-               script.setAttribute("crossorigin", "anonymous");
 
                /* wait for article to load, append script to article element */
                var observer = new MutationObserver(function (mutations, observer) {
