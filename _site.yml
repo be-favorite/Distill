@@ -8,9 +8,6 @@ repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"
 theme: theme.css
 navbar:
-  logo:
-    image: Small_profile.jpg
-    href: https://www.taemobang.com/
   right:
     - text: "Home"
       href: about.html
