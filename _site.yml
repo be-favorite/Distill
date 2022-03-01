@@ -10,9 +10,9 @@ theme: theme.css
 navbar:
   right:
     - text: "Home"
-      href: about.html
-    - text: "Blog"
       href: index.html
+    - text: "Blog"
+      href: blog.html
     - icon: fa fa-twitter
       href: https://twitter.com/TaemoBang
     - icon: fa fa-github
