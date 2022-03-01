@@ -129,7 +129,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["test_files/anchor-4.2.2/anchor.min.js","test_files/bowser-1.9.3/bowser.min.js","test_files/distill-2.2.21/template.v2.js","test_files/header-attrs-2.11/header-attrs.js","test_files/jquery-3.6.0/jquery-3.6.0.js","test_files/jquery-3.6.0/jquery-3.6.0.min.js","test_files/jquery-3.6.0/jquery-3.6.0.min.map","test_files/popper-2.6.0/popper.min.js","test_files/tippy-6.2.7/tippy-bundle.umd.min.js","test_files/tippy-6.2.7/tippy-light-border.css","test_files/tippy-6.2.7/tippy.css","test_files/tippy-6.2.7/tippy.umd.min.js","test_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2387,23 +2387,45 @@ d-appendix d-footnote-list a.footnote-backlink {
   <style type="text/css">
     p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
     span.s1 {font-kerning: none}
+    span.s2 {font: 12.0px 'Apple SD Gothic Neo'; font-kerning: none}
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;script src="https://giscus.app/client.js"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-repo="be-favorite/Distill"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-repo-id="R_kgDOG6lkPQ"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-category="General"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-category-id="DIC_kwDOG6lkPc4CN5hS"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-mapping="pathname"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-reactions-enabled="1"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-emit-metadata="0"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-input-position="bottom"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-theme="light"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-lang="ko"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>crossorigin="anonymous"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">   </span>document.addEventListener("DOMContentLoaded", function () {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>if (!/posts/.test(location.pathname)) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>return;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>}</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>var script = document.createElement("script");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.src = "https://giscus.app/client.js";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-repo", "be-favorite/Distill");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-repo-id", "R_kgDOG6lkPQ");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-category", “Comments”);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-category-id", "DIC_kwDOG6lkPc4CN5hS");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-mapping", "pathname");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-reactions-enabled", “1”);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-emit-metadata", "0");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-theme", "light");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>script.setAttribute("data-lang", “</span><span class="s2">ko”</span><span class="s1">);</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>/* wait for article to load, append script to article element */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>var observer = new MutationObserver(function (mutations, observer) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>var article = document.querySelector("d-article");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>if (article) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">         </span>observer.disconnect();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">         </span>/* HACK: article scroll */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">         </span>article.setAttribute("style", "overflow-y: hidden");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">         </span>article.appendChild(script);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">       </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>});</span></p>
+<p class="p1"><span class="s1"><br>
+</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">     </span>observer.observe(document.body, { childList: true });</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">   </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space"> </span>&lt;/script&gt;</span></p>
 </body>
 </html>
 
