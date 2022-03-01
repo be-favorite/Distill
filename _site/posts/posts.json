@@ -1,22 +1,5 @@
 [
   {
-    "path": "posts/2022-02-27-test/",
-    "title": "test",
-    "description": "A short description of the post.",
-    "author": [
-      {
-        "name": "Taemo Bang",
-        "url": "https://example.com/norajones"
-      }
-    ],
-    "date": "2022-02-27",
-    "categories": [],
-    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
-    "preview": {},
-    "last_modified": "2022-03-01T22:36:48+09:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/welcome/",
     "title": "Welcome!",
     "description": "Welcome to my new blog. We hope you enjoy \nreading what we have to say!",
@@ -30,7 +13,24 @@
     "categories": [],
     "contents": "\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-03-01T22:37:09+09:00",
+    "last_modified": "2022-03-01T22:39:34+09:00",
     "input_file": "welcome.knit.md"
+  },
+  {
+    "path": "posts/2022-02-27-test/",
+    "title": "test",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Taemo Bang",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2022-02-27",
+    "categories": [],
+    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2022-03-01T22:39:40+09:00",
+    "input_file": "test.knit.md"
   }
 ]
