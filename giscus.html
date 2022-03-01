@@ -7,24 +7,43 @@
   <meta name="Generator" content="Cocoa HTML Writer">
   <meta name="CocoaVersion" content="2113.3">
   <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 12.0px 'Apple SD Gothic Neo'}
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;script src="https://giscus.app/client.js"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-repo="be-favorite/Distill"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-repo-id="R_kgDOG6lkPQ"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-category="General"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-category-id="DIC_kwDOG6lkPc4CN5hS"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-mapping="pathname"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-reactions-enabled="1"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-emit-metadata="0"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-input-position="bottom"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-theme="light"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>data-lang="ko"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>crossorigin="anonymous"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>async&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">   </span>document.addEventListener("DOMContentLoaded", function () {</p>
+<p class="p1"><span class="Apple-converted-space">     </span>if (!/posts/.test(location.pathname)) {</p>
+<p class="p1"><span class="Apple-converted-space">       </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">     </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">     </span>var script = document.createElement("script");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.src = "https://giscus.app/client.js";</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-repo", "be-favorite/Distill");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-repo-id", "R_kgDOG6lkPQ");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-category", “Comments”);</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-category-id", "DIC_kwDOGZGr384B_-52");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-mapping", "pathname");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-reactions-enabled", "0");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-emit-metadata", "0");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-theme", "light");</p>
+<p class="p1"><span class="Apple-converted-space">     </span>script.setAttribute("data-lang", “<span class="s1">ko”</span>);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">     </span>/* wait for article to load, append script to article element */</p>
+<p class="p1"><span class="Apple-converted-space">     </span>var observer = new MutationObserver(function (mutations, observer) {</p>
+<p class="p1"><span class="Apple-converted-space">       </span>var article = document.querySelector("d-article");</p>
+<p class="p1"><span class="Apple-converted-space">       </span>if (article) {</p>
+<p class="p1"><span class="Apple-converted-space">         </span>observer.disconnect();</p>
+<p class="p1"><span class="Apple-converted-space">         </span>/* HACK: article scroll */</p>
+<p class="p1"><span class="Apple-converted-space">         </span>article.setAttribute("style", "overflow-y: hidden");</p>
+<p class="p1"><span class="Apple-converted-space">         </span>article.appendChild(script);</p>
+<p class="p1"><span class="Apple-converted-space">       </span>}</p>
+<p class="p1"><span class="Apple-converted-space">     </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">     </span>observer.observe(document.body, { childList: true });</p>
+<p class="p1"><span class="Apple-converted-space">   </span>});</p>
+<p class="p1"><span class="Apple-converted-space"> </span>&lt;/script&gt;</p>
 </body>
 </html>
