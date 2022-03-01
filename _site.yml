@@ -1,12 +1,16 @@
 name: "Distill"
 title: "Taemo Bang"
 description: |
-  Taemo Bang
-base_url: https://taemobang.com
+  Taemo Bang's personal site/research blog. Main contents 
+  are about Statistics, Time Series, R
+base_url: https://taemobang.com/
 repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"
 theme: theme.css
 navbar:
+  logo:
+    image: Small_profile.jpg
+    href: https://www.taemobang.com/
   right:
     - text: "Home"
       href: about.html
@@ -20,9 +24,7 @@ navbar:
       href: index.xml
 collections:
   posts:
-    disqus: taemobang
     share: [twitter, linkedin, facebook]
-    hidden: true
 google_analytics: "UA-145015693-1"
 twitter:
   site: "@TaemoBang"
