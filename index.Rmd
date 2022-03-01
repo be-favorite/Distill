@@ -2,18 +2,17 @@
 title: "Taemo Bang"
 image: "Profile.jpeg"
 links:
-  - label: GitHub
+  - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/be-favorite"
-  - label: LinkedIn
+  - label: '<i class="fab fa-linkedin"></i> Linkedin'
     url: "https://www.linkedin.com/in/taemo/"
-  - label: Twitter
+  - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/TaemoBang"
-  - label: Facebook
+  - label: '<i class="fab fa-facebook"></i> Facebook'
     url: "https://www.facebook.com/profile.php?id=100070120780059"
   - label: Email
     url: "mailto:favorite@kakao.com"
-output:
-  postcards::trestles
+output: postcards::trestles
 site: distill::distill_website
 ---
 # **Main contents of this blog**
