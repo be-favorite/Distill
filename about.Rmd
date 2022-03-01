@@ -32,7 +32,7 @@ I fell in love with R and data science through my graduate research, using R and
 
 One of my goals for this year 2022 was to get out of my [Ex-blog](https://be-favorite.tistory.com) using Tistory, which is a blog platform in South Korea, and start personal blogging using R Markdown. I like minimal things, so I chose Distill(Actually, blogdown seems more difficult..😅). I plan to move my previous writings diligently and actively post new ones.  
 
-Please excuse that all contents in my blog are written in Korean. If you have any questions about the content in my blog, please feel free to contact me through mail, Facebook, Twitter. I hope my blog help you!
+Please excuse that all contents in my blog are written in Korean. If you have any questions about the content in my blog, please feel free to contact me through mail, Facebook, Twitter. I hope my blog helps you!
 
 
 <!-- ## Education -->
