@@ -24,7 +24,7 @@ Bachelor of Science in Statistics from Chungbuk National University
 Master of Science in Statistics from Chungbuk National University
 
 ## **Current State**
-Hi, I'm a data scientist and researcher at [G-ABC](http://www.gilabc.com), where I work on evaluating health effects from long-term exposure to air pollution, statistical consulting, and other projects.
+Hi, I'm a data scientist and researcher at [G-ABC](http://www.gilabc.com), where I [work](https://github.com/G-ABCwork) on evaluating health effects from long-term exposure to air pollution, statistical consulting, and other projects.
 
 I fell in love with R and data science through my graduate research, using R and RStudio to wrangle, analyze, model, and visulize data. I became passionate about doing the R community and data science community, and involve in [Tidyverse Korea](https://www.facebook.com/groups/tidyverse) as one of the managers, and write light articles in [the sub-blog](https://statisticsplaybook.tistory.com/category/객원칼럼/be-favorite) of the Youtube channel <[Statistics Playbook](https://www.youtube.com/c/statisticsplaybook)> as one of the guest writers.
 
