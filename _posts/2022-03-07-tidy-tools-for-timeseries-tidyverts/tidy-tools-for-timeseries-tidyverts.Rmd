@@ -1,0 +1,92 @@
+---
+title: "Tidy tools for timeseries: tidyverts"
+description: |
+  "Tidy tools for timeseries: tidyverts 소개"
+draft: true
+date: 2021-04-12
+author:
+  - name: 방태모
+    URL: https://twitter.com/TaemoBang
+canonical_url: https://taemobang.com/tidyverts
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_depth: 4
+twitter:
+  site: "@TaemoBang"
+  creator: "@TaemoBang"
+categories:
+    - Time Series
+    - Tidytool
+    - R
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 0 Before Start
+If you are familiar with English, go to [7 Reference](#anchor1).
+
+## 1 Introduction
+시계열 자료분석을 tidyverse framework로 진행할 수 있게 해주는 패키지를 찾아헤맸고, 마침내 tidyverts라는 ecosystem을 찾아냈습니다. tidyverts는 전처리, 시각화부터 모델링, 예측까지 시계열 자료분석의 모든 과정을 "Tidy" framework로 진행하게 해주는 ecosystem입니다. tidyverts ecosystem을 이루는 대부분의 패키지들은 `{fpp3}`으로 불러올 수 있습니다. `{tsibbletalk}`은 `{shiny}`와 함께 동작하는 반응형 그래픽을 제공하는 패키지로 본 튜토리얼에서는 생략하겠습니다:
+
+```{r}
+library(fpp3)
+```
+
+```{r, message = FALSE}
+library(fable.prophet)
+library(nycflights13) # for nycflights13 data
+library(purrr) # for map()
+ggplot2::theme_set(theme_minimal())
+loaded_package <- c("fable.prophet", "nycflights13", "purrr")
+.version <- map(loaded_package, packageVersion)
+names(.version) <- loaded_package
+.version
+```
+
+위 패키지들이 설치되어 있지 않은 분들은 튜토리얼의 본격적인 시작전에, `install.packages("패키지명")`을 통해 설치해주시기 바랍니다. 개발 버전을 설치하고 싶다면 다음과 같은 코드를 활용하면 됩니다:
+
+```{r, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("tidyverts/tsibble")
+```
+
+<!-- <a href='https://tsibble.tidyverts.org/'><img src='logo_tsibble.png' align="right" height="138.5" /></a> -->
+
+## **2 tsibble**
+
+### 2.1 Get Started
+`{tsibble}`은 일반적인 시계열 자료를 `tibble` 형태로 표현할 수 있게해줍니다. 우리는 `tsibble()`을 통해 [tidy한 자료](https://tidyr.tidyverse.org/articles/tidy-data.html)에 대해 수행해왔던 {tidyverse}를 이용한 wrangling을 수행할 수 있습니다. 즉, tidyverse ecosystem이 tibble 객체를 기반으로 동작하듯이, tidyverts ecosytem은 tsibble 객체를 기반으로 동작합니다. tsibble 객체가 갖는 기본적인 원칙은 다음과 같습니다:
+
+- `index`: 과거부터 현재까지 순서화된 자료값의 관측 시간
+- `key`: 시간에 따른 관측 단위를 정의하는 변수의 집합
+- 각 관측치는 `index`와 `key`를 통해 유일하게(uniquely) 식별되어야만 함
+- 각 관측치는 등간격으로 관측된 자료여야만 함
+
+즉, 티블(데이터프레임)을 `tsibble`로 변환하기(coerce) 위해서는 `key`와 `index`를 명시해주어야 합니다. 예를 들어, 다음과 같은 `{nycflights13}` 패키지의 `weather` 자료를 이용해보겠습니다:
+```{r}
+weather_simple <- nycflights13::weather %>% 
+    select(origin, time_hour, temp, humid, precip)
+weather_simple
+```
+
+`origin`을 `key`로 `index`를 `time_hour`로 해주면 될 것 같습니다:
+```{r}
+weather_tsbl <- as_tsibble(weather_simple, key = origin, index = time_hour)
+weather_tsbl
+```
+
+여기서는 자료 자체가 출발지(`origin`) 별로 기록된 다중(multiple) 시계열에 해당하므로, `key`를 `origin`으로 잡아줬지만, 만약 자료가 단일(univariate) 시계열에 해당한다면 해당 key는 설정을 하지 않으면 됩니다(see `package?tsibble` and `vignette("intro-tsibble")` for details). 그리고, 사실 `tsibble()`은 irregular time interval을 갖는 자료에 대해서도 적용이 가능합니다. as_tsibble은 `regular = TRUE` 옵션이 default로 설정되는데, 이를 `FALSE`로 바꿔주면 되며, 이러한 irregular time interval을 갖는 tsibble 객체의 경우는 `[!]` 표시를 통해 확인할 수 있습니다:
+```{r}
+nycflights13::flights %>%
+    mutate(
+      sched_dep_datetime = make_datetime(year, month, day, hour, minute, 
+                                         tz = "America/New_York")) %>%
+    as_tsibble(
+        key = c(carrier, flight), 
+        index = sched_dep_datetime, 
+        regular = FALSE
+        )
+```
