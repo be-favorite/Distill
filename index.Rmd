@@ -1,6 +1,6 @@
 ---
 title: "Taemo Bang"
-image: "Profile.jpeg"
+image: "images/Profile.jpeg"
 links:
   - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/be-favorite"
@@ -33,7 +33,7 @@ library(fontawesome)
 # )
 ```
 
-## **Main contents**
+## **Main interest**
 *Statistics*, *Time Series*, *Statistical Learning*, *R*
 
 ***
