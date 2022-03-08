@@ -1,6 +1,6 @@
 ---
 title: "Taemo Bang"
-image: "images/Profile.jpeg"
+image: "images/Profile2.jpg"
 links:
   - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/be-favorite"
