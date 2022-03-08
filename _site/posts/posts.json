@@ -1,25 +1,8 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome!",
-    "description": "Welcome to my new blog. We hope you enjoy \nreading what we have to say!",
-    "author": [
-      {
-        "name": "Taemo Bang",
-        "url": "https://example.com/norajones"
-      }
-    ],
-    "date": "2022-02-27",
-    "categories": [],
-    "contents": "\n\n\n\n",
-    "preview": {},
-    "last_modified": "2022-03-01T22:39:35+09:00",
-    "input_file": {}
-  },
-  {
     "path": "posts/2022-03-07-tidy-tools-for-timeseries-tidyverts/",
-    "title": "Tidy tools for timeseries: tidyverts",
-    "description": "\"Tidy tools for timeseries: tidyverts 소개\"",
+    "title": "tidyverse principle로 시계열 자료 분석하기",
+    "description": "tidyverts 패키지 소개",
     "author": [
       {
         "name": "Taemo Bang",
@@ -34,7 +17,7 @@
     ],
     "contents": "\n\nContents\n0 Before Start\n1 Introduction\n2 tsibble\n2.1 Get Started\n\n\n0 Before Start\nIf you are familiar with English, go to 7 Reference.\n1 Introduction\n시계열 자료분석을 tidyverse framework로 진행할 수 있게 해주는 패키지를 찾아헤맸고, 마침내 tidyverts라는 ecosystem을 찾아냈습니다. tidyverts는 전처리, 시각화부터 모델링, 예측까지 시계열 자료분석의 모든 과정을 “Tidy” framework로 진행하게 해주는 ecosystem입니다. tidyverts ecosystem을 이루는 대부분의 패키지들은 {fpp3}으로 불러올 수 있습니다. {tsibbletalk}은 {shiny}와 함께 동작하는 반응형 그래픽을 제공하는 패키지로 본 튜토리얼에서는 생략하겠습니다:\n\n\n\n\n$fable.prophet\n[1] '0.1.0'\n\n$nycflights13\n[1] '1.0.2'\n\n$purrr\n[1] '0.3.4'\n\n위 패키지들이 설치되어 있지 않은 분들은 튜토리얼의 본격적인 시작전에, install.packages(\"패키지명\")을 통해 설치해주시기 바랍니다. 개발 버전을 설치하고 싶다면 다음과 같은 코드를 활용하면 됩니다:\n\n\n\n\n2 tsibble\n2.1 Get Started\n{tsibble}은 일반적인 시계열 자료를 tibble 형태로 표현할 수 있게해줍니다. 우리는 tsibble()을 통해 tidy한 자료에 대해 수행해왔던 {tidyverse}를 이용한 wrangling을 수행할 수 있습니다. 즉, tidyverse ecosystem이 tibble 객체를 기반으로 동작하듯이, tidyverts ecosytem은 tsibble 객체를 기반으로 동작합니다. tsibble 객체가 갖는 기본적인 원칙은 다음과 같습니다:\nindex: 과거부터 현재까지 순서화된 자료값의 관측 시간\nkey: 시간에 따른 관측 단위를 정의하는 변수의 집합\n각 관측치는 index와 key를 통해 유일하게(uniquely) 식별되어야만 함\n각 관측치는 등간격으로 관측된 자료여야만 함\n\n즉, 티블(데이터프레임)을 tsibble로 변환하기(coerce) 위해서는 key와 index를 명시해주어야 합니다. 예를 들어, 다음과 같은 {nycflights13} 패키지의 weather 자료를 이용해보겠습니다:\n\n# A tibble: 26,115 × 5\n   origin time_hour            temp humid precip\n   <chr>  <dttm>              <dbl> <dbl>  <dbl>\n 1 EWR    2013-01-01 01:00:00  39.0  59.4      0\n 2 EWR    2013-01-01 02:00:00  39.0  61.6      0\n 3 EWR    2013-01-01 03:00:00  39.0  64.4      0\n 4 EWR    2013-01-01 04:00:00  39.9  62.2      0\n 5 EWR    2013-01-01 05:00:00  39.0  64.4      0\n 6 EWR    2013-01-01 06:00:00  37.9  67.2      0\n 7 EWR    2013-01-01 07:00:00  39.0  64.4      0\n 8 EWR    2013-01-01 08:00:00  39.9  62.2      0\n 9 EWR    2013-01-01 09:00:00  39.9  62.2      0\n10 EWR    2013-01-01 10:00:00  41    59.6      0\n# … with 26,105 more rows\n\norigin을 key로 index를 time_hour로 해주면 될 것 같습니다:\n\n# A tsibble: 26,115 x 5 [1h] <America/New_York>\n# Key:       origin [3]\n   origin time_hour            temp humid precip\n   <chr>  <dttm>              <dbl> <dbl>  <dbl>\n 1 EWR    2013-01-01 01:00:00  39.0  59.4      0\n 2 EWR    2013-01-01 02:00:00  39.0  61.6      0\n 3 EWR    2013-01-01 03:00:00  39.0  64.4      0\n 4 EWR    2013-01-01 04:00:00  39.9  62.2      0\n 5 EWR    2013-01-01 05:00:00  39.0  64.4      0\n 6 EWR    2013-01-01 06:00:00  37.9  67.2      0\n 7 EWR    2013-01-01 07:00:00  39.0  64.4      0\n 8 EWR    2013-01-01 08:00:00  39.9  62.2      0\n 9 EWR    2013-01-01 09:00:00  39.9  62.2      0\n10 EWR    2013-01-01 10:00:00  41    59.6      0\n# … with 26,105 more rows\n\n여기서는 자료 자체가 출발지(origin) 별로 기록된 다중(multiple) 시계열에 해당하므로, key를 origin으로 잡아줬지만, 만약 자료가 단일(univariate) 시계열에 해당한다면 해당 key는 설정을 하지 않으면 됩니다(see package?tsibble and vignette(\"intro-tsibble\") for details). 그리고, 사실 tsibble()은 irregular time interval을 갖는 자료에 대해서도 적용이 가능합니다. as_tsibble은 regular = TRUE 옵션이 default로 설정되는데, 이를 FALSE로 바꿔주면 되며, 이러한 irregular time interval을 갖는 tsibble 객체의 경우는 [!] 표시를 통해 확인할 수 있습니다:\n\n# A tsibble: 336,776 x 20 [!] <America/New_York>\n# Key:       carrier, flight [5,725]\n    year month   day dep_time sched_dep_time dep_delay arr_time\n   <int> <int> <int>    <int>          <int>     <dbl>    <int>\n 1  2013    11     3     1531           1540        -9     1653\n 2  2013    11     4     1539           1540        -1     1712\n 3  2013    11     5     1548           1540         8     1708\n 4  2013    11     6     1535           1540        -5     1657\n 5  2013    11     7     1549           1540         9     1733\n 6  2013    11     8     1539           1540        -1     1706\n 7  2013    11     9     1535           1540        -5     1714\n 8  2013    11    10     1538           1540        -2     1718\n 9  2013    11    11     1527           1540       -13     1710\n10  2013    11    12     1535           1540        -5     1709\n# … with 336,766 more rows, and 13 more variables:\n#   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>,\n#   flight <int>, tailnum <chr>, origin <chr>, dest <chr>,\n#   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>,\n#   time_hour <dttm>, sched_dep_datetime <dttm>\n\n\n\n\n",
     "preview": {},
-    "last_modified": "2022-03-07T17:24:45+09:00",
+    "last_modified": "2022-03-08T15:51:28+09:00",
     "input_file": {}
   }
 ]

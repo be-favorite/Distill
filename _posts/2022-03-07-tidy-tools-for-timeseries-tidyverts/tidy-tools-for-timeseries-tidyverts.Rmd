@@ -1,7 +1,7 @@
 ---
-title: "Tidy tools for timeseries: tidyverts"
+title: "tidyverse principle로 시계열 자료 분석하기"
 description: |
-  "Tidy tools for timeseries: tidyverts 소개"
+  tidyverts 패키지 소개
 draft: FALSE
 date: 2021-04-12
 author:

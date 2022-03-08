@@ -5,29 +5,20 @@
     <link>https://taemobang.com/</link>
     <atom:link href="https://taemobang.com/blog.xml" rel="self" type="application/rss+xml"/>
     <description>Taemo Bang's personal site/research blog. Main contents 
-are about Statistics, Time Series, R
+are about Statistics, Statistical Learning, Time Series, R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Welcome!</title>
-      <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/welcome</link>
-      <description>Welcome to my new blog. We hope you enjoy 
-reading what we have to say!</description>
-      <guid>https://taemobang.com/posts/welcome</guid>
-      <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Tidy tools for timeseries: tidyverts</title>
+      <title>tidyverse principle로 시계열 자료 분석하기</title>
       <dc:creator>Taemo Bang</dc:creator>
       <link>https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts</link>
-      <description>"Tidy tools for timeseries: tidyverts 소개"</description>
+      <description>tidyverts 패키지 소개</description>
       <category>Time Series</category>
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts</guid>
-      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>
