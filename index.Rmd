@@ -33,7 +33,7 @@ library(fontawesome)
 # )
 ```
 
-# **Main contents**
+## **Main contents**
 *Statistics*, *Time Series*, *Statistical Learning*, *R*
 
 ***
