@@ -2,7 +2,7 @@ name: "Distill"
 title: "Taemo Bang"
 description: |
   Taemo Bang's personal site/research blog. Main contents 
-  are about Statistics, Time Series, R
+  are about Statistics, Statistical Learning, Time Series, R
 base_url: https://taemobang.com/
 repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"

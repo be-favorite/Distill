@@ -18,5 +18,16 @@ reading what we have to say!</description>
       <guid>https://taemobang.com/posts/welcome</guid>
       <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
     </item>
+    <item>
+      <title>Tidy tools for timeseries: tidyverts</title>
+      <dc:creator>Taemo Bang</dc:creator>
+      <link>https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts</link>
+      <description>"Tidy tools for timeseries: tidyverts 소개"</description>
+      <category>Time Series</category>
+      <category>Tidytool</category>
+      <category>R</category>
+      <guid>https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts</guid>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
+    </item>
   </channel>
 </rss>
