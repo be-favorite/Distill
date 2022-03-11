@@ -2,8 +2,8 @@
 title: "tidyverse principle로 시계열 자료 분석하기"
 description: |
   tidyverts 패키지 소개
+preview: images/thumbnail_tidyverts.jpg
 draft: FALSE
-preview: ./images/thumbnail_tidyverts.jpg
 date: 2021-04-12
 author:
   - name: Taemo Bang
@@ -57,7 +57,7 @@ names(.version) <- loaded_package
 .version
 ```
 
-위 패키지들이 설치되어 있지 않은 분들은 튜토리얼의 본격적인 시작전에, `install.packages("패키지명")`을 통해 설치해주시기 바랍니다. 개발 버전을 설치하고 싶다면 다음과 같은 코드를 활용하면 됩니다:
+위 패키지들이 설치되어 있지 않은 분들은 튜토리얼의 본격적인 시작전에, `install.packages("패키지명")`을 통해 설치해주시기 바랍니다. 개발 버전을 설치하고 싶으신 분이 있다면 다음의 코드를 이용하세요:
 
 ```{r, eval = FALSE, echo = TRUE}
 # install.packages("remotes")
@@ -718,7 +718,7 @@ cafe <- tsibbledata::aus_retail %>%
     filter(Industry == "Cafes, restaurants and catering services")
 autoplot(cafe)
 ```
-```{r cafe, layout = "l-page", warning = FALSE, fig.align = "center"}
+```{r cafe, layout = "l-body-outset", warning = FALSE, fig.align = "center"}
 cafe <- tsibbledata::aus_retail %>%
     filter(Industry == "Cafes, restaurants and catering services")
 autoplot(cafe)
