@@ -11,4 +11,4 @@ Site deployed by [Netlify](https://www.netlify.com/).
 
 Code: [MIT](LICENSE)
 
-Text and images, unless otherwise indicated: Creative Commons Attribution [CC BY-NC]
+Text and images, unless otherwise indicated: Creative Commons Attribution CC BY-NC
