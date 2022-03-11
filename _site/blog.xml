@@ -8,7 +8,7 @@
 are about Statistics, Statistical Learning, Time Series, R
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>tidyverse principle로 시계열 자료 분석하기</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -18,7 +18,7 @@ are about Statistics, Statistical Learning, Time Series, R
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts</guid>
-      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-03-07-tidy-tools-for-timeseries-tidyverts/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>

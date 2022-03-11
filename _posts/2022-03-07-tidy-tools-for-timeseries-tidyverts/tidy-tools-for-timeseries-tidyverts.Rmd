@@ -3,6 +3,7 @@ title: "tidyverse principle로 시계열 자료 분석하기"
 description: |
   tidyverts 패키지 소개
 preview: preview.jpg
+creative_commons: CC BY-NC
 draft: FALSE
 date: 2021-04-12
 author:
