@@ -6,10 +6,10 @@ links:
     url: "https://github.com/be-favorite"
   - label: '<i class="fab fa-twitter"></i> Twitter'
     url: "https://twitter.com/TaemoBang"
-  - label: '<i class="fab fa-linkedin"></i> Linkedin'
-    url: "https://www.linkedin.com/in/taemo/"
   - label: '<i class="fab fa-facebook"></i> Facebook'
     url: "https://www.facebook.com/profile.php?id=100070120780059"
+  - label: '<i class="fab fa-linkedin"></i> Linkedin'
+    url: "https://www.linkedin.com/in/taemo/"
 output: postcards::jolla
 site: distill::distill_website
 ---
@@ -39,7 +39,7 @@ library(fontawesome)
 
 현재는 가천대 길병원 G-ABC에서 Data Science를 하고있습니다. 
 
-통계학, 시계열, 통계적학습(기계학습), [`r fa(name = "r-project", fill = "#5F85A7")`](https://www.r-project.org/)에 관한 내용을 주로 다루려고 합니다.
+통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다루려고 합니다.
 
 과거에는 [티스토리 블로그](https://be-favorite.tistory.com)를 운영했었습니다. 
 
