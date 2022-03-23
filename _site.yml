@@ -1,8 +1,8 @@
 name: "Distill"
-title: "Taemo Bang"
+title: "방태모의 블로그"
 description: |
-  Taemo Bang's personal site/research blog. Main contents 
-  are about Statistics, Statistical Learning, Time Series, R
+  방태모의 개인/기술 블로그입니다. 
+  통계학, 시계열, 통계적학습(기계학습), R이 메인 컨텐츠입니다.
 base_url: https://taemobang.com/
 repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"
