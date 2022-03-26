@@ -1,13 +1,13 @@
 ---
 title: "tidyverse principle로 시계열 자료 분석하기"
 description: |
-  tidyverts 패키지 소개
+  tidyverts ecosystem 소개
 preview: preview.jpg
 creative_commons: CC BY-NC
 draft: FALSE
 date: 2022-03-11
 author:
-  - name: 방태모
+  - name: Taemo Bang
     URL: https://twitter.com/TaemoBang
 output:
   distill::distill_article:
