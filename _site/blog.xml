@@ -5,20 +5,20 @@
     <link>https://taemobang.com/</link>
     <atom:link href="https://taemobang.com/blog.xml" rel="self" type="application/rss+xml"/>
     <description>방태모의 개인/기술 블로그입니다. 
-통계학, 시계열, 통계적학습(기계학습), R이 메인 컨텐츠입니다.
+통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다룹니다.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Mar 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>tidyverse principle로 시계열 자료 분석하기</title>
-      <dc:creator>Taemo Bang</dc:creator>
+      <dc:creator>방태모</dc:creator>
       <link>https://taemobang.com/posts/2021-04-12-tidyverse-principle</link>
       <description>tidyverts 패키지 소개</description>
       <category>Time Series</category>
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2021-04-12-tidyverse-principle</guid>
-      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2021-04-12-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
