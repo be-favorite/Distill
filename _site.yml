@@ -9,10 +9,12 @@ output_dir: "_site"
 theme: theme.css
 navbar:
   right:
-    - text: "Home"
+    - text: "홈"
       href: index.html
-    - text: "Blog"
+    - text: "블로그"
       href: blog.html
+    - text: "구독"
+      href: subscribe.html
 collections:
   posts:
     share: [twitter, linkedin, facebook]
