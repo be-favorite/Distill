@@ -1,0 +1,33 @@
+---
+title: "MySQL 튜토리얼"
+description: |
+    MySQL을 이용한 SQL 튜토리얼
+author:
+    - name: Taemo Bang
+      URL: https://twitter.com/TaemoBang
+date: "2022-03-30"
+output:
+    distill::distill_article:
+        self_contained: false
+        toc: true
+        toc_depth: 2
+draft: TRUE
+# preview: preview.jpg
+creative_commons: CC BY-NC
+twitter:
+    site: "@TaemoBang"
+    creator: "@TaemoBang"
+categories:
+    - SQL
+    - MySQL
+---
+
+```{r setup, include = FALSE}
+# echo - Display code in output document (default = TRUE)
+# eval - Run code in chunk (default = TRUE)
+library(xaringanExtra)
+library(rmarkdown)
+xaringanExtra::use_clipboard()
+```
+
+## 데이터베이스란?
