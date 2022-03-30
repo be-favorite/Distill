@@ -8,7 +8,7 @@
 통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다룹니다.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 11 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Mar 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>tidyverse principle로 시계열 자료 분석하기</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -18,7 +18,7 @@
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2022-03-11-tidyverse-principle</guid>
-      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-03-11-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
