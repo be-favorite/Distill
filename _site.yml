@@ -18,7 +18,6 @@ navbar:
 collections:
   posts:
     share: [twitter, linkedin, facebook]
-    subscribe: _buymeacoffee.html
 google_analytics: "G-1QHE9697JG"
 twitter:
   site: "@TaemoBang"
