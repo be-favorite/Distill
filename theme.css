@@ -137,13 +137,13 @@ d-article div.sourceCode {
 
 .icon-link {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-black);
     padding: 3px 5px 3px 5px;
     margin: 0 2px 0 2px;
     border-radius: 5px; /* Rounded edges */
 }
 
 .icon-link:hover {
-    background-color: var(--color-black);
+    background-color: var(--color-secondary);
     color: var(--color-white);
 }
