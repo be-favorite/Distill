@@ -132,3 +132,18 @@ d-article div.sourceCode pre { /* Chunk code */
 d-article div.sourceCode {
   background-color: transparent;
 }
+
+/* Link buttons */
+
+.icon-link {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
+    border-radius: 5px; /* Rounded edges */
+}
+
+.icon-link:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}
