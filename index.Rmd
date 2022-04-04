@@ -25,12 +25,6 @@ library(postcards)
 library(here)
 library(distilltools)
 library(fontawesome)
-# # Create new post with use_article_template()
-# refinery::use_article_template(
-#   template = "_templates/standard_post.Rmd",
-#   slug = "fabulous-blog-post", 
-#   renv_new = TRUE
-# )
 ```
 
 안녕하세요, 제 블로그에 오신 것을 환영합니다.

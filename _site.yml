@@ -13,6 +13,8 @@ navbar:
       href: index.html
     - text: "블로그"
       href: blog.html
+    - text: "아카이브"
+      href: archive.html
     - text: "구독"
       href: subscribe.html
 collections:

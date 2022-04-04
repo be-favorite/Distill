@@ -1,26 +1,34 @@
 {
   "articles": [
     {
+      "path": "Archive.html",
+      "title": "아카이브",
+      "description": "블로그 외 활동을 아카이브합니다.\n",
+      "author": [],
+      "contents": "\n\n\n\nTistory 블로그\n과거 기술블로그 입니다.\n Blog\n슬기로운통계생활 객원칼럼\n유튜브 채널 에서\n운영하고 있는 블로그에서 객원 작가로 칼럼을 작성하고 있습니다.\n Blog\n논문 아카이브\n논문과 책, 웹사이트 등을 통해 공부한 모델들을 깃허브 저장소에\n아카이브하고 있습니다.\n Archive\n발표 아카이브\n발표 자료 아카이브입니다.\n Archive\n스터디 노트\n깃허브 저장소에 아카이브하고있는 스터디 노트입니다.\n Coding-Test\n SQL\n\n\n\n",
+      "last_modified": "2022-04-04T16:12:58+09:00"
+    },
+    {
       "path": "blog.html",
       "title": "포스트",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-03-30T23:37:41+09:00"
+      "last_modified": "2022-04-04T16:13:36+09:00"
     },
     {
       "path": "index.html",
       "title": "방태모",
       "author": [],
-      "contents": "\n\n          \n          \n          방태모의 블로그\n          \n          \n          홈\n          블로그\n          구독\n          ☰\n          \n          \n      \n        \n          \n            방태모\n          \n          \n            \n              안녕하세요, 제 블로그에 오신 것을 환영합니다.\n              통계학을 전공으로 학부, 석사를 졸업했습니다.\n              현재는 가천대 길병원 G-ABC에서 Data Science를 하고있습니다.\n              통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다루려고 합니다.\n              과거에는 티스토리 블로그를 운영했었습니다.\n              이제껏 공부하며 받은 도움들을 조금이라도 되돌려 드리고 싶습니다.\n              제가 배운 것들을 나누는 것이 누군가에게 도움이 되었으면 합니다.\n            \n            \n              안녕하세요, 제 블로그에 오신 것을 환영합니다.\n              통계학을 전공으로 학부, 석사를 졸업했습니다.\n              현재는 가천대 길병원 G-ABC에서 Data Science를 하고있습니다.\n              통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다루려고 합니다.\n              과거에는 티스토리 블로그를 운영했었습니다.\n              이제껏 공부하며 받은 도움들을 조금이라도 되돌려 드리고 싶습니다.\n              제가 배운 것들을 나누는 것이 누군가에게 도움이 되었으면 합니다.\n            \n          \n\n          \n            \n              \n                  \n                    \n                       GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                       Twitter\n                    \n                  \n                \n                                \n                  \n                    \n                       Facebook\n                    \n                  \n                \n                                \n                  \n                    \n                       Linkedin\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                     GitHub\n                  \n                \n                                \n                  \n                     Twitter\n                  \n                \n                                \n                  \n                     Facebook\n                  \n                \n                                \n                  \n                     Linkedin\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2022-03-26T16:17:16+09:00"
+      "contents": "\n\n          \n          \n          방태모의 블로그\n          \n          \n          홈\n          블로그\n          구독\n          ☰\n          \n          \n      \n        \n          \n            방태모\n          \n          \n            \n              안녕하세요, 제 블로그에 오신 것을 환영합니다.\n              통계학을 전공으로 학부, 석사를 졸업했습니다.\n              현재는 가천대 길병원 G-ABC에서 Data Science를\n              하고있습니다.\n              통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을\n              주로 다루려고 합니다.\n              과거에는 티스토리\n              블로그를 운영했었습니다.\n              이제껏 공부하며 받은 도움들을 조금이라도 되돌려 드리고\n              싶습니다.\n              제가 배운 것들을 나누는 것이 누군가에게 도움이 되었으면\n              합니다.\n            \n            \n              안녕하세요, 제 블로그에 오신 것을 환영합니다.\n              통계학을 전공으로 학부, 석사를 졸업했습니다.\n              현재는 가천대 길병원 G-ABC에서 Data Science를\n              하고있습니다.\n              통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을\n              주로 다루려고 합니다.\n              과거에는 티스토리\n              블로그를 운영했었습니다.\n              이제껏 공부하며 받은 도움들을 조금이라도 되돌려 드리고\n              싶습니다.\n              제가 배운 것들을 나누는 것이 누군가에게 도움이 되었으면\n              합니다.\n            \n          \n\n          \n            \n              \n                  \n                    \n                       GitHub\n                    \n                  \n                \n                                \n                  \n                    \n                       Twitter\n                    \n                  \n                \n                                \n                  \n                    \n                       Facebook\n                    \n                  \n                \n                                \n                  \n                    \n                       Linkedin\n                    \n                  \n                \n                              \n          \n\n          \n            \n              \n                                \n                  \n                     GitHub\n                  \n                \n                                \n                  \n                     Twitter\n                  \n                \n                                \n                  \n                     Facebook\n                  \n                \n                                \n                  \n                     Linkedin\n                  \n                \n                              \n            \n          \n        \n      \n    \n\n    \n    \n    ",
+      "last_modified": "2022-03-31T11:02:50+09:00"
     },
     {
       "path": "subscribe.html",
       "title": "구독",
       "description": "새로운 글이 발행되면 이메일로 알려드려요!",
       "author": [],
-      "contents": "\n\n  \n  \n    이메일\n    \n  \n    이름 (옵션)\n    \n  \n    성 (옵션)\n    \n  \n    \n  구독하시는 경우, Revue의 약관 및 개인 정보 보호 정책에 동의하게됩니다. \n  \n\n\n그리고, 여기서 저를 서포트해주실 수도 있어요.😀\n\n    \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCorrections\nIf you see mistakes or want to suggest changes, please create an issue on the source repository.\n\n\n\n\n\n",
-      "last_modified": "2022-03-31T00:00:13+09:00"
+      "contents": "\n\n  \n  \n    이메일\n    \n  \n    이름 (옵션)\n    \n  \n    성 (옵션)\n    \n  \n    \n  구독하시는 경우, Revue의 약관 및 개인 정보 보호 정책에 동의하게됩니다. \n  \n\n\n그리고, 여기서 저를 서포트해주실 수도 있어요.😀\n\n    \n\n\n\n\n\n\n\n\n\n",
+      "last_modified": "2022-03-31T00:03:22+09:00"
     }
   ],
   "collections": ["posts/posts.json"]
