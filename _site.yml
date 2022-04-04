@@ -3,10 +3,10 @@ title: "방태모의 블로그"
 description: |
   방태모의 개인/기술 블로그입니다. 
   통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다룹니다.
+favicon: images/favicon.png
 base_url: https://taemobang.com/
 repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"
-favicon: "images/favicon.png"
 theme: theme.css
 navbar:
   right:
