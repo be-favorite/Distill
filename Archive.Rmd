@@ -26,7 +26,7 @@ Zenode: `r icon_link("zenodo", "Zenodo", "https://zenodo.org/record/5599240#.YZN
 ## 슬기로운통계생활 객원칼럼
 유튜브 채널 [<슬기로운통계생활>](https://www.youtube.com/c/statisticsplaybook)에서 운영하고 있는 블로그에서 객원 작가로 칼럼을 작성하고 있습니다.
 
-`r icon_link("globe", "Blog", "https://statisticsplaybook.tistory.com/category/객원칼럼")`
+`r icon_link("globe", "Blog", "https://statisticsplaybook.tistory.com/category/객원칼럼/be-favorite")`
 
 ## 논문 아카이브
 논문과 책, 웹사이트 등을 통해 공부한 모델들을 깃허브 저장소에 아카이브하고 있습니다.
