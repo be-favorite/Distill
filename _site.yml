@@ -6,6 +6,8 @@ description: |
 base_url: https://taemobang.com/
 repository_url: https://github.com/be-favorite/Distill
 output_dir: "_site"
+logo:
+    image: images/logo.png
 theme: theme.css
 navbar:
   right:
