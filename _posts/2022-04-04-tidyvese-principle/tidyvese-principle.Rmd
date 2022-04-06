@@ -559,7 +559,7 @@ metrics(dia_test, truth = logprice, estimate = .pred) %>%
 
 [^18]: 관심있는 분들은 see [here](https://stacks.tidymodels.org/articles/basics.html)
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align = "center"}
 tweet_embed(tweet_url("topepos", "1507109429652725766"))
 ```
 
