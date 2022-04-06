@@ -560,8 +560,7 @@ metrics(dia_test, truth = logprice, estimate = .pred) %>%
 [^18]: 관심있는 분들은 see [here](https://stacks.tidymodels.org/articles/basics.html)
 
 ```{r, echo = FALSE}
-tweet_embed(tweet_url("topepos", "1507109429652725766"),
-            align = "center")
+tweet_embed(tweet_url("topepos", "1507109429652725766"))
 ```
 
 [tidyverse 블로그](https://www.tidyverse.org/blog/)를 꼭 팔로우업하세요. 본 튜토리얼은 20년 2월에 작성된 글을 기반으로 쓰여졌기 때문에 최신이라고 하긴 어렵습니다.😂 그러나, tidymodels ecosystem의 기본기를 익히기에는 충분할 겁니다.
