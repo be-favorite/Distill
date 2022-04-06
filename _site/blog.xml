@@ -9,11 +9,24 @@
 </description>
     <image>
       <title>방태모의 블로그</title>
-      <url>https://taemobang.com/images/favicon.ico</url>
+      <url>https://taemobang.com/images/favicon.png</url>
       <link>https://taemobang.com/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 11 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>tidyvese principle로 머신러닝 하기</title>
+      <dc:creator>Taemo Bang</dc:creator>
+      <link>https://taemobang.com/posts/2022-04-04-tidyvese-principle</link>
+      <description>tidymodels ecosystem 소개</description>
+      <category>Machine Learning</category>
+      <category>Statistical Learning</category>
+      <category>Tidytool</category>
+      <category>R</category>
+      <guid>https://taemobang.com/posts/2022-04-04-tidyvese-principle</guid>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://taemobang.com/posts/2022-04-04-tidyvese-principle/preview.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>tidyverse principle로 시계열 자료 분석하기</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -23,7 +36,7 @@
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2022-03-11-tidyverse-principle</guid>
-      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-03-11-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>

@@ -1,7 +1,7 @@
 ---
 title: "MySQL 튜토리얼"
 description: |
-    MySQL을 이용한 SQL 튜토리얼
+    MySQL을 이용해 SQL 배우기
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
@@ -27,7 +27,37 @@ categories:
 # eval - Run code in chunk (default = TRUE)
 library(xaringanExtra)
 library(rmarkdown)
+library(tidyverse)
 xaringanExtra::use_clipboard()
 ```
 
 ## 데이터베이스란?
+
+데이터베이스는 이미 우리가 사용하고 있다. 예를 들자면, R에서 쉽게 접할 수 있는 `mtcars` 또한 하나의 독립적인 데이터베이스라고 볼 수도 있다.
+
+```{r, echo = FALSE}
+head(mtcars) %>% 
+    paged_table(.)
+```
+
+데이터베이스의 가장 중요한 특성은 구조화된 데이터라는 점이다. 데이터베이스를 구성하는 경우 데이터를 원하는대로 정렬할 수도 있고, 정보의 종류에 따라 검색하는 등 방대한 양의 데이터를 체계적으로 분류하고 보관할 수 있다. 그리고, 데이터베이스에서는 쿼리(query)를 이용해 앞서 말한 작업들을 포함한 다양한 작업을 수행할 수 있다. 간단한 쿼리를 하나 예를 들어보자:
+
+```{r, echo = FALSE}
+head(mtcars) %>% 
+    paged_table(.)
+```
+
+```{sql connection=}
+select * from mtcars;
+```
+
+`mtcars`로 부터 모든 정보(`*`)를 열람(`select`)하겠다는 뜻이다. `mpg`와 `cyl`만 가져오고 싶다면 다음과 같이 쿼리를 작성할 수 있다.
+
+```{r}
+head(mtcars) %>% 
+    select(mpg, cyl)
+```
+
+```{sql connection=}
+select mpg, cyl from mtcars;
+```

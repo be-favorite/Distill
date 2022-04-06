@@ -89,7 +89,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>MySQL 튜토리얼</title>
 
-  <meta property="description" itemprop="description" content="MySQL을 이용한 SQL 튜토리얼"/>
+  <meta property="description" itemprop="description" content="MySQL을 이용해 SQL 배우기"/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
 
@@ -101,13 +101,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="MySQL 튜토리얼"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="MySQL을 이용한 SQL 튜토리얼"/>
+  <meta property="og:description" content="MySQL을 이용해 SQL 배우기"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="MySQL 튜토리얼"/>
-  <meta property="twitter:description" content="MySQL을 이용한 SQL 튜토리얼"/>
+  <meta property="twitter:description" content="MySQL을 이용해 SQL 배우기"/>
   <meta property="twitter:site" content="@TaemoBang"/>
   <meta property="twitter:creator" content="@TaemoBang"/>
 
@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","creative_commons","twitter","categories"]}},"value":[{"type":"character","attributes":{},"value":["MySQL 튜토리얼"]},{"type":"character","attributes":{},"value":["MySQL을 이용한 SQL 튜토리얼\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-03-30"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","MySQL"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","creative_commons","twitter","categories"]}},"value":[{"type":"character","attributes":{},"value":["MySQL 튜토리얼"]},{"type":"character","attributes":{},"value":["MySQL을 이용해 SQL 배우기\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-03-30"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","MySQL"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1446,6 +1446,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <link href="mysql_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
   <script src="mysql_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
   <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+  <link href="mysql_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="mysql_files/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="mysql_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="mysql_files/popper-2.6.0/popper.min.js"></script>
   <link href="mysql_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1466,7 +1468,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"MySQL 튜토리얼","description":"MySQL을 이용한 SQL 튜토리얼","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-30T00:00:00.000+09:00","citationText":"Bang, 2022"}
+{"title":"MySQL 튜토리얼","description":"MySQL을 이용해 SQL 배우기","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-30T00:00:00.000+09:00","citationText":"Bang, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1483,7 +1485,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">MySQL</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>MySQL을 이용한 SQL 튜토리얼</p></p>
+<p><p>MySQL을 이용해 SQL 배우기</p></p>
 </div>
 
 <div class="d-byline">
@@ -1502,12 +1504,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </nav>
 </div>
 <h2 id="데이터베이스란">데이터베이스란?</h2>
-<p>&lt;iframe src=“<a
-href="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D263521569328534%26id%3D100070120780059&amp;show_text=true&amp;width=500%22">https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3D263521569328534%26id%3D100070120780059&amp;show_text=true&amp;width=500”</a>
-width=”500” height=“527” style=“border:none;overflow:hidden”
-scrolling=“no” frameborder=“0” allowfullscreen=“true” allow=“autoplay;
-clipboard-write; encrypted-media; picture-in-picture;
-web-share”&gt;&lt;/iframe&gt;</p>
+<p>데이터베이스는 이미 우리가 사용하고 있다. 예를 들자면, R에서 쉽게
+접할 수 있는 <code>mtcars</code> 또한 하나의 독립적인 데이터베이스라고
+볼 수도 있다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["disp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["drat"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["am"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gear"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["carb"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"21.0","2":"6","3":"160","4":"110","5":"3.90","6":"2.620","7":"16.46","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4"},{"1":"21.0","2":"6","3":"160","4":"110","5":"3.90","6":"2.875","7":"17.02","8":"0","9":"1","10":"4","11":"4","_rn_":"Mazda RX4 Wag"},{"1":"22.8","2":"4","3":"108","4":"93","5":"3.85","6":"2.320","7":"18.61","8":"1","9":"1","10":"4","11":"1","_rn_":"Datsun 710"},{"1":"21.4","2":"6","3":"258","4":"110","5":"3.08","6":"3.215","7":"19.44","8":"1","9":"0","10":"3","11":"1","_rn_":"Hornet 4 Drive"},{"1":"18.7","2":"8","3":"360","4":"175","5":"3.15","6":"3.440","7":"17.02","8":"0","9":"0","10":"3","11":"2","_rn_":"Hornet Sportabout"},{"1":"18.1","2":"6","3":"225","4":"105","5":"2.76","6":"3.460","7":"20.22","8":"1","9":"0","10":"3","11":"1","_rn_":"Valiant"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>데이터베이스의 가장 중요한 특성은 구조화된 데이터라는 점이다.</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

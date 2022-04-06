@@ -85,6 +85,27 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
 
   <!--radix_placeholder_meta_tags-->
   <title>tidyverse principle로 시계열 자료 분석하기</title>
@@ -112,10 +133,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="twitter:creator" content="@TaemoBang"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Tidyverts"/>
+  <meta name="citation_reference" content="citation_title=Tidyverts"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse principle로 시계열 자료 분석하기"]},{"type":"character","attributes":{},"value":["tidyverts ecosystem 소개\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-03-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["Time Series","Tidytool","R"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse principle로 시계열 자료 분석하기"]},{"type":"character","attributes":{},"value":["tidyverts ecosystem 소개\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-03-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["Time Series","Tidytool","R"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1506,12 +1530,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li><a href="#fable">4 fable</a></li>
 <li><a href="#fable.prophet">5 fable.prophet</a></li>
 <li><a href="#맺음말">맺음말</a></li>
-<li><a href="#reference">Reference</a></li>
 </ul>
 </nav>
 </div>
+<p><a
+href="https://unsplash.com/photos/rBPOfVqROzY?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink"><img
+src="preview.jpg" width="700"
+alt="Photo by Agê Barros on Unsplash" /></a></p>
+<aside>
+<p>본 예제는 <span class="citation" data-cites="tidyvert">(<a
+href="#ref-tidyvert" role="doc-biblioref"><span>“Tidyverts,”</span>
+n.d.</a>)</span>을 기반으로 작성되었습니다.</p>
+</aside>
 <p>tidyverts ecosystem은 시계열 자료에 관한 분석을 tidyverse principle로
-수행할 수 있게끔 해주는 패키지입니다. 전처리, 시각화부터 모델링,
+수행할 수 있게끔 해주는 패키지 묶음입니다. 전처리, 시각화부터 모델링,
 예측까지 모든 과정을 “tidy” framework로 진행하게 해주죠. tidyverse
 priciple이 데이터 전처리에 있어서 얼마나 많은 업무 생산성을 가져다
 주는지 우리는 이미 알고있습니다. 시계열 자료를 자주 다루는 사람이라면 꼭
@@ -1662,7 +1694,7 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1678,7 +1710,7 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1696,12 +1728,12 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1717,7 +1749,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1732,7 +1764,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"0"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"0"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"0"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"0"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1748,7 +1780,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"33"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"33"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"32"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"32"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1766,7 +1798,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"5"},{"1":"2013","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"7"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"5"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"7"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1784,7 +1816,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"6"},{"1":"2012","2":"cherry","3":"NA"},{"1":"2013","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"4"},{"1":"2010","2":"kiwi","3":"2"},{"1":"2011","2":"kiwi","3":"7"},{"1":"2012","2":"kiwi","3":"7"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"2.0"},{"1":"2012","2":"cherry","3":"NA"},{"1":"2013","2":"cherry","3":"3.5"},{"1":"2014","2":"cherry","3":"5.0"},{"1":"2010","2":"kiwi","3":"7.0"},{"1":"2011","2":"kiwi","3":"1.0"},{"1":"2012","2":"kiwi","3":"7.0"},{"1":"2013","2":"kiwi","3":"9.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1809,7 +1841,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"8"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"2"},{"1":"2012","2":"kiwi","3":"2"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"1"},{"1":"2012","2":"cherry","3":"9"},{"1":"2013","2":"cherry","3":"9"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"8"},{"1":"2012","2":"kiwi","3":"8"},{"1":"2013","2":"kiwi","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -1826,7 +1858,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"8"},{"1":"2013","2":"cherry","3":"6"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"2"},{"1":"2012","2":"kiwi","3":"3"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"1"},{"1":"2012","2":"cherry","3":"9"},{"1":"2013","2":"cherry","3":"2"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"7"},{"1":"2011","2":"kiwi","3":"8"},{"1":"2012","2":"kiwi","3":"6"},{"1":"2013","2":"kiwi","3":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2575,11 +2607,15 @@ href="https://github.com/be-favorite/Tutorial_tidymodels">tidymodels</a>를
 통해 데이터를 전처리, 예측모형 개발, 개선 등의 과정에 걸리는 시간을 크게
 단축시켰듯이, fpp3을 잘 익혀두면 시계열 예측 모델링에 전반적인 과정에
 드는 시간을 상당히 단축시킬 수 있을 겁니다.😊</p>
-<h2 id="reference">Reference</h2>
-<p>tidyverts. “Tidyverts.” Accessed March 30, 2022. <a
-href="https://tidyverts.org" class="uri">https://tidyverts.org</a>.</p>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-tidyvert" class="csl-entry" role="doc-biblioentry">
+<span>“Tidyverts.”</span> n.d. <a
+href="https://tidyverts.org">https://tidyverts.org</a>.
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2601,6 +2637,8 @@ class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"><
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
 <div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
 <h3 id="reuse">Reuse</h3>
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 </div>

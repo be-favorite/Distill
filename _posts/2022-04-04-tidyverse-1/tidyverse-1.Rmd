@@ -1,0 +1,35 @@
+---
+title: "데이터베이스에 tidyverse 사용하기 - 1편"
+description: |
+  R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!
+author:
+    - name: Taemo Bang
+      URL: https://twitter.com/TaemoBang
+date: "2022-04-04"
+output:
+    distill::distill_article:
+        self_contained: false
+        toc: true
+        toc_depth: 3
+draft: TRUE
+# preview: preview.jpg
+creative_commons: CC BY-NC
+twitter:
+    site: "@TaemoBang"
+    creator: "@TaemoBang"
+categories:
+    - SQL
+    - Databases
+    - tidyverse
+    - dbplyr
+---
+
+```{r distill-setup, include = FALSE}
+# echo - Display code in output document (default = TRUE)
+# eval - Run code in chunk (default = TRUE)
+library(xaringanExtra)
+library(rmarkdown)
+xaringanExtra::use_clipboard()
+```
+
+## 모티베이션
