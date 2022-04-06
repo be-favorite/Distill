@@ -22,7 +22,7 @@ categories:
     - MySQL
 ---
 
-```{r setup, include = FALSE}
+```{r distill-setup, include = FALSE}
 # echo - Display code in output document (default = TRUE)
 # eval - Run code in chunk (default = TRUE)
 library(xaringanExtra)

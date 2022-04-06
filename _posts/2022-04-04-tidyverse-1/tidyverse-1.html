@@ -85,6 +85,27 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
 
   <!--radix_placeholder_meta_tags-->
   <title>데이터베이스에 tidyverse 사용하기 - 1편</title>
@@ -112,15 +133,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="twitter:creator" content="@TaemoBang"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Sciencificity’s blog: Using the tidyverse with databases - part i;citation_publication_date=2020;citation_author=Vebash Naidoo"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","creative_commons","twitter","categories"]}},"value":[{"type":"character","attributes":{},"value":["데이터베이스에 tidyverse 사용하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","Databases","tidyverse","dbplyr"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["데이터베이스에 tidyverse 사용하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","Databases","tidyverse","dbplyr"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"NULL"}
+  {"type":"character","attributes":{},"value":["preview.jpg","references.bib","tidyverse-1_files/anchor-4.2.2/anchor.min.js","tidyverse-1_files/bowser-1.9.3/bowser.min.js","tidyverse-1_files/clipboard-2.0.6/clipboard.min.js","tidyverse-1_files/distill-2.2.21/template.v2.js","tidyverse-1_files/header-attrs-2.13/header-attrs.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.map","tidyverse-1_files/popper-2.6.0/popper.min.js","tidyverse-1_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidyverse-1_files/tippy-6.2.7/tippy-light-border.css","tidyverse-1_files/tippy-6.2.7/tippy.css","tidyverse-1_files/tippy-6.2.7/tippy.umd.min.js","tidyverse-1_files/webcomponents-2.0.0/webcomponents.js","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1500,13 +1523,135 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#모티베이션">모티베이션</a></li>
+<li><a href="#데이터베이스-연결하기">1 데이터베이스 연결하기</a>
+<ul>
+<li><a href="#우리가-사용할-데이터베이스">우리가 사용할
+데이터베이스</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<h2 id="모티베이션">모티베이션</h2>
+<p><a
+href="https://unsplash.com/photos/fPkvU7RDmCo?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink"><img
+src="preview.jpg" width="700"
+alt="Photo by Caspar Camille Rubin on Unsplash" /></a></p>
+<aside>
+<p>본 글은 <span class="citation" data-cites="naidoo2020">(<a
+href="#ref-naidoo2020" role="doc-biblioref">Naidoo 2020</a>)</span>를
+기반으로 작성되었습니다.</p>
+</aside>
+<p>실무에서는 Data analyst, Data scientist를 가리지 않고 SQL에 관한
+능력을 요구합니다. 우리나라의 채용공고를 둘러보면 Data analyst의 경우
+특히 SQL에 대한 능력이 특별히 꼭 요구 되는 것 같습니다. 방대한 양의
+데이터를 저장하고 관리하기 위해 실무에서는 데이터베이스를 사용합니다. 이
+데이터베이스는 종종 관계형 데이터베이스 시스템<a href="#fn1"
+class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>(이하 RDBMS)이라 불리기도 하죠.
+그리고, 우리는 SQL<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a> 언어 또는 SQL을 조금 변형한(variant)
+언어를 통해 이 데이터베이스와 이야기를 나눕니다. 여기서 변형을 고려한
+이유는, RDBMS를 제공하는 업체에서 표준화된 SQL을 택하여 제공할 수도
+있지만, 편의를 위해 표준화된 SQL을 조금 변형시켜 사용하는 경우도 있기
+때문입니다.</p>
+<p>만약 이렇게 특정 업체로부터 제공되는 변형된 RDBMS를 사용해야한다면,
+해당 업체에서 사용하는 특정 SQL을 사용해 쿼리를 작성하는 방법을 이해해야
+하실겁니다. 변형된 RDBMS를 예로 들어보자면, <a
+href="https://www.postgresql.org">PostgreSQL</a>, <a
+href="https://prestodb.io">PrestoDB</a>(<a
+href="https://aws.amazon.com/ko/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&amp;whats-new-cards.sort-order=desc">AWS의
+Athena</a>를 위한) 등이 있습니다. PostgreSQL DB의 JSON 필드는 AWS에서
+구조화된 중첩 배열로(array) 수집되므로, 동일한 필드를 쿼리할 때 다른
+쿼리문을 사용합니다.</p>
+<p>R을 사용하는 여러분 모두 잘 아시다시피, R에서는
+<code>{dplyr}</code><a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> 패키지를 통해 이러한 작업을 데이터에
+수행할 수 있습니다. <code>{dplyr}</code>이 <code>select()</code>,
+<code>group_by()</code>, <code>left_join()</code> 등 SQL 문법을 잘
+모방하긴 했지만, SQL 문법과 R 문법 사이를 완벽하게 왔다갔다 하기는
+어렵습니다. 예를 들자면, <code>{dplyr}</code>의 <code>filter()</code>를
+이용해 특정 행을 뽑아올 때, 우리는 R 문법을 따라야하므로 조건문에
+<code>=</code>이 아닌 <code>==</code>을 사용하죠. 이는 SQL 문법과는
+완벽히 다른 부분입니다.</p>
+<p>자, 여기서 이러한 상황을 타개할 방법은 무엇일까요. 엄청난 용량의
+데이터베이스를 R로 가져올 수는 없습니다. 메모리 베이스인 R에 이 짓을
+햇다가는요? 생각도 하기 싫습니다.😰 그럼, RDBMS 환경에서 이러한 무거운
+작업을(대부분 계산 행위) 수행하고 필요로 될 때에만 R에다가 가져오면 되지
+않을까요? 예를 들면, 집계된 데이터를 가져와서 보고서용 그림을
+그린다든지. 그렇습니다, 이를 가능하게끔 해주는 패키지에 대해 배워보려고
+합니다.</p>
+<p>본 튜토리얼에서는 <code>{dplyr}</code>의 데이터베이스 백엔드 버전이라
+할 수 있는 <code>{dbplyr}</code> 패키지에 대해 배울거에요.
+<code>{dbplyr}</code>은 당신의 RDBMS에 R의 tidyverse 문법을 사용한
+쿼리문을 직접적으로 사용할 수 있게끔 해줄겁니다.😀</p>
+<h2 id="데이터베이스-연결하기">1 데이터베이스 연결하기</h2>
+<p>먼저 필요한 패키지를 불러오죠.
+<code>install.packages("패키지명")</code>을 통해 설치할 수 있습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbi.r-dbi.org'>DBI</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbplyr.tidyverse.org/'>dbplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rsqlite.r-dbi.org'>RSQLite</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/r-dbi/odbc'>odbc</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<ul>
+<li><code>{DBI}</code>: R의 데이터베이스 인터페이스에 관한 메인
+패키지입니다.</li>
+<li><code>{dbplyr}</code>: <code>{dplyr}</code> 문법을 사용하여
+데이터베이스에 질의를 할 수 있게끔 해줍니다.</li>
+<li><code>{dplyr}</code>: 데이터베이스에 질의할 때 사용할
+패키지입니다.</li>
+<li><code>{RSQLite}</code>: 가벼운 단일 유저용 데이터베이스 SQLite DB에
+연결할 수 있게끔 해주는 DBI<a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a> 호환 패키지입니다.
+R-SQLite로 이해하시면 편합니다.</li>
+<li>다른 DBI 용 호환 패키지가 필요할 수도 있습니다. 예를 들어,
+<code>{RPostgres}</code>는 PostgreSQL RDBMS와 연결을 해주는
+패키지입니다.<a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a></li>
+<li><code>{odbc}</code>: odbc 드라이버를 사용해 RDBMS 인터페이스에
+인터페이스할 수 있도록 해주는 DBI 호환 인터페이스입니다.<a href="#fn6"
+class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a></li>
+</ul>
+<h3 id="우리가-사용할-데이터베이스">우리가 사용할 데이터베이스</h3>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-naidoo2020" class="csl-entry" role="doc-biblioentry">
+Naidoo, Vebash. 2020. <span>“Sciencificity’s Blog: Using the Tidyverse
+with Databases - Part i,”</span> December. <a
+href="https://sciencificity-blog.netlify.app/posts/2020-12-12-using-the-tidyverse-with-databases/">https://sciencificity-blog.netlify.app/posts/2020-12-12-using-the-tidyverse-with-databases/</a>.
+</div>
+</div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>relational database management
+system, or RDBMS<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Structured Query Language<a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>명확하게 정해진 바는 없어보이나,
+d-plier라고 흔히 읽는 듯 합니다. 패키지의 스티커 이미지를 보면
+플라이어가 그려져 있습니다.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>DataBase Interface, 데이터베이스
+인터페이스의 약어<a href="#fnref4" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>본 예제에서는 다루지 않지만, <a
+href="https://db.rstudio.com">Rstudio DB</a>에서 많은 것을 확인할 수
+있습니다.<a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>본 예제에서는 다루지 않지만, <a
+href="https://db.rstudio.com">Rstudio DB</a>에서 확인할 수 있습니다.<a
+href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1519,6 +1664,8 @@ class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"><
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
 <div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
 <h3 id="reuse">Reuse</h3>
 <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
 </div>

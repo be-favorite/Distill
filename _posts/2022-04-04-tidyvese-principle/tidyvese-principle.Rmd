@@ -38,7 +38,7 @@ xaringanExtra::use_clipboard()
 
 <aside>
 
-본 예제는 [@plieningera]를 기반으로 작성되었습니다.
+본 글은 [@plieningera]를 기반으로 작성되었습니다.
 
 </aside>
 
@@ -366,7 +366,7 @@ tune은 조정하다[^12] 라는 뜻을 갖는 동사이며, 말 그대로 `{tun
 
 [^13]: the round control on a radio, cooker, etc. that you turn in order to change something
 
-### 6.1 튜닝을 위한 {parsnip} 모형 객체 준비
+### 6.1 튜닝을 위한 {parsnip} 모형 객체 준비 {#튜닝을-위한-parsnip-모형-객체-준비}
 
 첫 번째로, 랜덤포레스트 모형을 형성할 때 매 트리 적합시 고려할 변수들의 개수를 조정하는 `mtry` 모수를 조율해줍니다. `tune()`을 placeholder로 하여 후에 교차검증을 통해 최적의 `mtry`를 선정할 입니다.
 
@@ -397,7 +397,7 @@ rf_model %>%
 
 ### 6.2 튜닝을 위한 자료 준비: {recipes} {#튜닝을-위한-자료-준비-recipes}
 
-두 번째로 튜닝하고 싶은 것은 `carat`의 다항식 차수입니다. [2 데이터 전처리 및 Feature Engineering: {recipes}]의 그림에서 확인했듯이, 최대 4차까지의 다항식이 자료에 잘 적합 될 수 있음을 알 수 있습니다. 그러나, 우리는 모수 절약의 원칙(priciplt of parsimony)[^14]을 생각할 필요가 있고, 그에 따라 더 간단한 모형도 자료에 잘 적합 될 수 있다는 가능성을 배제해서는 안됩니다. 그래서, `carat`의 다항식 차수 또한 교차 검증을 통해 최대한 간단하면서 좋은 성능을 내는 `carat`의 차수를 찾을 것입니다.
+두 번째로 튜닝하고 싶은 것은 `carat`의 다항식 차수입니다. [2 데이터 전처리 및 Feature Engineering: {recipes}](#데이터-전처리-및-feature-engineering-recipes)의 그림에서 확인했듯이, 최대 4차까지의 다항식이 자료에 잘 적합 될 수 있음을 알 수 있습니다. 그러나, 우리는 모수 절약의 원칙(priciplt of parsimony)[^14]을 생각할 필요가 있고, 그에 따라 더 간단한 모형도 자료에 잘 적합 될 수 있다는 가능성을 배제해서는 안됩니다. 그래서, `carat`의 다항식 차수 또한 교차 검증을 통해 최대한 간단하면서 좋은 성능을 내는 `carat`의 차수를 찾을 것입니다.
 
 [^14]: 또는 Occam's razor
 
@@ -423,7 +423,7 @@ dia_rec2 %>%
 
 workflow를 직역하면 어떤 작업의 흐름을 뜻하듯이, `{workflows}` 패키지는 `recipe`나 `model` 객체와 같은 머신러닝 파이프라인의 다른 부분이라 할 수 있는 것들을 한 번에 묶어주는 역할을 합니다.
 
-이를 위해서는 먼저 `workflow()`를 선언하여 객체를 만들고, [6.2 튜닝을 위한 자료 준비: {recipes}]에서 만든 `recipe` 객체와 [6.1 튜닝을 위한 {parsnip} 모형 객체 준비]에서 만든 랜덤포레스트 모형 객체를 `add_*()`로 결합해줍니다.
+이를 위해서는 먼저 `workflow()`를 선언하여 객체를 만들고, [6.2 튜닝을 위한 자료 준비: {recipes}](#튜닝을-위한-자료-준비-recipes)에서 만든 `recipe` 객체와 [6.1 튜닝을 위한 {parsnip} 모형 객체 준비](#튜닝을-위한-parsnip-모형-객체-준비)에서 만든 랜덤포레스트 모형 객체를 `add_*()`로 결합해줍니다.
 
 ```{r}
 rf_wflow <- workflow() %>% 
@@ -513,7 +513,7 @@ select_by_one_std_err(rf_search, mtry, degree, metric = "rmse") %>%
 
 ### 6.4 선택한 최적의 모형으로 예측 수행
 
-[6.3 모든 것을 결합하기: {workflows}]에서 carat 변수는 2차항으로도 충분히 설명되고, 매 트리 적합 시 고려할 변수의 수는 5개임을 확인할 수 있었습니다. 이제는 해당 초모수 조합을 이용해 훈련 자료에 모형을 적합하고 최종 예측을 수행하려고 합니다. 이번 예제에서는 설정값이 똑같긴 하지만, $\pm 1SE$를 고려한 초모수 조합을 모형 적합에 사용하였습니다.
+[6.3 모든 것을 결합하기: {workflows}](#모든-것을-결합하기-workflows)에서 carat 변수는 2차항으로도 충분히 설명되고, 매 트리 적합 시 고려할 변수의 수는 5개임을 확인할 수 있었습니다. 이제는 해당 초모수 조합을 이용해 훈련 자료에 모형을 적합하고 최종 예측을 수행하려고 합니다. 이번 예제에서는 설정값이 똑같긴 하지만, $\pm 1SE$를 고려한 초모수 조합을 모형 적합에 사용하였습니다.
 
 ```{r, warning = FALSE, cache = TRUE}
 rf_param_final <- select_by_one_std_err(rf_search, mtry, degree, metric = "rmse")
