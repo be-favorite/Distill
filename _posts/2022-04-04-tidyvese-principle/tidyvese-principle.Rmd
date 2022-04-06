@@ -31,6 +31,7 @@ bibliography: references.bib
 library(xaringanExtra)
 library(rmarkdown)
 library(rmdformats)
+library(tweetrmd)
 xaringanExtra::use_clipboard()
 ```
 
@@ -552,14 +553,20 @@ metrics(dia_test, truth = logprice, estimate = .pred) %>%
 
 ## 맺음말
 
-`{tidymodels}`의 ecosystem은 머신러닝 문제를 풀기 위해 필요한 첫 단계부터 끝까지 함께 작동하는 패키지들의 집합을 한대 묶어 제공해줍니다. 또한, `{tidyverse}`를 통한 data-wrangling 기능과 훌륭한 시각화 패키지 `{ggplot2}`와도 함께 작동하는 `{tidymodels}`은 R을 사용하는 데이터 사이언티스트들에게는 더없이 풍부한 toolbox라 할 수 있을 것 같습니다. 아울러, 해당 튜토리얼에서는 예측 모형들을 결합해주는[^17] 기능을 갖는 패키지 `{stacks}`에 대한 내용을 다루지 않았는데[^18], `{tidymodels}`을 불러올 때 로딩이 되는 패키지는 아니지만, `{stacks}` 또한 {tidymodels}의 한 부분으로 소개되는 패키지에 해당합니다.
+`{tidymodels}`의 ecosystem은 머신러닝 문제를 풀기 위해 필요한 첫 단계부터 끝까지 함께 작동하는 패키지들의 집합을 한대 묶어 제공해줍니다. 또한, `{tidyverse}`를 통한 data-wrangling 기능과 훌륭한 시각화 패키지 `{ggplot2}`와도 함께 작동하는 `{tidymodels}`은 R을 사용하는 데이터 사이언티스트들에게는 더없이 풍부한 toolbox라 할 수 있을 것 같습니다. 아울러, 해당 튜토리얼에서는 예측 모형들을 결합해주는[^17] 기능을 갖는 패키지 `{stacks}`에 대한 내용을 다루지 않았는데[^18], `{tidymodels}`을 불러올 때 로딩이 되는 패키지는 아니지만, `{stacks}` 또한 {tidymodels}의 한 부분으로 소개되는 패키지에 해당합니다. 그리고, tidymodels ecosystem을 "머신러닝"에만 국한시키기에는 너무나도 많은 기능들이 업데이트되고 있습니다. 최근엔 반복측정자료분석에 자주 쓰이는 모형 중 하나인 혼합효과모형(linear mixed model)까지 지원하기 시작했습니다:
 
 [^17]: e.g. ensemble, stacking, super learner
 
 [^18]: 관심있는 분들은 see [here](https://stacks.tidymodels.org/articles/basics.html)
 
+```{r, echo = FALSE}
+tweet_embed(tweet_url("topepos", "1507109429652725766"))
+```
+
+[tidyverse 블로그](https://www.tidyverse.org/blog/)를 꼭 팔로우업하세요. 본 튜토리얼은 20년 2월에 작성된 글을 기반으로 쓰여졌기 때문에 최신이라고 하긴 어렵습니다.😂 그러나, tidymodels ecosystem의 기본기를 익히기에는 충분할 겁니다.
+
 이 튜토리얼이 `{tidymodels}`을 배우길 원하는, R로 머신러닝을 수행하길 원하는 우리나라 R 유저들에게 조금이나마 도움이 됐으면 좋겠습니다.`r emo::ji("blush")` 마지막으로 이 튜토리얼을 진행하는 데 쓰인 하드웨어 정보를 제공하는 것을 끝으로 이 글을 마무리합니다.
 
-```{r, cache = TRUE}
-sessioninfo::session_info()
+```{r}
+sessioninfo::session_info(info = "platform")
 ```
