@@ -1,0 +1,3735 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+<title>방태모의 블로그: tidyverse principle로 시계열 자료 분석하기</title>
+
+<meta property="description" itemprop="description" content="tidyverts ecosystem 소개"/>
+
+<link rel="canonical" href="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
+<link rel="icon" type="image/png" href="../../images/favicon.png"/>
+
+<!--  https://schema.org/Article -->
+<meta property="article:published" itemprop="datePublished" content="2022-03-11"/>
+<meta property="article:created" itemprop="dateCreated" content="2022-03-11"/>
+<meta name="article:author" content="Taemo Bang"/>
+
+<!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+<meta property="og:title" content="방태모의 블로그: tidyverse principle로 시계열 자료 분석하기"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="tidyverts ecosystem 소개"/>
+<meta property="og:url" content="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"/>
+<meta property="og:image" content="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/preview.jpg"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:site_name" content="방태모의 블로그"/>
+
+<!--  https://dev.twitter.com/cards/types/summary -->
+<meta property="twitter:card" content="summary_large_image"/>
+<meta property="twitter:title" content="방태모의 블로그: tidyverse principle로 시계열 자료 분석하기"/>
+<meta property="twitter:description" content="tidyverts ecosystem 소개"/>
+<meta property="twitter:url" content="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"/>
+<meta property="twitter:image" content="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/preview.jpg"/>
+<meta property="twitter:site" content="@TaemoBang"/>
+<meta property="twitter:creator" content="@TaemoBang"/>
+
+<!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+<meta name="citation_title" content="방태모의 블로그: tidyverse principle로 시계열 자료 분석하기"/>
+<meta name="citation_fulltext_html_url" content="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"/>
+<meta name="citation_fulltext_world_readable" content=""/>
+<meta name="citation_online_date" content="2022/03/11"/>
+<meta name="citation_publication_date" content="2022/03/11"/>
+<meta name="citation_author" content="Taemo Bang"/>
+<!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Tidyverts"/>
+  <meta name="citation_reference" content="citation_title=Tidyverts"/>
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+<script type="text/json" id="radix-rmarkdown-metadata">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse principle로 시계열 자료 분석하기"]},{"type":"character","attributes":{},"value":["tidyverts ecosystem 소개"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-03-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["Time Series","Tidytool","R"]},{"type":"character","attributes":{},"value":["references.bib"]},{"type":"character","attributes":{},"value":["https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"]},{"type":"character","attributes":{},"value":["https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/"]}]}
+</script>
+<!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["preview.jpg","references.bib","tidy-tools-for-timeseries-tidyverts_files/anchor-4.2.2/anchor.min.js","tidy-tools-for-timeseries-tidyverts_files/bowser-1.9.3/bowser.min.js","tidy-tools-for-timeseries-tidyverts_files/clipboard-2.0.6/clipboard.min.js","tidy-tools-for-timeseries-tidyverts_files/distill-2.2.21/template.v2.js","tidy-tools-for-timeseries-tidyverts_files/figure-html5/acf-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe_seasonal-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe_trend-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/classical-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/forecast_prophet-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/forecast-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/lag-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/melbourne-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/olympic-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/season-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/STL-1.png","tidy-tools-for-timeseries-tidyverts_files/figure-html5/subseries-1.png","tidy-tools-for-timeseries-tidyverts_files/header-attrs-2.11/header-attrs.js","tidy-tools-for-timeseries-tidyverts_files/header-attrs-2.13/header-attrs.js","tidy-tools-for-timeseries-tidyverts_files/jquery-3.6.0/jquery-3.6.0.js","tidy-tools-for-timeseries-tidyverts_files/jquery-3.6.0/jquery-3.6.0.min.js","tidy-tools-for-timeseries-tidyverts_files/jquery-3.6.0/jquery-3.6.0.min.map","tidy-tools-for-timeseries-tidyverts_files/pagedtable-1.1/css/pagedtable.css","tidy-tools-for-timeseries-tidyverts_files/pagedtable-1.1/js/pagedtable.js","tidy-tools-for-timeseries-tidyverts_files/popper-2.6.0/popper.min.js","tidy-tools-for-timeseries-tidyverts_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidy-tools-for-timeseries-tidyverts_files/tippy-6.2.7/tippy-light-border.css","tidy-tools-for-timeseries-tidyverts_files/tippy-6.2.7/tippy.css","tidy-tools-for-timeseries-tidyverts_files/tippy-6.2.7/tippy.umd.min.js","tidy-tools-for-timeseries-tidyverts_files/webcomponents-2.0.0/webcomponents.js","tidy-tools-for-timeseries-tidyverts_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","tidy-tools-for-timeseries-tidyverts_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+<meta name="distill:offset" content="../.."/>
+
+<script type="application/javascript">
+
+  window.headroom_prevent_pin = false;
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // initialize headroom for banner
+    var header = $('header').get(0);
+    var headerHeight = header.offsetHeight;
+    var headroom = new Headroom(header, {
+      tolerance: 5,
+      onPin : function() {
+        if (window.headroom_prevent_pin) {
+          window.headroom_prevent_pin = false;
+          headroom.unpin();
+        }
+      }
+    });
+    headroom.init();
+    if(window.location.hash)
+      headroom.unpin();
+    $(header).addClass('headroom--transition');
+
+    // offset scroll location for banner on hash change
+    // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+    window.addEventListener("hashchange", function(event) {
+      window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+    });
+
+    // responsive menu
+    $('.distill-site-header').each(function(i, val) {
+      var topnav = $(this);
+      var toggle = topnav.find('.nav-toggle');
+      toggle.on('click', function() {
+        topnav.toggleClass('responsive');
+      });
+    });
+
+    // nav dropdowns
+    $('.nav-dropbtn').click(function(e) {
+      $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+      $(this).parent().siblings('.nav-dropdown')
+         .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $("body").click(function(e){
+      $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+    });
+    $(".nav-dropdown").click(function(e){
+      e.stopPropagation();
+    });
+  });
+</script>
+
+<style type="text/css">
+
+/* Theme (user-documented overrideables for nav appearance) */
+
+.distill-site-nav {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: #0F2E3D;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.distill-site-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.distill-site-nav a:hover {
+  color: white;
+}
+
+@media print {
+  .distill-site-nav {
+    display: none;
+  }
+}
+
+.distill-site-header {
+
+}
+
+.distill-site-footer {
+
+}
+
+
+/* Site Header */
+
+.distill-site-header {
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.distill-site-header .nav-left {
+  display: inline-block;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header .nav-left {
+    margin-left: 0;
+  }
+}
+
+
+.distill-site-header .nav-right {
+  float: right;
+  margin-right: 8px;
+}
+
+.distill-site-header a,
+.distill-site-header .title {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 10px 14px 10px;
+}
+
+.distill-site-header .title {
+  font-size: 18px;
+  min-width: 150px;
+}
+
+.distill-site-header .logo {
+  padding: 0;
+}
+
+.distill-site-header .logo img {
+  display: none;
+  max-height: 20px;
+  width: auto;
+  margin-bottom: -4px;
+}
+
+.distill-site-header .nav-image img {
+  max-height: 18px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: -3px;
+}
+
+
+
+@media screen and (min-width: 1000px) {
+  .distill-site-header .logo img {
+    display: inline-block;
+  }
+  .distill-site-header .nav-left {
+    margin-left: 20px;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 20px;
+  }
+  .distill-site-header .title {
+    padding-left: 12px;
+  }
+}
+
+
+.distill-site-header .nav-toggle {
+  display: none;
+}
+
+.nav-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-dropdown .nav-dropbtn {
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 10px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  margin-top: 1px;
+  z-index: 2;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 200px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+  z-index: 1;
+  margin-top: 2px;
+  white-space: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.nav-dropdown-content hr {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-dropdown-active {
+  display: block;
+}
+
+.nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+  color: black;
+  padding: 6px 24px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.nav-dropdown-content .nav-dropdown-header {
+  display: block;
+  padding: 5px 24px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #999999;
+  white-space: nowrap;
+}
+
+.nav-dropdown:hover .nav-dropbtn {
+  color: white;
+}
+
+.nav-dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-right .nav-dropdown-content {
+  margin-left: -45%;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+  .distill-site-header a.nav-toggle {
+    float: right;
+    display: block;
+  }
+  .distill-site-header .title {
+    margin-left: 0;
+  }
+  .distill-site-header .nav-right {
+    margin-right: 0;
+  }
+  .distill-site-header {
+    overflow: hidden;
+  }
+  .nav-right .nav-dropdown-content {
+    margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-header.responsive {position: relative; min-height: 500px; }
+  .distill-site-header.responsive a.nav-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .distill-site-header.responsive a,
+  .distill-site-header.responsive .nav-dropdown {
+    display: block;
+    text-align: left;
+  }
+  .distill-site-header.responsive .nav-left,
+  .distill-site-header.responsive .nav-right {
+    width: 100%;
+  }
+  .distill-site-header.responsive .nav-dropdown {float: none;}
+  .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+  .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* Site Footer */
+
+.distill-site-footer {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+/* Headroom */
+
+d-title {
+  padding-top: 6rem;
+}
+
+@media print {
+  d-title {
+    padding-top: 4rem;
+  }
+}
+
+.headroom {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.headroom--transition {
+  transition: all .4s ease-in-out;
+}
+
+.headroom--unpinned {
+  top: -100px;
+}
+
+.headroom--pinned {
+  top: 0;
+}
+
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
+</style>
+
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+<link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+<script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
+<script src="../../site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+<script src="../../site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+<script type="application/javascript">
+
+function getMeta(metaName) {
+  var metas = document.getElementsByTagName('meta');
+  for (let i = 0; i < metas.length; i++) {
+    if (metas[i].getAttribute('name') === metaName) {
+      return metas[i].getAttribute('content');
+    }
+  }
+  return '';
+}
+
+function offsetURL(url) {
+  var offset = getMeta('distill:offset');
+  return offset ? offset + '/' + url : url;
+}
+
+function createFuseIndex() {
+
+  // create fuse index
+  var options = {
+    keys: [
+      { name: 'title', weight: 20 },
+      { name: 'categories', weight: 15 },
+      { name: 'description', weight: 10 },
+      { name: 'contents', weight: 5 },
+    ],
+    ignoreLocation: true,
+    threshold: 0
+  };
+  var fuse = new window.Fuse([], options);
+
+  // fetch the main search.json
+  return fetch(offsetURL('search.json'))
+    .then(function(response) {
+      if (response.status == 200) {
+        return response.json().then(function(json) {
+          // index main articles
+          json.articles.forEach(function(article) {
+            fuse.add(article);
+          });
+          // download collections and index their articles
+          return Promise.all(json.collections.map(function(collection) {
+            return fetch(offsetURL(collection)).then(function(response) {
+              if (response.status === 200) {
+                return response.json().then(function(articles) {
+                  articles.forEach(function(article) {
+                    fuse.add(article);
+                  });
+                })
+              } else {
+                return Promise.reject(
+                  new Error('Unexpected status from search index request: ' +
+                            response.status)
+                );
+              }
+            });
+          })).then(function() {
+            return fuse;
+          });
+        });
+
+      } else {
+        return Promise.reject(
+          new Error('Unexpected status from search index request: ' +
+                      response.status)
+        );
+      }
+    });
+}
+
+window.document.addEventListener("DOMContentLoaded", function (event) {
+
+  // get search element (bail if we don't have one)
+  var searchEl = window.document.getElementById('distill-search');
+  if (!searchEl)
+    return;
+
+  createFuseIndex()
+    .then(function(fuse) {
+
+      // make search box visible
+      searchEl.classList.remove('hidden');
+
+      // initialize autocomplete
+      var options = {
+        autoselect: true,
+        hint: false,
+        minLength: 2,
+      };
+      window.autocomplete(searchEl, options, [{
+        source: function(query, callback) {
+          const searchOptions = {
+            isCaseSensitive: false,
+            shouldSort: true,
+            minMatchCharLength: 2,
+            limit: 10,
+          };
+          var results = fuse.search(query, searchOptions);
+          callback(results
+            .map(function(result) { return result.item; })
+          );
+        },
+        templates: {
+          suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
+            var html = `
+              <div class="search-item">
+                <h3>${suggestion.title}</h3>
+                <div class="search-item-description">
+                  ${suggestion.description || ''}
+                </div>
+                <div class="search-item-preview">
+                  ${img}
+                </div>
+              </div>
+            `;
+            return html;
+          }
+        }
+      }]).on('autocomplete:selected', function(event, suggestion) {
+        window.location.href = offsetURL(suggestion.path);
+      });
+      // remove inline display style on autocompleter (we want to
+      // manage responsive display via css)
+      $('.algolia-autocomplete').css("display", "");
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+});
+
+</script>
+
+<style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
+
+/* Algolioa Autocomplete */
+
+.algolia-autocomplete {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: sub;
+  background-color: white;
+  color: black;
+  padding: 6px;
+  padding-top: 8px;
+  padding-bottom: 0;
+  border-radius: 6px;
+  border: 1px #0F2E3D solid;
+  width: 180px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .distill-site-nav .algolia-autocomplete {
+    display: none;
+    visibility: hidden;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete {
+    display: inline-block;
+    visibility: visible;
+  }
+  .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+    margin-left: 0;
+    width: 400px;
+    max-height: 400px;
+  }
+}
+
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 90%;
+  outline: none;
+  border: none;
+}
+
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 550px;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  padding: 5px;
+  margin-top: 3px;
+  margin-left: -150px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #999;
+  border-top: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+  border-bottom: 1px solid #eee;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.4em;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
+  margin-block-start: 0;
+  margin-block-end: 5px;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+  display: inline-block;
+  overflow: hidden;
+  height: 2.8em;
+  width: 80%;
+  margin-right: 4%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+  display: inline-block;
+  width: 15%;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+  height: 3em;
+  width: auto;
+  display: none;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+  display: initial;
+}
+
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #eee;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+</style>
+
+
+<!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+<style type="text/css">
+
+body {
+  background-color: white;
+}
+
+.pandoc-table {
+  width: 100%;
+}
+
+.pandoc-table>caption {
+  margin-bottom: 10px;
+}
+
+.pandoc-table th:not([align]) {
+  text-align: left;
+}
+
+.pagedtable-footer {
+  font-size: 15px;
+}
+
+d-byline .byline {
+  grid-template-columns: 2fr 2fr;
+}
+
+d-byline .byline h3 {
+  margin-block-start: 1.5em;
+}
+
+d-byline .byline .authors-affiliations h3 {
+  margin-block-start: 0.5em;
+}
+
+.authors-affiliations .orcid-id {
+  width: 16px;
+  height:16px;
+  margin-left: 4px;
+  margin-right: 4px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+d-title .dt-tags {
+  margin-top: 1em;
+  grid-column: text;
+}
+
+.dt-tags .dt-tag {
+  text-decoration: none;
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0em 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.4em;
+  font-size: 70%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+d-article table.gt_table td,
+d-article table.gt_table th {
+  border-bottom: none;
+}
+
+.html-widget {
+  margin-bottom: 2.0em;
+}
+
+.l-screen-inset {
+  padding-right: 16px;
+}
+
+.l-screen .caption {
+  margin-left: 10px;
+}
+
+.shaded {
+  background: rgb(247, 247, 247);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .html-widget {
+  margin-bottom: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shaded .shaded-content {
+  background: white;
+}
+
+.text-output {
+  margin-top: 0;
+  line-height: 1.5em;
+}
+
+.hidden {
+  display: none !important;
+}
+
+d-article {
+  padding-top: 2.5rem;
+  padding-bottom: 30px;
+}
+
+d-appendix {
+  padding-top: 30px;
+}
+
+d-article>p>img {
+  width: 100%;
+}
+
+d-article h2 {
+  margin: 1rem 0 1.5rem 0;
+}
+
+d-article h3 {
+  margin-top: 1.5rem;
+}
+
+d-article iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.0em;
+  width: 100%;
+}
+
+/* Tweak code blocks */
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: auto;
+}
+
+d-article div.sourceCode {
+  background-color: white;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 10px;
+  font-size: 12px;
+  border-left: 2px solid rgba(0,0,0,0.1);
+}
+
+d-article pre {
+  font-size: 12px;
+  color: black;
+  background: none;
+  margin-top: 0;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+d-article pre a {
+  border-bottom: none;
+}
+
+d-article pre a:hover {
+  border-bottom: none;
+  text-decoration: underline;
+}
+
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
+@media(min-width: 768px) {
+
+d-article pre,
+d-article div.sourceCode,
+d-article div.sourceCode pre {
+  overflow: visible !important;
+}
+
+d-article div.sourceCode pre {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+d-article pre {
+  font-size: 14px;
+}
+
+}
+
+figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+/* CSS for d-contents */
+
+.d-contents {
+  grid-column: text;
+  color: rgba(0,0,0,0.8);
+  font-size: 0.9em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+  padding-left: 0.25em;
+  justify-self: start;
+}
+
+@media(min-width: 1000px) {
+  .d-contents.d-contents-float {
+    height: 0;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    justify-self: center;
+    padding-right: 3em;
+    padding-left: 2em;
+  }
+}
+
+.d-contents nav h3 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.d-contents li {
+  list-style-type: none
+}
+
+.d-contents nav > ul {
+  padding-left: 0;
+}
+
+.d-contents ul {
+  padding-left: 1em
+}
+
+.d-contents nav ul li {
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+}
+
+.d-contents nav a {
+  font-size: 13px;
+  border-bottom: none;
+  text-decoration: none
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.d-contents nav a:hover {
+  text-decoration: underline solid rgba(0, 0, 0, 0.6)
+}
+
+.d-contents nav > ul > li > a {
+  font-weight: 600;
+}
+
+.d-contents nav > ul > li > ul {
+  font-weight: inherit;
+}
+
+.d-contents nav > ul > li > ul > li {
+  margin-top: 0.2em;
+}
+
+
+.d-contents nav ul {
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+.d-article-with-toc h2:nth-child(2) {
+  margin-top: 0;
+}
+
+
+/* Figure */
+
+.figure {
+  position: relative;
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
+}
+
+.figure .caption {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+.figure img.external {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.figure .caption a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.figure .caption b,
+.figure .caption strong, {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 1.0);
+}
+
+/* Citations */
+
+d-article .citation {
+  color: inherit;
+  cursor: inherit;
+}
+
+div.hanging-indent{
+  margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
+}
+
+
+/* Tweak 1000px media break to show more text */
+
+@media(min-width: 1000px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 16px;
+  }
+
+  .grid {
+    grid-column-gap: 16px;
+  }
+
+  d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+  }
+  figure .caption, .figure .caption, figure figcaption {
+    font-size: 13px;
+  }
+}
+
+@media(min-width: 1180px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+
+/* Get the citation styles for the appendix (not auto-injected on render since
+   we do our own rendering of the citation appendix) */
+
+d-appendix .citation-appendix,
+.d-appendix .citation-appendix {
+  font-size: 11px;
+  line-height: 15px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 18px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.02);
+  padding: 10px 18px;
+  border-radius: 3px;
+  color: rgba(150, 150, 150, 1);
+  overflow: hidden;
+  margin-top: -12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Include appendix styles here so they can be overridden */
+
+d-appendix {
+  contain: layout style;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-top: 60px;
+  margin-bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.5);
+  padding-top: 60px;
+  padding-bottom: 48px;
+}
+
+d-appendix h3 {
+  grid-column: page-start / text-start;
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 1em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.65);
+}
+
+d-appendix h3 + * {
+  margin-top: 1em;
+}
+
+d-appendix ol {
+  padding: 0 0 0 15px;
+}
+
+@media (min-width: 768px) {
+  d-appendix ol {
+    padding: 0 0 0 30px;
+    margin-left: -30px;
+  }
+}
+
+d-appendix li {
+  margin-bottom: 1em;
+}
+
+d-appendix a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+d-appendix > * {
+  grid-column: text;
+}
+
+d-appendix > d-footnote-list,
+d-appendix > d-citation-list,
+d-appendix > distill-appendix {
+  grid-column: screen;
+}
+
+/* Include footnote styles here so they can be overridden */
+
+d-footnote-list {
+  contain: layout style;
+}
+
+d-footnote-list > * {
+  grid-column: text;
+}
+
+d-footnote-list a.footnote-backlink {
+  color: rgba(0,0,0,0.3);
+  padding-left: 0.5em;
+}
+
+
+
+/* Anchor.js */
+
+.anchorjs-link {
+  /*transition: all .25s linear; */
+  text-decoration: none;
+  border-bottom: none;
+}
+*:hover > .anchorjs-link {
+  margin-left: -1.125em !important;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* Social footer */
+
+.social_footer {
+  margin-top: 30px;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.67);
+}
+
+.disqus-comments {
+  margin-right: 30px;
+}
+
+.disqus-comment-count {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#disqus_thread {
+  margin-top: 30px;
+}
+
+.article-sharing a {
+  border-bottom: none;
+  margin-right: 8px;
+}
+
+.article-sharing a:hover {
+  border-bottom: none;
+}
+
+.sidebar-section.subscribe {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.subscribe p {
+  margin-bottom: 0.5em;
+}
+
+
+.article-footer .subscribe {
+  font-size: 15px;
+  margin-top: 45px;
+}
+
+
+.sidebar-section.custom {
+  font-size: 12px;
+  line-height: 1.6em;
+}
+
+.custom p {
+  margin-bottom: 0.5em;
+}
+
+/* Styles for listing layout (hide title) */
+.layout-listing d-title, .layout-listing .d-title {
+  display: none;
+}
+
+/* Styles for posts lists (not auto-injected) */
+
+
+.posts-with-sidebar {
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+.posts-list .description h2,
+.posts-list .description p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.posts-list .description h2 {
+  font-weight: 700;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.posts-list h2.post-tag {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 12px;
+}
+.posts-list {
+  margin-top: 60px;
+  margin-bottom: 24px;
+}
+
+.posts-list .post-preview {
+  text-decoration: none;
+  overflow: hidden;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 24px 0;
+}
+
+.post-preview-last {
+  border-bottom: none !important;
+}
+
+.posts-list .posts-list-caption {
+  grid-column: screen;
+  font-weight: 400;
+}
+
+.posts-list .post-preview h2 {
+  margin: 0 0 6px 0;
+  line-height: 1.2em;
+  font-style: normal;
+  font-size: 24px;
+}
+
+.posts-list .post-preview p {
+  margin: 0 0 12px 0;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+
+.posts-list .post-preview .thumbnail {
+  box-sizing: border-box;
+  margin-bottom: 24px;
+  position: relative;
+  max-width: 500px;
+}
+.posts-list .post-preview img {
+  width: 100%;
+  display: block;
+}
+
+.posts-list .metadata {
+  font-size: 12px;
+  line-height: 1.4em;
+  margin-bottom: 18px;
+}
+
+.posts-list .metadata > * {
+  display: inline-block;
+}
+
+.posts-list .metadata .publishedDate {
+  margin-right: 2em;
+}
+
+.posts-list .metadata .dt-authors {
+  display: block;
+  margin-top: 0.3em;
+  margin-right: 2em;
+}
+
+.posts-list .dt-tags {
+  display: block;
+  line-height: 1em;
+}
+
+.posts-list .dt-tags .dt-tag {
+  display: inline-block;
+  color: rgba(0,0,0,0.6);
+  padding: 0.3em 0.4em;
+  margin-right: 0.2em;
+  margin-bottom: 0.4em;
+  font-size: 60%;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.posts-list img {
+  opacity: 1;
+}
+
+.posts-list img[data-src] {
+  opacity: 0;
+}
+
+.posts-more {
+  clear: both;
+}
+
+
+.posts-sidebar {
+  font-size: 16px;
+}
+
+.posts-sidebar h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.sidebar-section {
+  margin-bottom: 30px;
+}
+
+.categories ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories li {
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}
+
+.categories li>a {
+  border-bottom: none;
+}
+
+.categories li>a:hover {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.categories .active {
+  font-weight: 600;
+}
+
+.categories .category-count {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+@media(min-width: 768px) {
+  .posts-list .post-preview h2 {
+    font-size: 26px;
+  }
+  .posts-list .post-preview .thumbnail {
+    float: right;
+    width: 30%;
+    margin-bottom: 0;
+  }
+  .posts-list .post-preview .description {
+    float: left;
+    width: 45%;
+  }
+  .posts-list .post-preview .metadata {
+    float: left;
+    width: 20%;
+    margin-top: 8px;
+  }
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.5em;
+    font-size: 16px;
+  }
+  .posts-with-sidebar .posts-list {
+    float: left;
+    width: 75%;
+  }
+  .posts-with-sidebar .posts-sidebar {
+    float: right;
+    width: 20%;
+    margin-top: 60px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+
+/* Improve display for browsers without grid (IE/Edge <= 15) */
+
+.downlevel {
+  line-height: 1.6em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.downlevel .d-title {
+  padding-top: 6rem;
+  padding-bottom: 1.5rem;
+}
+
+.downlevel .d-title h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1em;
+  margin: 0 0 0.5rem;
+}
+
+.downlevel .d-title p {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.55em;
+  margin-top: 0;
+}
+
+.downlevel .d-byline {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  font-size: 0.8rem;
+  line-height: 1.8em;
+}
+
+.downlevel .section-separator {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.downlevel .d-article {
+  font-size: 1.06rem;
+  line-height: 1.7em;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+
+.downlevel .d-appendix {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+  font-size: 0.8em;
+  line-height: 1.7em;
+  margin-bottom: 0;
+  color: rgba(0,0,0,0.5);
+  padding-top: 40px;
+  padding-bottom: 48px;
+}
+
+.downlevel .footnotes ol {
+  padding-left: 13px;
+}
+
+.downlevel .base-grid,
+.downlevel .distill-header,
+.downlevel .d-title,
+.downlevel .d-abstract,
+.downlevel .d-article,
+.downlevel .d-appendix,
+.downlevel .distill-appendix,
+.downlevel .d-byline,
+.downlevel .d-footnote-list,
+.downlevel .d-citation-list,
+.downlevel .distill-footer,
+.downlevel .appendix-bottom,
+.downlevel .posts-container {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+@media(min-width: 768px) {
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+  padding-left: 150px;
+  padding-right: 150px;
+  max-width: 900px;
+}
+}
+
+.downlevel pre code {
+  display: block;
+  border-left: 2px solid rgba(0, 0, 0, .1);
+  padding: 0 0 0 20px;
+  font-size: 14px;
+}
+
+.downlevel code, .downlevel pre {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.downlevel .posts-list .post-preview {
+  color: inherit;
+}
+
+
+
+</style>
+
+<script type="application/javascript">
+
+function is_downlevel_browser() {
+  if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                 window.navigator.userAgent)) {
+    return true;
+  } else {
+    return window.load_distill_framework === undefined;
+  }
+}
+
+// show body when load is complete
+function on_load_complete() {
+
+  // add anchors
+  if (window.anchors) {
+    window.anchors.options.placement = 'left';
+    window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+  }
+
+
+  // set body to visible
+  document.body.style.visibility = 'visible';
+
+  // force redraw for leaflet widgets
+  if (window.HTMLWidgets) {
+    var maps = window.HTMLWidgets.findAll(".leaflet");
+    $.each(maps, function(i, el) {
+      var map = this.getMap();
+      map.invalidateSize();
+      map.eachLayer(function(layer) {
+        if (layer instanceof L.TileLayer)
+          layer.redraw();
+      });
+    });
+  }
+
+  // trigger 'shown' so htmlwidgets resize
+  $('d-article').trigger('shown');
+}
+
+function init_distill() {
+
+  init_common();
+
+  // create front matter
+  var front_matter = $('<d-front-matter></d-front-matter>');
+  $('#distill-front-matter').wrap(front_matter);
+
+  // create d-title
+  $('.d-title').changeElementType('d-title');
+
+  // create d-byline
+  var byline = $('<d-byline></d-byline>');
+  $('.d-byline').replaceWith(byline);
+
+  // create d-article
+  var article = $('<d-article></d-article>');
+  $('.d-article').wrap(article).children().unwrap();
+
+  // move posts container into article
+  $('.posts-container').appendTo($('d-article'));
+
+  // create d-appendix
+  $('.d-appendix').changeElementType('d-appendix');
+
+  // flag indicating that we have appendix items
+  var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+  // replace footnotes with <d-footnote>
+  $('.footnote-ref').each(function(i, val) {
+    appendix = true;
+    var href = $(this).attr('href');
+    var id = href.replace('#', '');
+    var fn = $('#' + id);
+    var fn_p = $('#' + id + '>p');
+    fn_p.find('.footnote-back').remove();
+    var text = fn_p.html();
+    var dtfn = $('<d-footnote></d-footnote>');
+    dtfn.html(text);
+    $(this).replaceWith(dtfn);
+  });
+  // remove footnotes
+  $('.footnotes').remove();
+
+  // move refs into #references-listing
+  $('#references-listing').replaceWith($('#refs'));
+
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    var id = $(this).attr('id');
+    $('.d-contents a[href="#' + id + '"]').parent().remove();
+    appendix = true;
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+  });
+
+  // show d-appendix if we have appendix content
+  $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+  // localize layout chunks to just output
+  $('.layout-chunk').each(function(i, val) {
+
+    // capture layout
+    var layout = $(this).attr('data-layout');
+
+    // apply layout to markdown level block elements
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
+    elements.each(function(i, el) {
+      var layout_div = $('<div class="' + layout + '"></div>');
+      if (layout_div.hasClass('shaded')) {
+        var shaded_content = $('<div class="shaded-content"></div>');
+        $(this).wrap(shaded_content);
+        $(this).parent().wrap(layout_div);
+      } else {
+        $(this).wrap(layout_div);
+      }
+    });
+
+
+    // unwrap the layout-chunk div
+    $(this).children().unwrap();
+  });
+
+  // remove code block used to force  highlighting css
+  $('.distill-force-highlighting-css').parent().remove();
+
+  // remove empty line numbers inserted by pandoc when using a
+  // custom syntax highlighting theme
+  $('code.sourceCode a:empty').remove();
+
+  // load distill framework
+  load_distill_framework();
+
+  // wait for window.distillRunlevel == 4 to do post processing
+  function distill_post_process() {
+
+    if (!window.distillRunlevel || window.distillRunlevel < 4)
+      return;
+
+    // hide author/affiliations entirely if we have no authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+    if (!have_authors)
+      $('d-byline').addClass('hidden');
+
+    // article with toc class
+    $('.d-contents').parent().addClass('d-article-with-toc');
+
+    // strip links that point to #
+    $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+    // add orcid ids
+    $('.authors-affiliations').find('.author').each(function(i, el) {
+      var orcid_id = front_matter.authors[i].orcidID;
+      if (orcid_id) {
+        var a = $('<a></a>');
+        a.attr('href', 'https://orcid.org/' + orcid_id);
+        var img = $('<img></img>');
+        img.addClass('orcid-id');
+        img.attr('alt', 'ORCID ID');
+        img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+        a.append(img);
+        $(this).append(a);
+      }
+    });
+
+    // hide elements of author/affiliations grid that have no value
+    function hide_byline_column(caption) {
+      $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+    }
+
+    // affiliations
+    var have_affiliations = false;
+    for (var i = 0; i<front_matter.authors.length; ++i) {
+      var author = front_matter.authors[i];
+      if (author.affiliation !== "&nbsp;") {
+        have_affiliations = true;
+        break;
+      }
+    }
+    if (!have_affiliations)
+      $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+    // published date
+    if (!front_matter.publishedDate)
+      hide_byline_column("Published");
+
+    // document object identifier
+    var doi = $('d-byline').find('h3:contains("DOI")');
+    var doi_p = doi.next().empty();
+    if (!front_matter.doi) {
+      // if we have a citation and valid citationText then link to that
+      if ($('#citation').length > 0 && front_matter.citationText) {
+        doi.html('Citation');
+        $('<a href="#citation"></a>')
+          .text(front_matter.citationText)
+          .appendTo(doi_p);
+      } else {
+        hide_byline_column("DOI");
+      }
+    } else {
+      $('<a></a>')
+         .attr('href', "https://doi.org/" + front_matter.doi)
+         .html(front_matter.doi)
+         .appendTo(doi_p);
+    }
+
+     // change plural form of authors/affiliations
+    if (front_matter.authors.length === 1) {
+      var grid = $('.authors-affiliations');
+      grid.children('h3:contains("Authors")').text('Author');
+      grid.children('h3:contains("Affiliations")').text('Affiliation');
+    }
+
+    // remove d-appendix and d-footnote-list local styles
+    $('d-appendix > style:first-child').remove();
+    $('d-footnote-list > style:first-child').remove();
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // clear polling timer
+    clearInterval(tid);
+
+    // show body now that everything is ready
+    on_load_complete();
+  }
+
+  var tid = setInterval(distill_post_process, 50);
+  distill_post_process();
+
+}
+
+function init_downlevel() {
+
+  init_common();
+
+   // insert hr after d-title
+  $('.d-title').after($('<hr class="section-separator"/>'));
+
+  // check if we have authors
+  var front_matter = JSON.parse($("#distill-front-matter").html());
+  var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+  // manage byline/border
+  if (!have_authors)
+    $('.d-byline').remove();
+  $('.d-byline').after($('<hr class="section-separator"/>'));
+  $('.d-byline a').remove();
+
+  // remove toc
+  $('.d-contents').remove();
+
+  // move appendix elements
+  $('h1.appendix, h2.appendix').each(function(i, val) {
+    $(this).changeElementType('h3');
+  });
+  $('h3.appendix').each(function(i, val) {
+    $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+  });
+
+
+  // inject headers into references and footnotes
+  var refs_header = $('<h3></h3>');
+  refs_header.text('References');
+  $('#refs').prepend(refs_header);
+
+  var footnotes_header = $('<h3></h3');
+  footnotes_header.text('Footnotes');
+  $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+  // move appendix-bottom entries to the bottom
+  $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+  $('.appendix-bottom').remove();
+
+  // remove appendix if it's empty
+  if ($('.d-appendix').children().length === 0)
+    $('.d-appendix').remove();
+
+  // prepend separator above appendix
+  $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+  // trim code
+  $('pre>code').each(function(i, val) {
+    $(this).html($.trim($(this).html()));
+  });
+
+  // move posts-container right before article
+  $('.posts-container').insertBefore($('.d-article'));
+
+  $('body').addClass('downlevel');
+
+  on_load_complete();
+}
+
+
+function init_common() {
+
+  // jquery plugin to change element types
+  (function($) {
+    $.fn.changeElementType = function(newType) {
+      var attrs = {};
+
+      $.each(this[0].attributes, function(idx, attr) {
+        attrs[attr.nodeName] = attr.nodeValue;
+      });
+
+      this.replaceWith(function() {
+        return $("<" + newType + "/>", attrs).append($(this).contents());
+      });
+    };
+  })(jQuery);
+
+  // prevent underline for linked images
+  $('a > img').parent().css({'border-bottom' : 'none'});
+
+  // mark non-body figures created by knitr chunks as 100% width
+  $('.layout-chunk').each(function(i, val) {
+    var figures = $(this).find('img, .html-widget');
+    if ($(this).attr('data-layout') !== "l-body") {
+      figures.css('width', '100%');
+    } else {
+      figures.css('max-width', '100%');
+      figures.filter("[width]").each(function(i, val) {
+        var fig = $(this);
+        fig.css('width', fig.attr('width') + 'px');
+      });
+
+    }
+  });
+
+  // auto-append index.html to post-preview links in file: protocol
+  // and in rstudio ide preview
+  $('.post-preview').each(function(i, val) {
+    if (window.location.protocol === "file:")
+      $(this).attr('href', $(this).attr('href') + "index.html");
+  });
+
+  // get rid of index.html references in header
+  if (window.location.protocol !== "file:") {
+    $('.distill-site-header a[href]').each(function(i,val) {
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+    });
+  }
+
+  // add class to pandoc style tables
+  $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+  $('.kable-table').children('table').addClass('pandoc-table');
+
+  // add figcaption style to table captions
+  $('caption').parent('table').addClass("figcaption");
+
+  // initialize posts list
+  if (window.init_posts_list)
+    window.init_posts_list();
+
+  // implmement disqus comment link
+  $('.disqus-comment-count').click(function() {
+    window.headroom_prevent_pin = true;
+    $('#disqus_thread').toggleClass('hidden');
+    if (!$('#disqus_thread').hasClass('hidden')) {
+      var offset = $(this).offset();
+      $(window).resize();
+      $('html, body').animate({
+        scrollTop: offset.top - 35
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (is_downlevel_browser())
+    init_downlevel();
+  else
+    window.addEventListener('WebComponentsReady', init_distill);
+});
+
+</script>
+
+<style type="text/css">
+/* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+
+
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #000000;
+  --header-color:    rgba(0, 0, 0, 0.8);
+  --body-color:      rgba(0, 0, 0, 0.8);
+  --aside-color:     rgba(0, 0, 0, 0.6);
+  --fig-cap-color:   rgba(0, 0, 0, 0.6);
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    sans-serif;
+  --mono-font:       monospace;
+  --body-font:       sans-serif;
+  --navbar-font:     sans-serif;  /* websites + blogs only */
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   rgba(0, 0, 0, 0.5);
+  --body-size:       0.8rem;
+  --body-color:      rgba(0, 0, 0, 0.8);
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   rgba(0, 0, 0, 0.65);
+  --text-size:       0.8em;
+  --text-color:      rgba(0, 0, 0, 0.5);
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+.distill-site-footer {
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        15px;
+  --hover-color:      white;
+  --bkgd-color:       #0F2E3D;
+}
+
+/*-- Additional custom styles --*/
+/* Add any additional CSS rules below                      */
+</style>
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --font-body:   inter,-apple-system,BlinkMacSystemFont,roboto,segoe ui,Helvetica,Arial,sans-serif;
+  --font-header: Rubik,Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-mono:   SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+}
+
+//* base variables */
+
+/* Edit the CSS properties in this file to create a custom
+   Distill theme. Only edit values in the right column
+   for each row; values shown are the CSS defaults.
+   To return any property to the default,
+   you may set its value to: unset
+   All rows must end with a semi-colon.                      */
+
+/* Optional: embed custom fonts here with `@import`          */
+/* This must remain at the top of this file.                 */
+
+html {
+  /*-- Main font sizes --*/
+  --title-size:      50px;
+  --body-size:       1.06rem;
+  --code-size:       14px;
+  --aside-size:      12px;
+  --fig-cap-size:    13px;
+  /*-- Main font colors --*/
+  --title-color:     #000000;
+  --header-color:    rgba(0, 0, 0, 0.8);
+  --body-color:      rgba(0, 0, 0, 0.8);
+  --aside-color:     rgba(0, 0, 0, 0.6);
+  --fig-cap-color:   rgba(0, 0, 0, 0.6);
+  /*-- Specify custom fonts ~~~ must be imported above   --*/
+  --heading-font:    var(--font-header);
+  --mono-font:       var(--font-mono);
+  --body-font:       var(--font-body);
+  --navbar-font:     var(--font-header);
+}
+
+/*-- ARTICLE METADATA --*/
+d-byline {
+  --heading-size:    0.6rem;
+  --heading-color:   rgba(0, 0, 0, 0.5);
+  --body-size:       0.8rem;
+  --body-color:      rgba(0, 0, 0, 0.8);
+}
+
+/*-- ARTICLE TABLE OF CONTENTS --*/
+.d-contents {
+  --heading-size:    18px;
+  --contents-size:   13px;
+}
+
+/*-- ARTICLE APPENDIX --*/
+d-appendix {
+  --heading-size:    15px;
+  --heading-color:   rgba(0, 0, 0, 0.65);
+  --text-size:       0.8em;
+  --text-color:      rgba(0, 0, 0, 0.5);
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+/* These properties only apply to Distill sites and blogs  */
+
+.distill-site-header {
+  --title-size:       18px;
+  --text-color:       #000;
+  --text-size:        15px;
+  --hover-color:      #ff6700;
+  --bkgd-color:       white;
+}
+
+.distill-site-footer {
+  --text-color:       #000;
+  --text-size:        15px;
+  --hover-color:      #ff6700;
+  --bkgd-color:       white;
+}
+
+
+/* For floating images - see lab page, for example */
+
+.float-left img {
+    float:left;
+    padding: 5px 10px 5px 0px;
+}
+
+.float-right img {
+    float:right;
+    padding: 5px 0px 5px 10px;
+}
+
+/* For dropping a shadow behind images */
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+d-article img {
+  margin-bottom: 10px;
+}
+
+/* Pubs page */
+
+.pub {
+    margin: 0 0 15px 0;
+}
+
+}
+
+/* Code chunks */
+
+d-article pre { /* Chunk output */
+  border-radius: 5px; /* Rounded edges */
+  font-size: 12px;
+  color: #fff;
+  background-color: #696969;
+  padding: 5px 5px 5px 18px;
+  overflow: auto !important;
+}
+
+d-article div.sourceCode pre { /* Chunk code */
+  border-radius: 5px; /* Rounded edges */
+  background-color: #fff;
+  color: black;
+  padding: 5px 5px 5px 18px;
+  overflow: auto !important;
+}
+
+d-article div.sourceCode {
+  background-color: transparent;
+}
+
+/* Link buttons */
+
+.icon-link {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
+    border-radius: 5px; /* Rounded edges */
+}
+
+.icon-link:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+}</style>
+<style type="text/css">
+/* base style */
+
+/* FONT FAMILIES */
+
+:root {
+  --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+body,
+.posts-list .post-preview p,
+.posts-list .description p {
+  font-family: var(--body-font), var(--body-default);
+}
+
+h1, h2, h3, h4, h5, h6,
+.posts-list .post-preview h2,
+.posts-list .description h2 {
+  font-family: var(--heading-font), var(--heading-default);
+}
+
+d-article div.sourceCode code,
+d-article pre code {
+  font-family: var(--mono-font), var(--mono-default);
+}
+
+
+/*-- TITLE --*/
+d-title h1,
+.posts-list > h1 {
+  color: var(--title-color, black);
+}
+
+d-title h1 {
+  font-size: var(--title-size, 50px);
+}
+
+/*-- HEADERS --*/
+d-article h1,
+d-article h2,
+d-article h3,
+d-article h4,
+d-article h5,
+d-article h6 {
+  color: var(--header-color, rgba(0, 0, 0, 0.8));
+}
+
+/*-- BODY --*/
+d-article > p,  /* only text inside of <p> tags */
+d-article > ul, /* lists */
+d-article > ol {
+  color: var(--body-color, rgba(0, 0, 0, 0.8));
+  font-size: var(--body-size, 1.06rem);
+}
+
+
+/*-- CODE --*/
+d-article div.sourceCode code,
+d-article pre code {
+  font-size: var(--code-size, 14px);
+}
+
+/*-- ASIDE --*/
+d-article aside {
+  font-size: var(--aside-size, 12px);
+  color: var(--aside-color, rgba(0, 0, 0, 0.6));
+}
+
+/*-- FIGURE CAPTIONS --*/
+figure .caption,
+figure figcaption,
+.figure .caption {
+  font-size: var(--fig-cap-size, 13px);
+  color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
+}
+
+/*-- METADATA --*/
+d-byline h3 {
+  font-size: var(--heading-size, 0.6rem);
+  color: var(--heading-color, rgba(0, 0, 0, 0.5));
+}
+
+d-byline {
+  font-size: var(--body-size, 0.8rem);
+  color: var(--body-color, rgba(0, 0, 0, 0.8));
+}
+
+d-byline a,
+d-article d-byline a {
+  color: var(--body-color, rgba(0, 0, 0, 0.8));
+}
+
+/*-- TABLE OF CONTENTS --*/
+.d-contents nav h3 {
+  font-size: var(--heading-size, 18px);
+}
+
+.d-contents nav a {
+  font-size: var(--contents-size, 13px);
+}
+
+/*-- APPENDIX --*/
+d-appendix h3 {
+  font-size: var(--heading-size, 15px);
+  color: var(--heading-color, rgba(0, 0, 0, 0.65));
+}
+
+d-appendix {
+  font-size: var(--text-size, 0.8em);
+  color: var(--text-color, rgba(0, 0, 0, 0.5));
+}
+
+d-appendix d-footnote-list a.footnote-backlink {
+  color: var(--text-color, rgba(0, 0, 0, 0.5));
+}
+
+/*-- WEBSITE HEADER + FOOTER --*/
+.distill-site-header .title {
+  font-size: var(--title-size, 18px);
+  font-family: var(--navbar-font), var(--heading-default);
+}
+
+.distill-site-header a,
+.nav-dropdown .nav-dropbtn {
+  font-family: var(--navbar-font), var(--heading-default);
+}
+
+.nav-dropdown .nav-dropbtn {
+  color: var(--text-color, rgba(255, 255, 255, 0.8));
+  font-size: var(--text-size, 15px);
+}
+
+.distill-site-header a:hover,
+.nav-dropdown:hover .nav-dropbtn {
+  color: var(--hover-color, white);
+}
+
+.distill-site-header {
+  font-size: var(--text-size, 15px);
+  color: var(--text-color, rgba(255, 255, 255, 0.8));
+  background-color: var(--bkgd-color, #0F2E3D);
+}
+
+.distill-site-footer {
+  font-size: var(--text-size, 15px);
+  color: var(--text-color, rgba(255, 255, 255, 0.8));
+  background-color: var(--bkgd-color, #0F2E3D);
+}
+
+.distill-site-footer a:hover {
+  color: var(--hover-color, white);
+}</style>
+<!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/clipboard-2.0.6/clipboard.min.js"></script>
+  <link href="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+  <script src="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+  <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+  <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+     if (!/posts/.test(location.pathname)) {
+       return;
+     }
+
+     var script = document.createElement("script");
+     script.src = "https://giscus.app/client.js";
+     script.setAttribute("data-repo", "be-favorite/Distill");
+     script.setAttribute("data-repo-id", "R_kgDOG6lkPQ");
+     script.setAttribute("data-category", "Comments");
+     script.setAttribute("data-category-id", "DIC_kwDOG6lkPc4CN5yQ");
+     script.setAttribute("data-mapping", "pathname");
+     script.setAttribute("data-reactions-enabled", "1");
+     script.setAttribute("data-emit-metadata", "0");
+     script.setAttribute("data-theme", "light");
+     script.setAttribute("data-lang", "ko");
+
+     /* wait for article to load, append script to article element */
+     var observer = new MutationObserver(function (mutations, observer) {
+       var article = document.querySelector("d-article");
+       if (article) {
+         observer.disconnect();
+         /* HACK: article scroll */
+         article.setAttribute("style", "overflow-y: hidden");
+         article.appendChild(script);
+       }
+     });
+
+     observer.observe(document.body, { childList: true });
+   });
+ </script>
+
+<script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-1QHE9697JG"></script>
+<script type="text/javascript" cookie-consent="tracking">
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-1QHE9697JG');
+</script>
+<!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"tidyverse principle로 시계열 자료 분석하기","description":"tidyverts ecosystem 소개","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-11T00:00:00.000+09:00","citationText":"Bang, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="../../index.html" class="title">방태모의 블로그</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
+</div>
+<div class="nav-right">
+<a href="../../index.html">홈</a>
+<a href="../../blog.html">블로그</a>
+<a href="../../archive.html">아카이브</a>
+<a href="../../subscribe.html">구독</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>tidyverse principle로 시계열 자료 분석하기</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+  <a href="../../blog.html#category:Time_Series" class="dt-tag">Time Series</a>
+  <a href="../../blog.html#category:Tidytool" class="dt-tag">Tidytool</a>
+  <a href="../../blog.html#category:R" class="dt-tag">R</a>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>tidyverts ecosystem 소개</p></p>
+</div>
+
+<div class="d-byline">
+  Taemo Bang  
+  
+<br/>2022-03-11
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#tsibble"><strong>1 tsibble</strong></a></li>
+<li><a href="#tsibbledata">2 tsibbledata</a></li>
+<li><a href="#feasts">3 feasts</a></li>
+<li><a href="#fable">4 fable</a></li>
+<li><a href="#fable.prophet">5 fable.prophet</a></li>
+<li><a href="#맺음말">맺음말</a></li>
+</ul>
+</nav>
+</div>
+<p><a
+href="https://unsplash.com/photos/rBPOfVqROzY?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink"><img
+src="preview.jpg" width="700"
+alt="Photo by Agê Barros on Unsplash" /></a></p>
+<aside>
+<p>본 글은 <span class="citation" data-cites="tidyvert">(<a
+href="#ref-tidyvert" role="doc-biblioref"><span>“Tidyverts,”</span>
+n.d.</a>)</span>을 기반으로 작성되었습니다.</p>
+</aside>
+<p>tidyverts ecosystem은 시계열 자료에 관한 분석을 tidyverse principle로
+수행할 수 있게끔 해주는 패키지 묶음입니다. 전처리, 시각화부터 모델링,
+예측까지 모든 과정을 “tidy” framework로 진행하게 해주죠. tidyverse
+priciple이 데이터 전처리에 있어서 얼마나 많은 업무 생산성을 가져다
+주는지 우리는 이미 알고있습니다. 시계열 자료를 자주 다루는 사람이라면 꼭
+배워둘 만한 패키지죠.😄 tidyverts ecosystem을 이루는 대부분의 패키지들은
+<code>{fpp3}</code>으로 불러올 수 있습니다. <code>{tsibbletalk}</code>은
+<code>{shiny}</code>와 함께 동작하는 반응형 그래픽을 제공하는 패키지로
+본 튜토리얼에서는 생략하겠습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/robjhyndman/fpp3-package'>fpp3</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://pkg.mitchelloharawild.com/fable.prophet/'>fable.prophet</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/hadley/nycflights13'>nycflights13</a></span><span class='op'>)</span> <span class='co'># for nycflights13 data</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span> <span class='co'># for map()</span>
+<span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>loaded_package</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"fpp3"</span>, <span class='st'>"fable.prophet"</span>, <span class='st'>"nycflights13"</span>, <span class='st'>"purrr"</span><span class='op'>)</span>
+<span class='va'>.version</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='va'>loaded_package</span>, <span class='va'>packageVersion</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>.version</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>loaded_package</span>
+<span class='va'>.version</span>
+</code></pre>
+</div>
+<pre><code>$fpp3
+[1] &#39;0.4.0&#39;
+
+$fable.prophet
+[1] &#39;0.1.0&#39;
+
+$nycflights13
+[1] &#39;1.0.2&#39;
+
+$purrr
+[1] &#39;0.3.4&#39;</code></pre>
+</div>
+<p>위 패키지들이 설치되어 있지 않은 분들은 튜토리얼의 본격적인 시작전에,
+<code>install.packages("패키지명")</code>을 통해 설치해주시기 바랍니다.
+개발 버전을 설치하고 싶으신 분이 있다면 다음의 코드를 이용하세요:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># install.packages("remotes")</span>
+<span class='fu'>remotes</span><span class='fu'>::</span><span class='fu'><a href='https://remotes.r-lib.org/reference/install_github.html'>install_github</a></span><span class='op'>(</span><span class='st'>"tidyverts/tsibble"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="tsibble"><strong>1 tsibble</strong></h2>
+<h3 id="get-started">1.1 Get Started</h3>
+<p><code>{tsibble}</code>은 일반적인 시계열 자료를 <code>tibble</code>
+형태로 표현할 수 있게해줍니다. 우리는 <code>tsibble()</code>을 통해 <a
+href="https://tidyr.tidyverse.org/articles/tidy-data.html">tidy한
+자료</a>에 대해 수행해왔던 {tidyverse}를 이용한 wrangling을 수행할 수
+있습니다. 즉, tidyverse ecosystem이 tibble 객체를 기반으로 동작하듯이,
+tidyverts ecosytem은 tsibble 객체를 기반으로 동작합니다. tsibble 객체가
+갖는 기본적인 원칙은 다음과 같습니다:</p>
+<ul>
+<li><code>index</code>: 과거부터 현재까지 순서화된 자료값의 관측
+시간</li>
+<li><code>key</code>: 시간에 따른 관측 단위를 정의하는 변수의 집합</li>
+<li>각 관측치는 <code>index</code>와 <code>key</code>를 통해
+유일하게(uniquely) 식별되어야만 함</li>
+<li>각 관측치는 등간격으로 관측된 자료여야만 함</li>
+</ul>
+<p>즉, 티블(데이터프레임)을 <code>tsibble</code>로 변환하기(coerce)
+위해서는 <code>key</code>와 <code>index</code>를 명시해주어야 합니다.
+예를 들어, 다음과 같은 <code>{nycflights13}</code> 패키지의
+<code>weather</code> 자료를 이용해보겠습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>weather_simple</span> <span class='op'>&lt;-</span> <span class='fu'>nycflights13</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/nycflights13/man/weather.html'>weather</a></span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>origin</span>, <span class='va'>time_hour</span>, <span class='va'>temp</span>, <span class='va'>humid</span>, <span class='va'>precip</span><span class='op'>)</span>
+<span class='va'>weather_simple</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["origin"],"name":[1],"type":["chr"],"align":["left"]},{"label":["time_hour"],"name":[2],"type":["dttm"],"align":["right"]},{"label":["temp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["humid"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["precip"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"EWR","2":"2013-01-01 01:00:00","3":"39.02","4":"59.37","5":"0"},{"1":"EWR","2":"2013-01-01 02:00:00","3":"39.02","4":"61.63","5":"0"},{"1":"EWR","2":"2013-01-01 03:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 04:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 05:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 06:00:00","3":"37.94","4":"67.21","5":"0"},{"1":"EWR","2":"2013-01-01 07:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 08:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 09:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 10:00:00","3":"41.00","4":"59.65","5":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>origin</code>을 <code>key</code>로 <code>index</code>를
+<code>time_hour</code>로 해주면 될 것 같습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>weather_tsbl</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tsibble.tidyverts.org/reference/as-tsibble.html'>as_tsibble</a></span><span class='op'>(</span><span class='va'>weather_simple</span>, key <span class='op'>=</span> <span class='va'>origin</span>, index <span class='op'>=</span> <span class='va'>time_hour</span><span class='op'>)</span>
+<span class='va'>weather_tsbl</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["origin"],"name":[1],"type":["chr"],"align":["left"]},{"label":["time_hour"],"name":[2],"type":["dttm"],"align":["right"]},{"label":["temp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["humid"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["precip"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"EWR","2":"2013-01-01 01:00:00","3":"39.02","4":"59.37","5":"0"},{"1":"EWR","2":"2013-01-01 02:00:00","3":"39.02","4":"61.63","5":"0"},{"1":"EWR","2":"2013-01-01 03:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 04:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 05:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 06:00:00","3":"37.94","4":"67.21","5":"0"},{"1":"EWR","2":"2013-01-01 07:00:00","3":"39.02","4":"64.43","5":"0"},{"1":"EWR","2":"2013-01-01 08:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 09:00:00","3":"39.92","4":"62.21","5":"0"},{"1":"EWR","2":"2013-01-01 10:00:00","3":"41.00","4":"59.65","5":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>여기서는 자료 자체가 출발지(<code>origin</code>) 별로 기록된
+다중(multiple) 시계열에 해당하므로, <code>key</code>를
+<code>origin</code>으로 잡아줬지만, 만약 자료가 단일(univariate)
+시계열에 해당한다면 해당 key는 설정을 하지 않으면 됩니다(see
+<code>package?tsibble</code> and <code>vignette("intro-tsibble")</code>
+for details). 그리고, 사실 <code>tsibble()</code>은 irregular time
+interval을 갖는 자료에 대해서도 적용이 가능합니다. as_tsibble은
+<code>regular = TRUE</code> 옵션이 default로 설정되는데, 이를
+<code>FALSE</code>로 바꿔주면 되며, 이러한 irregular time interval을
+갖는 tsibble 객체의 경우는 <code>[!]</code> 표시를 통해 확인할 수
+있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>nycflights13</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/nycflights13/man/flights.html'>flights</a></span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>mutate</span><span class='op'>(</span>
+      sched_dep_datetime <span class='op'>=</span> <span class='fu'>make_datetime</span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>month</span>, <span class='va'>day</span>, <span class='va'>hour</span>, <span class='va'>minute</span>, 
+                                         tz <span class='op'>=</span> <span class='st'>"America/New_York"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://tsibble.tidyverts.org/reference/as-tsibble.html'>as_tsibble</a></span><span class='op'>(</span>
+        key <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>carrier</span>, <span class='va'>flight</span><span class='op'>)</span>, 
+        index <span class='op'>=</span> <span class='va'>sched_dep_datetime</span>, 
+        regular <span class='op'>=</span> <span class='cn'>FALSE</span>
+        <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["int"],"align":["right"]},{"label":["month"],"name":[2],"type":["int"],"align":["right"]},{"label":["day"],"name":[3],"type":["int"],"align":["right"]},{"label":["dep_time"],"name":[4],"type":["int"],"align":["right"]},{"label":["sched_dep_time"],"name":[5],"type":["int"],"align":["right"]},{"label":["dep_delay"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["arr_time"],"name":[7],"type":["int"],"align":["right"]},{"label":["sched_arr_time"],"name":[8],"type":["int"],"align":["right"]},{"label":["arr_delay"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["carrier"],"name":[10],"type":["chr"],"align":["left"]},{"label":["flight"],"name":[11],"type":["int"],"align":["right"]},{"label":["tailnum"],"name":[12],"type":["chr"],"align":["left"]},{"label":["origin"],"name":[13],"type":["chr"],"align":["left"]},{"label":["dest"],"name":[14],"type":["chr"],"align":["left"]},{"label":["air_time"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["distance"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["hour"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["minute"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["time_hour"],"name":[19],"type":["dttm"],"align":["right"]},{"label":["sched_dep_datetime"],"name":[20],"type":["dttm"],"align":["right"]}],"data":[{"1":"2013","2":"11","3":"3","4":"1531","5":"1540","6":"-9","7":"1653","8":"1725","9":"-32","10":"9E","11":"2900","12":"N600LR","13":"JFK","14":"BNA","15":"113","16":"765","17":"15","18":"40","19":"2013-11-03 15:00:00","20":"2013-11-03 15:40:00"},{"1":"2013","2":"11","3":"4","4":"1539","5":"1540","6":"-1","7":"1712","8":"1725","9":"-13","10":"9E","11":"2900","12":"N903XJ","13":"JFK","14":"BNA","15":"117","16":"765","17":"15","18":"40","19":"2013-11-04 15:00:00","20":"2013-11-04 15:40:00"},{"1":"2013","2":"11","3":"5","4":"1548","5":"1540","6":"8","7":"1708","8":"1725","9":"-17","10":"9E","11":"2900","12":"N602LR","13":"JFK","14":"BNA","15":"120","16":"765","17":"15","18":"40","19":"2013-11-05 15:00:00","20":"2013-11-05 15:40:00"},{"1":"2013","2":"11","3":"6","4":"1535","5":"1540","6":"-5","7":"1657","8":"1725","9":"-28","10":"9E","11":"2900","12":"N928XJ","13":"JFK","14":"BNA","15":"118","16":"765","17":"15","18":"40","19":"2013-11-06 15:00:00","20":"2013-11-06 15:40:00"},{"1":"2013","2":"11","3":"7","4":"1549","5":"1540","6":"9","7":"1733","8":"1725","9":"8","10":"9E","11":"2900","12":"N914XJ","13":"JFK","14":"BNA","15":"131","16":"765","17":"15","18":"40","19":"2013-11-07 15:00:00","20":"2013-11-07 15:40:00"},{"1":"2013","2":"11","3":"8","4":"1539","5":"1540","6":"-1","7":"1706","8":"1725","9":"-19","10":"9E","11":"2900","12":"N905XJ","13":"JFK","14":"BNA","15":"114","16":"765","17":"15","18":"40","19":"2013-11-08 15:00:00","20":"2013-11-08 15:40:00"},{"1":"2013","2":"11","3":"9","4":"1535","5":"1540","6":"-5","7":"1714","8":"1723","9":"-9","10":"9E","11":"2900","12":"N929XJ","13":"JFK","14":"BNA","15":"121","16":"765","17":"15","18":"40","19":"2013-11-09 15:00:00","20":"2013-11-09 15:40:00"},{"1":"2013","2":"11","3":"10","4":"1538","5":"1540","6":"-2","7":"1718","8":"1725","9":"-7","10":"9E","11":"2900","12":"N279PQ","13":"JFK","14":"BNA","15":"115","16":"765","17":"15","18":"40","19":"2013-11-10 15:00:00","20":"2013-11-10 15:40:00"},{"1":"2013","2":"11","3":"11","4":"1527","5":"1540","6":"-13","7":"1710","8":"1725","9":"-15","10":"9E","11":"2900","12":"N908XJ","13":"JFK","14":"BNA","15":"119","16":"765","17":"15","18":"40","19":"2013-11-11 15:00:00","20":"2013-11-11 15:40:00"},{"1":"2013","2":"11","3":"12","4":"1535","5":"1540","6":"-5","7":"1709","8":"1725","9":"-16","10":"9E","11":"2900","12":"N927XJ","13":"JFK","14":"BNA","15":"118","16":"765","17":"15","18":"40","19":"2013-11-12 15:00:00","20":"2013-11-12 15:40:00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<h3 id="turn-impicit-missing-values-into-explicit-missing-values">1.2
+Turn impicit missing values into explicit missing values</h3>
+<p>간혹 시계열 자료에는 암묵적 결측치(implicit missing values)가
+존재하는 경우가 있습니다. 암묵적 결측치가 존재하는 시계열 자료가 일정한
+시간 간격으로 수집되었을 경우, 우리는 <code>fill_gaps()</code>를 이용해
+암묵적 결측을 명시적으로(explicit) 바꿀 수 있어요. 4년간 수집된 연도별
+키위, 체리의 수확량(단위: kg)에 관한 자료를 직접 만들어서
+<code>fill_gaps()</code>의 쓰임에 대해 알아봅시다. 본 자료에는 암묵적
+결측이 존재합니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'>&lt;-</span> <span class='fu'>tsibble</span><span class='op'>(</span>
+    year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2010</span>, <span class='fl'>2011</span>, <span class='fl'>2013</span>, <span class='fl'>2011</span>, <span class='fl'>2012</span>, <span class='fl'>2014</span><span class='op'>)</span>,
+    fruit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"kiwi"</span>, <span class='st'>"cherry"</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+    kilo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, size <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>,
+    key <span class='op'>=</span> <span class='va'>fruit</span>, index <span class='op'>=</span> <span class='va'>year</span>
+<span class='op'>)</span>
+<span class='va'>harvest</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>암묵적 결측이란, 예를 들어 위 자료처럼 체리 생산량이 2010년에는
+기록되지 않았음에도 불구하고 행이 생략되어있는 것을 말합니다.
+<code>NA</code>로 명시는 다음과 같이 손쉽게 가능합니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>fill_gaps</span><span class='op'>(</span><span class='va'>harvest</span>, .full <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>다음의 각각 시작점, 끝점에 대해서만 결측치를 명시할 수도
+있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># at the same starting point across units</span>
+<span class='fu'>fill_gaps</span><span class='op'>(</span><span class='va'>harvest</span>, .full <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>start</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># at the same end point across units</span>
+<span class='fu'>fill_gaps</span><span class='op'>(</span><span class='va'>harvest</span>, .full <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/start.html'>end</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>.full = FALSE</code>를 설정할 경우(<code>fill_gaps()</code>의
+default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대해서만
+명시가 이루어집니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>fill_gaps</span><span class='op'>(</span><span class='va'>harvest</span>, .full <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>특정값으로의 명시도 손쉽게 수행이 가능해요.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>fill_gaps</span><span class='op'>(</span>kilo <span class='op'>=</span> <span class='fl'>0L</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"0"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"0"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>변수에 대해 함수를 적용하여 명시도 가능합니다. <code>sum()</code>을
+이용하여 합으로 명시해보았습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>fill_gaps</span><span class='op'>(</span>kilo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>kilo</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"30"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"30"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>key</code>에 대해 <code>group_by</code>를 통해 각 그룹에 대해
+함수를 적용할 수도 있죠. 이번에는 <code>median()</code>을 통해 중위수로
+명시해보았습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>group_by_key</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>fill_gaps</span><span class='op'>(</span>kilo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>kilo</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"2"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>원 자료 자체에 <code>NA</code>가 존재하는 경우, 적용하고자 하는
+함수에 <code>na.rm = TRUE</code>을 설정해주면 됩니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span><span class='op'>[</span><span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>group_by_key</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>fill_gaps</span><span class='op'>(</span>kilo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>kilo</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"NA"},{"1":"2013","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>마지막으로, <code>fill_gaps()</code>아 <code>tidyr::fill()</code>을
+함께 이용하면 암묵적 결측치를 이전 시점의 결측치로 대치할 수
+있습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'>&lt;-</span> <span class='fu'>tsibble</span><span class='op'>(</span>
+    year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2010</span>, <span class='fl'>2011</span>, <span class='fl'>2013</span>, <span class='fl'>2011</span>, <span class='fl'>2012</span>, <span class='fl'>2014</span><span class='op'>)</span>,
+    fruit <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"kiwi"</span>, <span class='st'>"cherry"</span><span class='op'>)</span>, each <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>,
+    kilo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, size <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>,
+    key <span class='op'>=</span> <span class='va'>fruit</span>, index <span class='op'>=</span> <span class='va'>year</span>
+<span class='op'>)</span>
+<span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>group_by_key</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>fill_gaps</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/fill.html'>fill</a></span><span class='op'>(</span><span class='va'>kilo</span>, .direction <span class='op'>=</span> <span class='st'>"down"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"7"},{"1":"2013","2":"cherry","3":"7"},{"1":"2014","2":"cherry","3":"1"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"4"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>반대로, 한 시점 미래의 값으로 대치도 가능합니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>harvest</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>group_by_key</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>fill_gaps</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>tidyr</span><span class='fu'>::</span><span class='fu'><a href='https://tidyr.tidyverse.org/reference/fill.html'>fill</a></span><span class='op'>(</span><span class='va'>kilo</span>, .direction <span class='op'>=</span> <span class='st'>"up"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"7"},{"1":"2013","2":"cherry","3":"1"},{"1":"2014","2":"cherry","3":"1"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"3"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<h3 id="anchor2">1.3 Aggregate over calendar periods</h3>
+<p><code>index_by()</code>와 <code>summarise()</code>를 이용하면
+관심있는 변수에 대해 특정 시간 주기(e.g. monthly)에 대해 함수(e.g. 합계:
+<code>sum()</code>, 평균: <code>mean()</code>)를 적용할 수 있어요.
+<code>index_by</code>는 <code>as.Date()</code>,
+<code>tsibble::yearweek()</code>, <code>tsibble::yearmonth()</code>,
+<code>tsibble::yearquarter()</code>, 뿐만 아니라 {lubridate} 계열의
+함수와 함께 사용됩니다. 예를 들어, <code>weather</code> 자료의 월별 평균
+기온, 총 강수량은 다음과 같이 <code>yearmonth()</code>에
+<code>index</code> 변수를 <code>.</code>으로 나타내어 계산할 수
+있습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>weather_tsbl</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>group_by_key</span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>index_by</span><span class='op'>(</span>year_month <span class='op'>=</span> <span class='op'>~</span><span class='fu'>yearmonth</span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>summarise</span><span class='op'>(</span>
+        avg_temp <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>temp</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+        total_precip <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>precip</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["origin"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year_month"],"name":[2],"type":["mth"],"align":["right"]},{"label":["avg_temp"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["total_precip"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"EWR","2":"2013 Jan","3":"35.56216","4":"3.53"},{"1":"EWR","2":"2013 Feb","3":"34.26332","4":"3.83"},{"1":"EWR","2":"2013 Mar","3":"40.11865","4":"3.00"},{"1":"EWR","2":"2013 Apr","3":"52.97750","4":"1.47"},{"1":"EWR","2":"2013 May","3":"63.32024","4":"5.44"},{"1":"EWR","2":"2013 Jun","3":"73.26725","4":"8.73"},{"1":"EWR","2":"2013 Jul","3":"80.70300","4":"3.74"},{"1":"EWR","2":"2013 Aug","3":"74.53748","4":"4.57"},{"1":"EWR","2":"2013 Sep","3":"67.30478","4":"1.54"},{"1":"EWR","2":"2013 Oct","3":"59.77821","4":"0.50"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>index_by()</code>+<code>summarise()</code>는 irregular time
+interval을 갖는 tsibble에 대해서도 수행이 가능합니다.</p>
+<!-- <a href='https://tsibbledata.tidyverts.org/'><img src='logo_tsibbledata.png' align="right" height="138.5" /></a> -->
+<h2 id="tsibbledata">2 tsibbledata</h2>
+<p>{tsibbledata}는 tsibble 형태의 다양한 예제 자료를 제공해줍니다. 어떤
+패키지에 대한 튜토리얼을 진행할 때, 적절한 자료들이 필요로 되는데,
+이렇게 예제 자료를 직접적으로 제공해준다는 점에서 R 유저들에 대한 배려가
+담겨있다는 생각이 드네요. 예를 들어, 다음의
+<code>olympic_running</code>은 4년 주기로 수집된 올림픽 달리기 종목의
+성별 최고기록에 관한 자료입니다(see <code>?olympic_running</code> for
+details).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>olympic_running</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Year"],"name":[1],"type":["int"],"align":["right"]},{"label":["Length"],"name":[2],"type":["int"],"align":["right"]},{"label":["Sex"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Time"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1896","2":"100","3":"men","4":"12.0"},{"1":"1900","2":"100","3":"men","4":"11.0"},{"1":"1904","2":"100","3":"men","4":"11.0"},{"1":"1908","2":"100","3":"men","4":"10.8"},{"1":"1912","2":"100","3":"men","4":"10.8"},{"1":"1916","2":"100","3":"men","4":"NA"},{"1":"1920","2":"100","3":"men","4":"10.8"},{"1":"1924","2":"100","3":"men","4":"10.6"},{"1":"1928","2":"100","3":"men","4":"10.8"},{"1":"1932","2":"100","3":"men","4":"10.3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>이 자료를 이용하여 달리기 종목별 최고 기록에 대한 시도표를 성별로
+나누어서 그려보았습니다. 참고로, 1916, 1940, 1944년의 경우 세계대전으로
+인해 결측 처리되었습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>olympic_running</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>Time</span>, colour <span class='op'>=</span> <span class='va'>Sex</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>Length</span>, scales <span class='op'>=</span> <span class='st'>"free_y"</span>, nrow <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_color_brewer</span><span class='op'>(</span>palette <span class='op'>=</span> <span class='st'>"Dark2"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>, legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ylab</span><span class='op'>(</span><span class='st'>"Running time (seconds)"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/olympic-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<!-- <a href='https://feasts.tidyverts.org'><img src='logo_feasts.png' align="right" height="138.5" /></a> -->
+<h2 id="feasts">3 feasts</h2>
+<p>{feasts}는 Feature Extraction And Statistics for Time Series의
+약자로, 시계열 자료분석에 쓰이는 여러가지 툴을 제공해줍니다. tsibble
+객체와 함께 동작하며, 시계열의 분해, feature 추출(e.g. 추세, 계절성),
+시각화 등을 수행할 때 쓰입니다. 아울러, {feasts}를 통한 시계열
+자료분석은 다음 섹션에서 소개할 tidyverts ecosystem의 예측 모델링 부분을
+담당하는 {fable} 패키지와 긴밀하게 결합하여 사용됩니다.</p>
+<h3 id="graphics">3.1 Graphics</h3>
+<p>시각화는 주로 시계열 자료의 패턴을 이해하기 위한 첫 단계에 많이
+이루어집니다. {feasts}는 시계열의 패턴을 {ggplot2}를 사용해 자유롭게
+커스텀할 수 있는 그래픽을 제공합니다. 첫 번째로는
+<code>gg_season</code>을 이용한 계절성(seasonality) 시각화입니다.
+시각화에 사용된 자료 <code>tsibbledata::aus_production</code>은 호주의
+맥주, 담배 등의 품목에 관한 분기별 생산지표 추정치에 관한 자료입니다.
+맥주의 분기별 생산지표에 관한 계절성 시각화를 수행해보았습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>gg_season</span><span class='op'>(</span><span class='va'>Beer</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/season-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p>다음으로 <code>gg_subseries()</code>를 이용하면 시계열의 각
+season별로 시각화가 가능합니다. 예를 들어, <code>aus_production</code>과
+같은 분기별 자료의 경우 분기별 패턴에 대한 시각화를 쉽게 수행할 수
+있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>gg_subseries</span><span class='op'>(</span><span class='va'>Beer</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/subseries-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p><code>gg_lag()</code>를 이용하면 원자료와 시차(lag)의 산점도를
+season별로 나누어 그릴 수 있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='fu'>year</span><span class='op'>(</span><span class='va'>Quarter</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>1991</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>gg_lag</span><span class='op'>(</span><span class='va'>Beer</span>, geom <span class='op'>=</span> <span class='st'>"point"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/lag-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p>분기별 자료의 특성상, lag 4와 8 그림을 보면 각 season별로 원자료와의
+관계가 <span class="math inline">\(y=x\)</span> 직선에 잘 놓여있는 것을
+캐치할 수 있죠. 마지막으로 ACF 그림도 손쉽게 그릴 수 있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>ACF</span><span class='op'>(</span><span class='va'>Beer</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/acf-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<h3 id="decompositions">3.2 Decompositions</h3>
+<p>시계열 분해(decomposition)는 시계열 자료분석에서 흔히 수행되는 작업
+중 하나이며, 이는 시계열에 대한 패턴을 이해하는데에 큰 도움을 줍니다.
+그리고, 추후 예측 모델링을 정교하게 하는 것에도 상당한 도움을 준다. 즉,
+시계열 분해는 본인이 분석하고자 하는 시계열의 패턴을 좀 더 정교하게
+캐치하고 예측 성능을 향상시키기 위한 목적으로 꼭 필요로 되는 사전
+작업이라고 할 수 있습니다. 본 튜토리얼에서는 {feasts}에서 제공하고 있는
+2가지 시계열 분해 방법에 대해 소개하려고 합니다.</p>
+<h4 id="classical-decompostion">3.2.1 Classical decompostion</h4>
+<p>classical decompostion은 1920년대에 고안된 방법입니다. 오래된
+방법론인 만큼 요즘 쓰이는 시계열 분해 방법들의 초석이 되는 방법이라고 할
+수 있으며, 다른 방법들에 비해 상대적으로 간단하다는 장점이 있습니다.
+classical decompostion은 가법 분해와 승법 분해가 있습니다. 두 방법은
+계절성의 반영 방식에 따라 나뉩니다(e.g. 분기별 자료 <span
+class="math inline">\(m = 4\)</span>, 월별 자료 <span
+class="math inline">\(m = 12\)</span>, 일별 자료 <span
+class="math inline">\(m = 7\)</span>). 보통 가법 classical
+decompostion의 경우 계절성이 추세에 따라 무관하게 일정한 크기를 유지할
+때 사용하며, 반대로 계절성의 크기가 추세의 크기에 따라 변화하는 경우에는
+승법 classical decompostion을 사용합니다. 승법 계절성 classical
+decompostion는 계절 성분이 연도에 따라 상수라고 가정한채로 진행되며,
+승법 계절성에서 계절 성분을 형성하는 <span
+class="math inline">\(m\)</span>은 계절 지수(seasonal indices)라
+불리기도 합니다.</p>
+<p>classical decompostion의 자세한 분해 과정은 <a
+href="https://otexts.com/fpp3/classical-decomposition.html">여기</a>를
+참고해주시기 바랍니다. 여기서는 바로 R을 이용한 튜토리얼을
+진행하겠습니다. 앞서 사용했던 자료의 맥주 생산지표를 가법 classical
+decomposition을 통해 분해해보겠습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dcmp</span> <span class='op'>&lt;-</span> <span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://fabletools.tidyverts.org/reference/model.html'>model</a></span><span class='op'>(</span><span class='fu'>classical_decomposition</span><span class='op'>(</span><span class='va'>Beer</span>, type <span class='op'>=</span> <span class='st'>"additive"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='va'>dcmp</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[".model"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[2],"type":["qtr"],"align":["right"]},{"label":["Beer"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["trend"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["seasonal"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["random"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["season_adjust"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1956 Q1","3":"284","4":"NA","5":"2.131016","6":"NA","7":"281.8690"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1956 Q2","3":"213","4":"NA","5":"-42.519927","6":"NA","7":"255.5199"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1956 Q3","3":"227","4":"255.250","5":"-28.505776","6":"0.2557761","7":"255.5058"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1956 Q4","3":"308","4":"254.375","5":"68.894687","6":"-15.2696868","7":"239.1053"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1957 Q1","3":"262","4":"257.375","5":"2.131016","6":"2.4939837","7":"259.8690"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1957 Q2","3":"228","4":"260.000","5":"-42.519927","6":"10.5199271","7":"270.5199"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1957 Q3","3":"236","4":"262.750","5":"-28.505776","6":"1.7557761","7":"264.5058"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1957 Q4","3":"320","4":"264.625","5":"68.894687","6":"-13.5196868","7":"251.1053"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1958 Q1","3":"272","4":"265.375","5":"2.131016","6":"4.4939837","7":"269.8690"},{"1":"classical_decomposition(Beer, type = \"additive\")","2":"1958 Q2","3":"233","4":"264.625","5":"-42.519927","6":"10.8949271","7":"275.5199"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>먼저, 분해된 시계열의 요소들은 <code>componenets()</code>로 불러올 수
+있습니다. 그리고, 이 <code>components()</code>에 대해
+<code>autoplot()</code>을 수행해주면 다음과 같이 시각화를 수행할 수
+있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dcmp</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Classical additive decomposition of Quarterly production of beer in Australia"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/classical-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<h4 id="stl-decomposition">3.2.2 STL decomposition</h4>
+<p>STL은 “Seasonal and Trend decomposition using Loess”의 준말로
+다재다능(versatile)하고 로버스트한 시계열 분해 방법에 해당합니다.
+그리고, 여기서 loess란 <a
+href="https://be-favorite.tistory.com/58?category=923110">Local
+regression</a>의 준말로 자료를 비선형으로 추정하는 방법 중 하나에
+해당합니다. STL은 앞서 소개한 classical decomposition, 그리고
+{feasts}에서 제공하는 또 다른 시계열 분해 방법 <a
+href="https://otexts.com/fpp3/methods-used-by-official-statistics-agencies.html">SEATS,
+X-11</a>과 비교하여 몇몇 이점을 갖는다. 자세한 사항은 <a
+href="https://otexts.com/fpp3/stl.html">여기</a>를 참고해주세요. 본 글은
+tidyverts ecosystem에 대한 소개 이므로, deep한 이론 정리는 추후에 fpp3
+책을 공부하면서 하나하나 정리해나가겠습니다. 일단 바로 실습으로
+넘어가겠습니다.😊 다음은 STL decomposition을 이용하여 시계열의 추세
+요소는 <code>window = 7</code>을 통해 좀 더 flexible하게 추정하고, 계절
+패턴의 경우는 <code>window = "periodic"</code>으로 하여
+고정(fixed)되도록 하였습니다(see <code>?STL</code> for details). 여기서.
+<code>window</code>란, 창을 말하며 자료를 여러 창으로 잘게 쪼갤수록 더
+flexible하고 복잡한 함수를 추정하게 됩니다. <a
+href="https://be-favorite.tistory.com/56?category=923110">splines</a>에
+지식이 있는 분들은 이해하기 쉬울거라고 생각합니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>aus_production</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/model.html'>model</a></span><span class='op'>(</span>
+    <span class='fu'>STL</span><span class='op'>(</span><span class='va'>Beer</span> <span class='op'>~</span> <span class='fu'>trend</span><span class='op'>(</span>window <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>season</span><span class='op'>(</span>window <span class='op'>=</span> <span class='st'>"periodic"</span><span class='op'>)</span>,
+        robust <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/STL-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<h3 id="feature-extraction-and-statistics">3.3 Feature extraction and
+statistics</h3>
+<p>{feast}에서 소개할 마지막 기능은 시계열의 feature(e.g. ACF)와
+통계량(e.g. 평균)을 뽑아내는 것입니다. {feast}에서는
+<code>feature()</code> 함수를 통해 많은 종류의 features들에 대한 정보를
+제공합니다만, 본 튜토리얼에서는 시계열의 평균, 분위수, ACF를 뽑아내는
+방법에 대해서만 소개하겠습니다(see <code>?feature</code> for details).
+그 외 다른 features들에 관심이 있으시다면, <a
+href="https://otexts.com/fpp3/some-simple-statistics.html">여기</a>를
+참고해주세요.</p>
+<h4 id="some-simple-statistics">3.3.1 Some simple statistics</h4>
+<p>먼저, 시계열의 평균과 분위수를 뽑는 방법에 대해 소개하겠습니다. 평균,
+분위수 등 시계열의 기본적인 통계량은 <code>feature()</code>와 R의 기본
+함수(e.g. <code>mean()</code>, <code>median()</code>)들을 이용해
+간편하게 계산할 수 있습니다. 여기서 이용할 자료 <code>tourism()</code>은
+지역, 주, 목적별로 나눠진 1998-2016년 분기별 호주 여행객수에 관한
+자료로, 지역, 주, 여행 목적별 여행객 수의 전체 평균과 분위수를
+계산해봤습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://fabletools.tidyverts.org/reference/features.html'>features</a></span><span class='op'>(</span><span class='va'>Trips</span>, 
+             <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mean <span class='op'>=</span> <span class='va'>mean</span>, <span class='va'>quantile</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":["mean"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["0%"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["25%"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["50%"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["75%"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["100%"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelaide","2":"South Australia","3":"Business","4":"155.527910","5":"68.7253928","6":"133.893462","7":"152.5766183","8":"176.935536","9":"242.494368"},{"1":"Adelaide","2":"South Australia","3":"Holiday","4":"156.543437","5":"108.0330401","6":"134.626822","7":"153.9450073","8":"172.256676","9":"223.557406"},{"1":"Adelaide","2":"South Australia","3":"Other","4":"56.563450","5":"25.9018459","6":"43.865901","7":"53.8094631","8":"62.523135","9":"107.494657"},{"1":"Adelaide","2":"South Australia","3":"Visiting","4":"205.193667","5":"136.6111544","6":"178.915998","7":"205.5817356","8":"229.299111","9":"269.535618"},{"1":"Adelaide Hills","2":"South Australia","3":"Business","4":"2.664236","5":"0.0000000","6":"0.000000","7":"1.2554337","8":"3.920368","9":"28.601515"},{"1":"Adelaide Hills","2":"South Australia","3":"Holiday","4":"10.467276","5":"0.0000000","6":"5.767673","7":"8.5159661","8":"14.059997","9":"35.751337"},{"1":"Adelaide Hills","2":"South Australia","3":"Other","4":"1.404931","5":"0.0000000","6":"0.000000","7":"0.9075955","8":"2.093167","9":"8.953163"},{"1":"Adelaide Hills","2":"South Australia","3":"Visiting","4":"14.202530","5":"0.7776381","6":"8.907923","7":"12.2066190","8":"16.806339","9":"81.102109"},{"1":"Alice Springs","2":"Northern Territory","3":"Business","4":"14.570929","5":"1.0084255","6":"9.133369","7":"13.3241614","8":"18.456365","9":"34.077065"},{"1":"Alice Springs","2":"Northern Territory","3":"Holiday","4":"31.887332","5":"2.8085551","6":"16.850803","7":"31.5237822","8":"44.784402","9":"76.541382"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<h4 id="acf-features">3.3.2 ACF features</h4>
+<p>ACF에 관한 정보는 <code>feat_acf()</code>를 이용하면 됩니다.
+<code>feat_acf()</code>는 기본적으로 ACF와 관련한 6가지 또는 최대
+7가지의 features를 제공해줍니다(see <code>?feat_acf()</code> for
+details):</p>
+<ul>
+<li>원 계열의 1차 자기상관계수</li>
+<li>원 계열의 1차-10차 자기상관계수의 제곱합</li>
+<li>1차 차분 계열의 1차 자기상관계수</li>
+<li>1차 차분 계열의 1차-10차 자기상관계수의 제곱합</li>
+<li>2차 차분 계열의 1차 자기상관계수</li>
+<li>2차 차분 계열의 1차-10차 자기상관계수의 제곱합</li>
+<li>(계절 시계열에 대해) 첫번째 계절 시차(seasonal lag)에서의
+자기상관계수</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/features.html'>features</a></span><span class='op'>(</span><span class='va'>Trips</span>, <span class='va'>feat_acf</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":["acf1"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["acf10"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["diff1_acf1"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["diff1_acf10"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["diff2_acf1"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["diff2_acf10"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["season_acf1"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelaide","2":"South Australia","3":"Business","4":"0.033270698","5":"0.1306455","6":"-0.5196224","7":"0.4625367","8":"-0.6764291","9":"0.7413571","10":"0.20087547"},{"1":"Adelaide","2":"South Australia","3":"Holiday","4":"0.045569980","5":"0.3718981","6":"-0.3426251","7":"0.6143649","8":"-0.4868330","9":"0.5582436","10":"0.35115135"},{"1":"Adelaide","2":"South Australia","3":"Other","4":"0.516805734","5":"1.1535975","6":"-0.4086204","7":"0.3828913","8":"-0.6751196","9":"0.7923533","10":"0.34178065"},{"1":"Adelaide","2":"South Australia","3":"Visiting","4":"0.068365364","5":"0.2942366","6":"-0.3936543","7":"0.4522912","8":"-0.5179591","9":"0.4472958","10":"0.34493047"},{"1":"Adelaide Hills","2":"South Australia","3":"Business","4":"0.070914982","5":"0.1344731","6":"-0.5795037","7":"0.4145373","8":"-0.7504035","9":"0.7460039","10":"-0.06280837"},{"1":"Adelaide Hills","2":"South Australia","3":"Holiday","4":"0.131319990","5":"0.3127099","6":"-0.5361535","7":"0.5002113","8":"-0.7163426","9":"0.9063143","10":"0.20804204"},{"1":"Adelaide Hills","2":"South Australia","3":"Other","4":"0.261142556","5":"0.3301688","6":"-0.2532267","7":"0.3170873","8":"-0.4574704","9":"0.3922350","10":"0.07453409"},{"1":"Adelaide Hills","2":"South Australia","3":"Visiting","4":"0.139166739","5":"0.1167866","6":"-0.4720059","7":"0.2386155","8":"-0.6255751","9":"0.4077128","10":"0.16977219"},{"1":"Alice Springs","2":"Northern Territory","3":"Business","4":"0.217424370","5":"0.3666344","6":"-0.4995855","7":"0.3805574","8":"-0.6579956","9":"0.5870383","10":"0.31531357"},{"1":"Alice Springs","2":"Northern Territory","3":"Holiday","4":"-0.006604511","5":"2.1133742","6":"-0.1527905","7":"2.1134358","8":"-0.2742857","9":"1.5507370","10":"0.72858887"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>맨 마지막 열이 첫번째 계절 시차에서의 자기상관계수를 나타내는데, 본
+자료의 경우 분기별 자료에 해당하므로 계절 주기는 4에 해당합니다. 즉, 본
+자료에서 첫번째 계절 시차에서의 자기상관계수는 원 계열의 시차 4에서의
+ACF 값을 나타낸다고 할 수 있습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/features.html'>features</a></span><span class='op'>(</span><span class='va'>Trips</span>, <span class='va'>feat_acf</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Region</span><span class='op'>:</span><span class='va'>Purpose</span>, <span class='va'>season_acf1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":["season_acf1"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelaide","2":"South Australia","3":"Business","4":"0.20087547"},{"1":"Adelaide","2":"South Australia","3":"Holiday","4":"0.35115135"},{"1":"Adelaide","2":"South Australia","3":"Other","4":"0.34178065"},{"1":"Adelaide","2":"South Australia","3":"Visiting","4":"0.34493047"},{"1":"Adelaide Hills","2":"South Australia","3":"Business","4":"-0.06280837"},{"1":"Adelaide Hills","2":"South Australia","3":"Holiday","4":"0.20804204"},{"1":"Adelaide Hills","2":"South Australia","3":"Other","4":"0.07453409"},{"1":"Adelaide Hills","2":"South Australia","3":"Visiting","4":"0.16977219"},{"1":"Alice Springs","2":"Northern Territory","3":"Business","4":"0.31531357"},{"1":"Alice Springs","2":"Northern Territory","3":"Holiday","4":"0.72858887"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>원자료에 대한 ACF를 구해보면 다음과 같이 시차 4에서의 자기상관계수와
+동일한 값을 가짐을 알 수 있죠:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>ACF</span><span class='op'>(</span><span class='va'>Trips</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":["lag"],"name":[4],"type":["lag"],"align":["right"]},{"label":["acf"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"Adelaide","2":"South Australia","3":"Business","4":"1Q","5":"0.03327070"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"2Q","5":"0.05904106"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"3Q","5":"0.05356339"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"4Q","5":"0.20087547"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"5Q","5":"0.06449064"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"6Q","5":"0.10372714"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"7Q","5":"-0.05562396"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"8Q","5":"0.22744461"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"9Q","5":"0.01284716"},{"1":"Adelaide","2":"South Australia","3":"Business","4":"10Q","5":"-0.11368503"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>본 튜토리얼에서는 소개하지 않았지만, <code>feature()</code>를 이용한
+시계열 feature extraction과 연계하여 다양한 시각화도 수행할 수 있습니다.
+꼭 참고해보시기 바랍니다: <a
+href="https://otexts.com/fpp3/stlfeatures.html"
+class="uri">https://otexts.com/fpp3/stlfeatures.html</a></p>
+<!-- <a href='https://fable.tidyverts.org'><img src='logo_fable.png' align="right" height="138.5" /></a> -->
+<h2 id="fable">4 fable</h2>
+<p>{fable} 패키지는 tsibble 객체와 함께 tidy한 format으로 시계열 예측
+모델링을 수행할 수 있게해줍니다. <a
+href="https://github.com/be-favorite/Tutorial_tidymodels">{tidymodels}</a>
+패키지에 대한 이해가 있으신 분들이라면 어렵지 않으실거라 생각합니다.
+{tidymodels}과 마찬가지로 {fable}은 여러 시계열에 대해 여러 시계열
+모형에 대한 추정, 비교, 결합, 예측 등을 가능하게해줍니다.</p>
+<p>본격적인 튜토리얼 시작에 앞서, <code>tourism()</code> 자료를 이용할
+것이며, 4가지 여행 목적(“business”, “holiday”, “visiting friends and
+relatives”, “other reasons”)으로 분해할 수 있는 호주 멜버른(Melbourne)의
+일별 여행객 수를 예측하는 것에 관심이 있다고 가정합니다. 각 계열의 첫
+번째 관측값은 다음과 같습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism_melb</span> <span class='op'>&lt;-</span> <span class='va'>tourism</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Region</span> <span class='op'>==</span> <span class='st'>"Melbourne"</span><span class='op'>)</span>
+<span class='va'>tourism_melb</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>Purpose</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Quarter"],"name":[1],"type":["qtr"],"align":["right"]},{"label":["Region"],"name":[2],"type":["chr"],"align":["left"]},{"label":["State"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Trips"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1998 Q1","2":"Melbourne","3":"Victoria","4":"Business","5":"405.24297"},{"1":"1998 Q1","2":"Melbourne","3":"Victoria","4":"Holiday","5":"427.82780"},{"1":"1998 Q1","2":"Melbourne","3":"Victoria","4":"Other","5":"79.90985"},{"1":"1998 Q1","2":"Melbourne","3":"Victoria","4":"Visiting","5":"665.56779"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>우리가 추정하고자 하는 변수는 <code>Trips</code>(일별 여행객 수,
+단위: 천)입니다. 해당 계열들의 시도표를 보면, 추세와 약한 계절성이
+명확하게 존재함을 알 수 있습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tourism_melb</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>Trips</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/melbourne-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p>{fable} 패키지에서 폭넓게 쓰이는 시계열 예측 모형은 ETS와 ARIMA
+모형입니다. 먼저, ETS 모형은 추세 요소와 계절 요소를 가법, 승법,
+감쇠효과 등을 반영하여 시계열을 모델링하는 지수평활법(exponential
+smoothing)을 통계적 모형으로 확장시킨 것에 해당합니다. 통계적 모형으로의
+확장은 오차항 <span class="math inline">\(\epsilon_t\)</span>에 대해
+통계적 분포라 할 수 있는, 평균이 0이고 분산이 <span
+class="math inline">\(\sigma^2\)</span>인 가우스 백색잡음 과정(gaussian
+white noise process)을 가정함으로써 이루어집니다. 즉, ETS 모형의 알파벳
+각각은 E(error, 오차), T(trend, 추세), S(seasonal, 계절성)을 나타내며,
+각 요소들을 모델링하는 방식(가법, 승법, 가법감쇠(damped), 승법감쇠)에
+따라 ETS 모형의 종류가 나뉘어집니다. 아울러, 각 모델은 관측된 자료를
+설명하는 측정식(measurement equations)과 시간에 따라 변화하는 관측되지
+않은 요소(level, trend, seasonal)들을 설명하는 상태식(state
+equations)으로 구성되는데, 이러한 이유에서 우리는 ETS 모형을
+혁신상태공간모형을 이루는 지수평활법(innovations state space models for
+exponential smoothing)이라고 표현하기도 합니다(See <a
+href="https://otexts.com/fpp3/ets.html">here</a> for detail). 두 번째로,
+ARIMA 모형은 시계열의 현재값을 과거값과 과거 예측 오차로 설명하는
+대표적인 통계적 시계열 예측모형으로, 자세한 설명은 생략하겠습니다. ARIMA
+모형에 대한 개념이 없으신 분들은 <a
+href="https://be-favorite.tistory.com/63?category=928223">여기</a>를
+참고해주시기 바랍니다.</p>
+<p>두 모형에 대한 간략한 개념 설명은 이쯤에서 마치기로 하고, 이제 이
+모형들을 {fable} 패키지를 이용해 어떻게 적합을 수행하면 되는지
+보겠습니다. {fable}을 이용한 모형 적합은 <code>model()</code>을 통해
+이루어집니다. <code>model()</code>을 통한 적합 과정은 <a
+href="https://github.com/be-favorite/Tutorial_tidymodels">{tidymodels}</a>와
+유사하게 상당히 직관적인 이름의 함수들로 이루어집니다. 먼저,
+<code>ETS()</code>의 경우는 R에서 일반적으로 사용하는 모형식의
+specification를 따라서 각 요소를 반영할 수 있게 해주며, 본 예제에서는
+추세 요소만 가법적으로 설정해주고 나머지 요소는 자동으로 선택되도록
+하였습니다(AICC를 기준으로, see <code>?ETS</code> for details). 그리고,
+ARIMA 모형은 <code>ARIMA()</code> 함수로 적합할 수 있으며, 해당 함수는
+{forecast} 패키지의 <code>auto.arima</code>와 유사하게 default 옵션으로
+AICC 값을 기준으로 최적의 모형을 선택해 줍니다(see <code>?ARIMA</code>).
+<code>model()</code>을 통해 적합이 이루어진 모형 객체는 tidy한 포맥의
+모형 테이블로 결과를 반환해줍니다. 이를 이제부터 mable(model table)
+객체라 칭하겠습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='va'>tourism_melb</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/model.html'>model</a></span><span class='op'>(</span>
+    ets <span class='op'>=</span> <span class='fu'>ETS</span><span class='op'>(</span><span class='va'>Trips</span> <span class='op'>~</span> <span class='fu'>trend</span><span class='op'>(</span><span class='st'>"A"</span><span class='op'>)</span><span class='op'>)</span>,
+    arima <span class='op'>=</span> <span class='fu'>ARIMA</span><span class='op'>(</span><span class='va'>Trips</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='va'>fit</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":["ets"],"name":[4],"type":["lst_mdl"],"align":["right"]},{"label":["arima"],"name":[5],"type":["lst_mdl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"<lst_mdl>","5":"<lst_mdl>"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"<lst_mdl>","5":"<lst_mdl>"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"<lst_mdl>","5":"<lst_mdl>"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"<lst_mdl>","5":"<lst_mdl>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>mable 객체의 행은 각 시계열로 이루어져있으며, 열은 각 모형의
+specification을 나타냅니다. <code>fit</code>이 반환하는 결과를 보면 알
+수 있듯이, 적합된 ETS 모형의 추세 요소는 모두 가법적으로 고려되었으며,
+나머지 요소들은 각 시계열에 따라서 최적의 성분이 자동으로
+선택되었습니다. ARIMA 모형 또한 AICC 값을 기준으로 한 최적의 차수들이
+반영되어 모형 적합이 잘 이루어진 것으로 보입니다. 이 mable 객체로 우리는
+모델 적합 단계에서 필요한 모든 작업을 tidy한 포맷으로 수행할 수
+있습니다.</p>
+<p>먼저, <code>coef()</code> 또는 <code>tidy()</code>를 통해
+모형으로부터 추정된 계수들을 추출할 수 있습니다. 아울러, 사전에
+<code>select()</code> 함수를 통해 특정 모형에 대한 계수 값만을 뽑을 수도
+있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Region</span>, <span class='va'>State</span>, <span class='va'>Purpose</span>, <span class='va'>arima</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/coef.html'>coef</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["term"],"name":[5],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"ma1","6":"-0.5550787","7":"0.12978931","8":"-4.2767679","9":"5.264967e-05"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"ma2","6":"-0.2335105","7":"0.12925315","8":"-1.8066134","9":"7.463048e-02"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"sar1","6":"0.9461540","7":"0.06358434","8":"14.8802991","9":"1.264465e-24"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"sma1","6":"-0.7717918","7":"0.14496638","8":"-5.3239364","9":"9.280014e-07"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"constant","6":"0.1930140","7":"0.21351305","8":"0.9039915","9":"3.687484e-01"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"arima","5":"ma1","6":"-0.9309040","7":"0.08513995","8":"-10.9338093","9":"1.774207e-17"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"arima","5":"constant","6":"3.6493015","7":"0.57089401","8":"6.3922575","9":"1.057092e-08"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"arima","5":"ma1","6":"-0.7495227","7":"0.07080228","8":"-10.5861391","9":"8.192162e-17"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"arima","5":"constant","6":"1.2363219","7":"0.63994797","8":"1.9319100","9":"5.695604e-02"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"arima","5":"ma1","6":"-0.8376624","7":"0.06524840","8":"-12.8380524","9":"5.030275e-21"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>tidy</code>로 수행해도 결과는 같습니다. 다음으로
+<code>glance()</code>를 이용하면 모형의 적합 결과를 정보 기준(e.g. AIC,
+BIC)과 잔차의 분산 등으로 요약해줍니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://generics.r-lib.org/reference/glance.html'>glance</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["sigma2"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["log_lik"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["AICc"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["MSE"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["AMSE"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["MAE"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["ar_roots"],"name":[13],"type":["list"],"align":["right"]},{"label":["ma_roots"],"name":[14],"type":["list"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"3.533069e+03","6":"-497.8635","7":"1013.7271","8":"1016.2985","9":"1035.1653","10":"3179.7624","11":"3519.8450","12":"42.85576504","13":"<NULL>","14":"<NULL>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"3.668008e+03","6":"-435.0687","7":"882.1375","8":"883.3042","9":"896.3542","10":"NA","11":"NA","12":"NA","13":"<cpl [4]>","14":"<cpl [6]>"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"ets","5":"1.100600e-02","6":"-486.8653","7":"991.7305","8":"994.3020","9":"1013.1688","10":"2547.7000","11":"2573.8279","12":"0.07443346","13":"<NULL>","14":"<NULL>"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"arima","5":"3.068849e+03","6":"-429.2382","7":"864.4763","8":"864.7963","9":"871.5847","10":"NA","11":"NA","12":"NA","13":"<cpl [0]>","14":"<cpl [1]>"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"ets","5":"4.967764e+02","6":"-421.5549","7":"853.1099","8":"853.9207","9":"865.0200","10":"471.9375","11":"511.9163","12":"17.04202574","13":"<NULL>","14":"<NULL>"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"arima","5":"4.889575e+02","6":"-356.0907","7":"718.1813","8":"718.5013","9":"725.2897","10":"NA","11":"NA","12":"NA","13":"<cpl [0]>","14":"<cpl [1]>"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"ets","5":"1.089051e-02","6":"-502.9317","7":"1023.8634","8":"1026.4348","9":"1045.3016","10":"3714.0018","11":"3860.2038","12":"0.08428978","13":"<NULL>","14":"<NULL>"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"arima","5":"4.241162e+03","6":"-441.5481","7":"893.0963","8":"893.9182","9":"904.9435","10":"NA","11":"NA","12":"NA","13":"<cpl [4]>","14":"<cpl [9]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>만약 하나의 모형으로만 시계열 예측 모델링을 수행하고 있다면,
+<code>report()</code> 함수를 이용하면 됩니다. 이는 하나의 시계열 예측
+모형의 평가를 상당히 만족스러운 포맷으로 제공해줍니다.😊 여행 목적이
+“Holiday”일 때 ETS 모형을 적합한 결과 대한 요약을
+<code>report()</code>를 통해 진행해봤습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Purpose</span> <span class='op'>==</span> <span class='st'>"Holiday"</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>ets</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://fabletools.tidyverts.org/reference/report.html'>report</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>Series: Trips 
+Model: ETS(M,A,A) 
+  Smoothing parameters:
+    alpha = 0.03084501 
+    beta  = 0.03084499 
+    gamma = 0.0001000967 
+
+  Initial states:
+     l[0]      b[0]     s[0]    s[-1]     s[-2]    s[-3]
+ 424.0777 -2.535481 -26.7441 4.256618 -10.10668 32.59417
+
+  sigma^2:  0.011
+
+      AIC      AICc       BIC 
+ 991.7305  994.3020 1013.1688 </code></pre>
+</div>
+<p>아울러, 모형으로부터의 적합값과 잔차는 <code>fitted()</code>,
+<code>residuals()</code> 각각을 이용해 얻을 수 있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/fitted.values.html'>fitted</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>residuals</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[5],"type":["qtr"],"align":["right"]},{"label":[".fitted"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q1","6":"395.7035"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q2","6":"482.7697"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q3","6":"487.1224"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q4","6":"454.4149"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q1","6":"391.1064"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q2","6":"465.8753"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q3","6":"491.6959"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q4","6":"424.2785"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q1","6":"364.0546"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q2","6":"476.9459"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[5],"type":["qtr"],"align":["right"]},{"label":[".resid"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q1","6":"9.539479"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q2","6":"-75.134444"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q3","6":"-1.133207"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q4","6":"-25.215441"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q1","6":"-30.273756"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q2","6":"19.875959"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q3","6":"-133.012530"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q4","6":"1.491767"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q1","6":"130.451762"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q2","6":"22.038062"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>적합값과 잔차를 함께 얻고 싶다면 <code>augment()</code>를
+사용하세요:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[5],"type":["qtr"],"align":["right"]},{"label":["Trips"],"name":[6],"type":["dbl"],"align":["right"]},{"label":[".fitted"],"name":[7],"type":["dbl"],"align":["right"]},{"label":[".resid"],"name":[8],"type":["dbl"],"align":["right"]},{"label":[".innov"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q1","6":"405.2430","7":"395.7035","8":"9.539479","9":"9.539479"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q2","6":"407.6352","7":"482.7697","8":"-75.134444","9":"-75.134444"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q3","6":"485.9892","7":"487.1224","8":"-1.133207","9":"-1.133207"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1998 Q4","6":"429.1995","7":"454.4149","8":"-25.215441","9":"-25.215441"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q1","6":"360.8326","7":"391.1064","8":"-30.273756","9":"-30.273756"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q2","6":"485.7513","7":"465.8753","8":"19.875959","9":"19.875959"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q3","6":"358.6833","7":"491.6959","8":"-133.012530","9":"-133.012530"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"1999 Q4","6":"425.7702","7":"424.2785","8":"1.491767","9":"1.491767"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q1","6":"494.5063","7":"364.0546","8":"130.451762","9":"130.451762"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2000 Q2","6":"498.9839","7":"476.9459","8":"22.038062","9":"22.038062"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>모형간 예측 정확도의 비교는 <code>accuracy()</code>를 이용하면
+됩니다. 여러 예측 평가 측도를 제공해줍니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://fabletools.tidyverts.org/reference/accuracy.html'>accuracy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>MASE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":[".type"],"name":[5],"type":["chr"],"align":["left"]},{"label":["ME"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["RMSE"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["MAE"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["MPE"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["MAPE"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["MASE"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["RMSSE"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["ACF1"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"ets","5":"Training","6":"4.6685812","7":"50.47475","8":"37.21943","9":"0.2171840","10":"7.286626","11":"0.6752829","12":"0.6972556","13":"0.006245583"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"Training","6":"3.3061791","7":"56.38938","8":"42.85577","9":"-0.7534998","10":"9.314320","11":"0.6910741","12":"0.7402536","13":"0.152561519"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"arima","5":"Training","6":"2.5298686","7":"58.24867","8":"45.95808","9":"-1.1704366","10":"10.123450","11":"0.7411008","12":"0.7646615","13":"-0.041537973"},{"1":"Melbourne","2":"Victoria","3":"Holiday","4":"arima","5":"Training","6":"-4.6389201","7":"54.34857","8":"41.43945","9":"-2.4387791","10":"8.456079","11":"0.7518479","12":"0.7507684","13":"-0.112851983"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"arima","5":"Training","6":"-0.3435639","7":"21.69381","8":"16.97031","9":"-6.1610021","10":"19.494106","11":"0.7633891","12":"0.7720351","13":"0.080830958"},{"1":"Melbourne","2":"Victoria","3":"Other","4":"ets","5":"Training","6":"-0.1415391","7":"21.72412","8":"17.04203","9":"-5.9743933","10":"19.579269","11":"0.7666153","12":"0.7731138","13":"0.082340436"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"ets","5":"Training","6":"8.1656867","7":"60.94261","8":"51.39776","9":"0.4326661","10":"8.281368","11":"0.8194654","12":"0.7816176","13":"-0.058701318"},{"1":"Melbourne","2":"Victoria","3":"Visiting","4":"arima","5":"Training","6":"6.8854402","7":"63.05624","8":"51.71665","9":"0.1060524","10":"8.436977","11":"0.8245497","12":"0.8087259","13":"-0.101529827"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>참고로, 여기서는 훈련 자료(training data)에 대한 예측 성능에
+해당합니다. 본 호주 일별 여행객수에 대한 자료에서는 예측 성능 평가
+측도를 MASE로 할 경우, ETS 모형이 여행 목적이 “Other”인 경우를
+제외하고는 훨씬 더 좋은 성능을 보이고 있습니다. 향후 시점의 예측은
+<code>forecast()</code>로 추가적인 자료에 대한 정보 없이 바로 수행을 할
+수 있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fc</span> <span class='op'>&lt;-</span> <span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+    <span class='fu'><a href='https://fabletools.tidyverts.org/reference/forecast.html'>forecast</a></span><span class='op'>(</span>h <span class='op'>=</span> <span class='st'>"5 years"</span><span class='op'>)</span>
+<span class='va'>fc</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[5],"type":["qtr"],"align":["right"]},{"label":["Trips"],"name":[6],"type":["dist"],"align":["right"]},{"label":[".mean"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q1","6":"<dist>","7":"618.5614"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q2","6":"<dist>","7":"709.0934"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q3","6":"<dist>","7":"738.4658"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q4","6":"<dist>","7":"713.4445"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q1","6":"<dist>","7":"664.0338"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q2","6":"<dist>","7":"754.5658"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q3","6":"<dist>","7":"783.9382"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q4","6":"<dist>","7":"758.9169"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2020 Q1","6":"<dist>","7":"709.5062"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2020 Q2","6":"<dist>","7":"800.0383"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>향후 시점의 예측 결과는 fable(forecast table)로 요약되며, fable은
+예측값의 점 추정치와 예측값의 분포에 대한 정보까지 포함하여
+제공해줍니다. 예를 들어, 첫 번째 행의 시계열의 예측값의 분포는 평균이
+619, 분산이 3533인 정규분포에 해당합니다. 정규분포를 따르는 이유는, 앞서
+ETS의 간략한 소개에서 설명했듯이 오차항에 대해 가우스 백색잡음 과정을
+가정했기 때문입니다. 그렇다면, 이러한 예측값의 분포에 따른 구간 추정은
+어떤 함수로 수행할 수 있을까요? 예측값의 신뢰구간은
+<code>hilo()</code>를 이용하면 됩니다. <code>hilo()</code> 함수는 fable
+객체와 함께 동작하며, 원하는 신뢰수준을 반영할 수 있게 해줍니다. 다음은
+80%, 95% 각각의 신뢰수준에 대한 구간을 추정한 것입니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fc</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://pkg.mitchelloharawild.com/distributional/reference/hilo.html'>hilo</a></span><span class='op'>(</span>level <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>80</span>, <span class='fl'>95</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["State"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Purpose"],"name":[3],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Quarter"],"name":[5],"type":["qtr"],"align":["right"]},{"label":["Trips"],"name":[6],"type":["dist"],"align":["right"]},{"label":[".mean"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["80%"],"name":[8],"type":["hilo"],"align":["right"]},{"label":["95%"],"name":[9],"type":["hilo"],"align":["right"]}],"data":[{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q1","6":"<dist>","7":"618.5614","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q2","6":"<dist>","7":"709.0934","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q3","6":"<dist>","7":"738.4658","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2018 Q4","6":"<dist>","7":"713.4445","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q1","6":"<dist>","7":"664.0338","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q2","6":"<dist>","7":"754.5658","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q3","6":"<dist>","7":"783.9382","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2019 Q4","6":"<dist>","7":"758.9169","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2020 Q1","6":"<dist>","7":"709.5062","8":"<hilo>","9":"<hilo>"},{"1":"Melbourne","2":"Victoria","3":"Business","4":"ets","5":"2020 Q2","6":"<dist>","7":"800.0383","8":"<hilo>","9":"<hilo>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>마지막으로, 예측값에 대한 시각화는 fable 객체에 대해
+<code>autoplot()</code>을 적용해주면 됩니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fc</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>tourism_melb</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/forecast-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>본 튜토리얼에서 소개한 함수들 외에도 {fable}의 특정 모형 객체들과
+함께 동작하는 여러 함수들이 있습니다(e.g. <code>refit()</code>,
+<code>interpolate()</code>, <code>components()</code>, etc).
+튜토리얼에서 소개한 내용외에 자세한 내용이 궁금하시다면 <a
+href="https://otexts.com/fpp3/toolbox.html">Forecasting: Principles and
+Practices (3rd Ed.)</a>를 참고해주세요.</p>
+<h2 id="fable.prophet">5 fable.prophet</h2>
+<p>{fable.prophet}은 facebook에서 제안한 단일 시계열 예측모형에 대한
+적합 또한 tidy한 인터페이스로 제공해줍니다. prophet은 시계열의 시간
+종속적인 특성을 고려하는 기존의 시계열 모형(e.g. 지수평활법, ARIMA
+모형)과 달리 curve-fitting(e.g. <a
+href="https://be-favorite.tistory.com/56?category=923110">splines</a>)으로
+모형을 적합하며, 시계열을 다음과 같이 세 가지 요소로 분해하고 각 요소를
+시간의 함수로 가법적으로 모형화합니다.</p>
+<p><span class="math display">\[
+y(t) = g(t) + s(t) + h(t) + \epsilon_t
+\]</span></p>
+<p>여기서 <span class="math inline">\(g(t)\)</span>는 비주기적 변화를
+모형화하는 추세 함수, <span class="math inline">\(s(t)\)</span>는 주별
+또는 연별 계절성과 같은 주기적 변화를 반영하며, <span
+class="math inline">\(h(t)\)</span>는 불규칙하게 발생할 가능성이 있는
+휴일효과(holidays and events effects)를 모형화합니다. 세 요소 중에서도
+휴일효과에 대한 반영이 prophet의 상당히 특징적인 부분이라 할 수
+있겠으며, 모형에서 조절할 수 있는 모수들이 상당히 많아서 아주 유연하고
+디테일하게 모델링이 가능합니다. 도메인 지식이 풍부할수록 prophet을 통한
+성능 개선의 가능성은 무궁무진합니다. 본 튜토리얼에서 prophet에 대한 개념
+설명은 이쯤에서 간략하게 마치겠습니다. prophet을 이번에 처음 접하시는
+분들은 <a
+href="https://github.com/be-favorite/Tutorial_prophet">여기</a>를
+참고해주시기 바랍니다. 개념 정리와 R을 이용한 튜토리얼 과정을
+정리해놓았는데, 여기서 소개할 tidy한 인터페이스의 이해를 위해서 꼭
+필요로 될겁니다.</p>
+<p>본 튜토리얼에서 prophet을 이용한 예측 모델링에 이용할 자료는 호주의
+카페, 레스토랑 및 케이터링 서비스에 관한 월 매출액 자료(단위: milions
+$AUD)입니다:</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cafe</span> <span class='op'>&lt;-</span> <span class='fu'>tsibbledata</span><span class='fu'>::</span><span class='va'><a href='https://tsibbledata.tidyverts.org/reference/aus_retail.html'>aus_retail</a></span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Industry</span> <span class='op'>==</span> <span class='st'>"Cafes, restaurants and catering services"</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autoplot.html'>autoplot</a></span><span class='op'>(</span><span class='va'>cafe</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>주별로 나뉜 해당 자료의 각 계열은 증가하는 추세와 그에 따른 연별 계절
+패턴이 눈에 보입니다. 또한, 계절 패턴의 경우 계열의 수준(level)에
+비례하는 형태를 보이고 있으므로, 계절성을 승법적으로 고려해야할
+것입니다. 아울러, 월별 자료의 경우는 휴일 효과의 경우 계절 요소를 통해
+모형화가 가능합니다. 휴일효과에 대한 반영은 이번에 진행하지 않을
+예정입니다(기존의 prophet 인터페이스에서 수행했던 것과 같이 간단하게
+반영, see <a
+href="https://github.com/mitchelloharawild/fable.prophet/issues/17">here</a>
+for details). 본 자료에 대해 추세 요소는 선형으로 하여(default), 연별
+계절성을 승법으로 고려하여 prophet을 적합해보았습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='va'>cafe</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/model.html'>model</a></span><span class='op'>(</span>
+    prophet <span class='op'>=</span> <span class='fu'><a href='https://pkg.mitchelloharawild.com/fable.prophet/reference/prophet.html'>prophet</a></span><span class='op'>(</span><span class='va'>Turnover</span> <span class='op'>~</span> <span class='fu'>season</span><span class='op'>(</span><span class='st'>"year"</span>, <span class='fl'>4</span>, type <span class='op'>=</span> <span class='st'>"multiplicative"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='va'>fit</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["State"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Industry"],"name":[2],"type":["chr"],"align":["left"]},{"label":["prophet"],"name":[3],"type":["lst_mdl"],"align":["right"]}],"data":[{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"New South Wales","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"Northern Territory","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"Queensland","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"South Australia","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"Tasmania","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"Victoria","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"},{"1":"Western Australia","2":"Cafes, restaurants and catering services","3":"<lst_mdl>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>각 계열에 대해 prophet이 잘 적합된 것을 확인할 수 있습니다. 적합된
+모형의 각 요소들은 <code>components()</code>로 추출할수 있습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["State"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Industry"],"name":[2],"type":["chr"],"align":["left"]},{"label":[".model"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Month"],"name":[4],"type":["mth"],"align":["right"]},{"label":["Turnover"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["additive_terms"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["multiplicative_terms"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["trend"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[9],"type":["dbl"],"align":["right"]},{"label":[".resid"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Apr","5":"4.4","6":"0","7":"0.014816749","8":"4.554849","9":"0.014816749","10":"-0.2223369"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 May","5":"3.4","6":"0","7":"-0.013208131","8":"4.614014","9":"-0.013208131","10":"-1.1530718"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Jun","5":"3.6","6":"0","7":"0.010381269","8":"4.675152","9":"0.010381269","10":"-1.1236859"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Jul","5":"4.0","6":"0","7":"-0.013184764","8":"4.734317","9":"-0.013184764","10":"-0.6718964"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Aug","5":"3.6","6":"0","7":"0.009921116","8":"4.795455","9":"0.009921116","10":"-1.2430311"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Sep","5":"4.2","6":"0","7":"0.028663448","8":"4.856592","9":"0.028663448","10":"-0.7957990"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Oct","5":"4.8","6":"0","7":"0.001200633","8":"4.915758","9":"0.001200633","10":"-0.1216598"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Nov","5":"5.4","6":"0","7":"0.048288332","8":"4.976895","9":"0.048288332","10":"0.1827787"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1982 Dec","5":"6.9","6":"0","7":"0.024145094","8":"5.036061","9":"0.024145094","10":"1.7423431"},{"1":"Australian Capital Territory","2":"Cafes, restaurants and catering services","3":"prophet","4":"1983 Jan","5":"3.8","6":"0","7":"-0.106559303","8":"5.097198","9":"-0.106559303","10":"-0.7540444"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p><code>components()</code>를 통해 주어지는 객체 자체에
+<code>autoplot()</code>을 수행하면 모든 요소에 대한 시각화가 한꺼번에
+가능하지만, 추세와 월별 계절 패턴에 대해서만 시각화해보겠습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>trend</span>, colour <span class='op'>=</span> <span class='va'>State</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe_trend-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/components.html'>components</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'>month</span><span class='op'>(</span><span class='va'>Month</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>year</span>, 
+             colour <span class='op'>=</span> <span class='va'>State</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/interaction.html'>interaction</a></span><span class='op'>(</span><span class='fu'>year</span><span class='op'>(</span><span class='va'>Month</span><span class='op'>)</span>, <span class='va'>State</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>scale_x_continuous</span><span class='op'>(</span>breaks <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>12</span>, labels <span class='op'>=</span> <span class='va'>month.abb</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>xlab</span><span class='op'>(</span><span class='st'>"Month"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/cafe_seasonal-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p>연별 계절패턴의 경우 주별로 대개 비슷하나, 북방 지역(the Northern
+Territory)의 경우 다른 주들과는 크게 다른 계쩔 패턴을 보여주고 있습니다.
+마지막으로, prophet의 예측도 <code>forecast()</code>를 이용해 쉽게
+수행할 수 있습니다. 향후 2년에 대해 예측해보았습니다:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>fc</span> <span class='op'>&lt;-</span> <span class='va'>fit</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://fabletools.tidyverts.org/reference/forecast.html'>forecast</a></span><span class='op'>(</span>h <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
+<span class='va'>cafe</span> <span class='op'><a href='https://purrr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Month</span>, y <span class='op'>=</span> <span class='va'>Turnover</span>, colour <span class='op'>=</span> <span class='va'>State</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/autolayer.html'>autolayer</a></span><span class='op'>(</span><span class='va'>fc</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="tidy-tools-for-timeseries-tidyverts_files/figure-html5/forecast_prophet-1.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<p><a href="https://otexts.com/fpp3/">Forecasting: Principles and
+Practices (3rd Ed.)</a>에서는 prophet외에도, 벡터 자기회귀모형,
+인공신경망 기반의 시계열 예측모형, 붓스트랩 및 배깅 기법을 활용한 시계열
+예측 모형 등의 고급 시계열 예측 모형도 제공해줍니다. 관심있으신 분들은
+fpp3을 참고해보시기 바랍니다.</p>
+<h2 id="맺음말">맺음말</h2>
+<p>tidyverts ecosystem이 전반적으로 작동하는 과정을 소개해 보았습니다.
+그러나, 시계열 자료의 예측 모델링 대한 이해와 더불어 tidyverts를 좀 더
+디테일하게 활용하기 위해서는, <a
+href="https://otexts.com/fpp3/">Forecasting: Principles and Practices
+(3rd Ed.)</a>을 참고하시는게 좋을 것이라 생각합니다. tidyverse와 <a
+href="https://github.com/be-favorite/Tutorial_tidymodels">tidymodels</a>를
+통해 데이터를 전처리, 예측모형 개발, 개선 등의 과정에 걸리는 시간을 크게
+단축시켰듯이, fpp3을 잘 익혀두면 시계열 예측 모델링에 전반적인 과정에
+드는 시간을 상당히 단축시킬 수 있을 겁니다.😊</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent"
+role="doc-bibliography">
+<div id="ref-tidyvert" class="csl-entry" role="doc-biblioentry">
+<span>“Tidyverts.”</span> n.d. <a
+href="https://tidyverts.org">https://tidyverts.org</a>.
+</div>
+</div>
+<!--radix_placeholder_article_footer-->
+<div class="article-footer">
+  <p class="social_footer">
+    <span class="article-sharing">
+      Share: &nbsp;
+      <a href="https://twitter.com/share?text=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F&amp;title=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </span>
+  </p>
+</div>
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+  <h3 id="references">References</h3>
+  <div id="references-listing"></div>
+  <h3 id="updates-and-corrections">Corrections</h3>
+  <p>If you see mistakes or want to suggest changes, please <a href="https://github.com/be-favorite/Distill/issues/new">create an issue</a> on the source repository.</p>
+  <h3 id="reuse">Reuse</h3>
+  <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. Source code is available at <a href="https://github.com/be-favorite/Distill">https://github.com/be-favorite/Distill</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
+  <h3 id="citation">Citation</h3>
+  <p>For attribution, please cite this work as</p>
+  <pre class="citation-appendix short">Bang (2022, March 11). 방태모의 블로그: tidyverse principle로 시계열 자료 분석하기. Retrieved from https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/</pre>
+  <p>BibTeX citation</p>
+  <pre class="citation-appendix long">@misc{bang2022tidyverse,
+  author = {Bang, Taemo},
+  title = {방태모의 블로그: tidyverse principle로 시계열 자료 분석하기},
+  url = {https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/},
+  year = {2022}
+}</pre>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 ---
-title: "데이터베이스에 tidyverse 사용하기 - 1편"
+title: "tidyverse로 데이터베이스랑 대화하기 - 1편"
 description: |
   R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!
 author:
@@ -26,6 +26,8 @@ bibliography: references.bib
 ---
 
 ```{r distill-setup, include = FALSE}
+# 본 포스트 영어 제목: Talk with Database using tidyverse - Part I
+# 본 포스트 한글 제목: tidyverse로 데이터베이스랑 대화하기 - 1편
 # echo - Display code in output document (default = TRUE)
 # eval - Run code in chunk (default = TRUE)
 library(xaringanExtra)

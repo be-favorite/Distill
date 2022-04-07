@@ -1,7 +1,7 @@
 ---
-title: "MySQL 튜토리얼"
+title: "MySQL DB로 SQL 배우기"
 description: |
-    MySQL을 이용해 SQL 배우기
+    MySQL DB로 SQL 배우기
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
@@ -23,6 +23,8 @@ categories:
 ---
 
 ```{r distill-setup, include = FALSE}
+# 본 포스트 영어 제목: Learning SQL with MySQL DB
+# 본 포스트 한글 제목: MySQL DB로 SQL 배우기
 # echo - Display code in output document (default = TRUE)
 # eval - Run code in chunk (default = TRUE)
 library(xaringanExtra)

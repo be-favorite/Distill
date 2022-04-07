@@ -108,7 +108,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>데이터베이스에 tidyverse 사용하기 - 1편</title>
+  <title>tidyverse로 데이터베이스랑 대화하기 - 1편</title>
 
   <meta property="description" itemprop="description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
 
@@ -120,14 +120,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Taemo Bang"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="데이터베이스에 tidyverse 사용하기 - 1편"/>
+  <meta property="og:title" content="tidyverse로 데이터베이스랑 대화하기 - 1편"/>
   <meta property="og:type" content="article"/>
   <meta property="og:description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="데이터베이스에 tidyverse 사용하기 - 1편"/>
+  <meta property="twitter:title" content="tidyverse로 데이터베이스랑 대화하기 - 1편"/>
   <meta property="twitter:description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
   <meta property="twitter:site" content="@TaemoBang"/>
   <meta property="twitter:creator" content="@TaemoBang"/>
@@ -138,12 +138,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["데이터베이스에 tidyverse 사용하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","Databases","tidyverse","dbplyr"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse로 데이터베이스랑 대화하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","Databases","tidyverse","dbplyr"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["preview.jpg","references.bib","tidyverse-1_files/anchor-4.2.2/anchor.min.js","tidyverse-1_files/bowser-1.9.3/bowser.min.js","tidyverse-1_files/clipboard-2.0.6/clipboard.min.js","tidyverse-1_files/distill-2.2.21/template.v2.js","tidyverse-1_files/header-attrs-2.13/header-attrs.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.map","tidyverse-1_files/popper-2.6.0/popper.min.js","tidyverse-1_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidyverse-1_files/tippy-6.2.7/tippy-light-border.css","tidyverse-1_files/tippy-6.2.7/tippy.css","tidyverse-1_files/tippy-6.2.7/tippy.umd.min.js","tidyverse-1_files/webcomponents-2.0.0/webcomponents.js","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"]}
+  {"type":"character","attributes":{},"value":["data/great_brit_bakeoff.db","preview.jpg","references.bib","tidyverse-1_files/anchor-4.2.2/anchor.min.js","tidyverse-1_files/bowser-1.9.3/bowser.min.js","tidyverse-1_files/clipboard-2.0.6/clipboard.min.js","tidyverse-1_files/distill-2.2.21/template.v2.js","tidyverse-1_files/header-attrs-2.13/header-attrs.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.js","tidyverse-1_files/jquery-3.6.0/jquery-3.6.0.min.map","tidyverse-1_files/popper-2.6.0/popper.min.js","tidyverse-1_files/tippy-6.2.7/tippy-bundle.umd.min.js","tidyverse-1_files/tippy-6.2.7/tippy-light-border.css","tidyverse-1_files/tippy-6.2.7/tippy.css","tidyverse-1_files/tippy-6.2.7/tippy.umd.min.js","tidyverse-1_files/webcomponents-2.0.0/webcomponents.js","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1489,7 +1489,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"데이터베이스에 tidyverse 사용하기 - 1편","description":"R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-04T00:00:00.000+09:00","citationText":"Bang, 2022"}
+{"title":"tidyverse로 데이터베이스랑 대화하기 - 1편","description":"R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-04T00:00:00.000+09:00","citationText":"Bang, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1499,7 +1499,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>데이터베이스에 tidyverse 사용하기 - 1편</h1>
+<h1>tidyverse로 데이터베이스랑 대화하기 - 1편</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
 <div class="dt=tag">SQL</div>

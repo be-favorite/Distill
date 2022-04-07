@@ -25,6 +25,8 @@ bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
+# 본 포스트 영어 제목: Do time series analysis with tidyverse principle
+# 본 포스트 한글 제목: tidyverse principle로 시계열 자료 분석하기
 # echo - Display code in output document (default = TRUE)
 # eval - Run code in chunk (default = TRUE)
 library(xaringanExtra)
