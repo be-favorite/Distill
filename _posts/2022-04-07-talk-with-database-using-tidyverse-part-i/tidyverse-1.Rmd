@@ -21,7 +21,7 @@ categories:
     - SQL
     - SQLiteDB
     - Databases
-    - tidyverse
+    - Tidytool
     - dbplyr
 bibliography: references.bib
 ---
