@@ -18,11 +18,12 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
+    - Databases
     - SQL
     - SQLiteDB
-    - Databases
-    - Tidytool
     - dbplyr
+    - Tidytool
+    - R
 bibliography: references.bib
 ---
 
