@@ -13,7 +13,21 @@
       <link>https://taemobang.com/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 03 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 06 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>tidyverse로 데이터베이스랑 대화하기 - 1편</title>
+      <dc:creator>Taemo Bang</dc:creator>
+      <link>https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</link>
+      <description>R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!</description>
+      <category>SQL</category>
+      <category>SQLiteDB</category>
+      <category>Databases</category>
+      <category>tidyverse</category>
+      <category>dbplyr</category>
+      <guid>https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</guid>
+      <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i/preview.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>tidyvese principle로 머신러닝 하기</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -24,7 +38,7 @@
       <category>Tidytool</category>
       <category>R</category>
       <guid>https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle</guid>
-      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
