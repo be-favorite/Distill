@@ -2610,16 +2610,16 @@ href="#ref-naidoo2020" role="doc-biblioref">Naidoo 2020</a>)</span>를
 </aside>
 <p>실무에서는 Data analyst, Data scientist를 가리지 않고 SQL에 관한
 능력을 요구합니다. 우리나라의 채용공고를 둘러보면 Data analyst의 경우
-특히 SQL에 대한 능력이 특별히 꼭 요구 되는 것 같습니다. 방대한 양의
-데이터를 저장하고 관리하기 위해 실무에서는 데이터베이스를 사용합니다. 이
+특히 SQL 스킬이 중요하게 요구되는 듯 합니다. 방대한 양의 데이터를
+저장하고 관리하기 위해 실무에서는 데이터베이스를 사용합니다. 이
 데이터베이스는 종종 관계형 데이터베이스 시스템<a href="#fn1"
 class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a>(이하 RDBMS)이라 불리기도 하죠.
 그리고, 우리는 SQL<a href="#fn2" class="footnote-ref" id="fnref2"
 role="doc-noteref"><sup>2</sup></a> 언어 또는 SQL을 조금 변형한(variant)
-언어를 통해 이 데이터베이스와 이야기를 나눕니다. 여기서 변형을 고려한
-이유는, RDBMS를 제공하는 업체에서 표준화된 SQL을 택하여 제공할 수도
-있지만, 편의를 위해 표준화된 SQL을 조금 변형시켜 사용하는 경우도 있기
+언어를 통해 이 데이터베이스와 이야기를 나눕니다. 여기서 변형이라는 말을
+사용한 이유는, RDBMS를 제공하는 업체에서 표준화된 SQL을 제공하는 경우도
+있지만, 표준화된 SQL을 조금 변형시켜 사용하는 경우도 있기
 때문입니다.</p>
 <p>만약 이렇게 특정 업체로부터 제공되는 변형된 RDBMS를 사용해야한다면,
 해당 업체에서 사용하는 특정 SQL dialect<a href="#fn3"
@@ -2629,8 +2629,8 @@ class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>를
 href="https://prestodb.io">PrestoDB</a>(<a
 href="https://aws.amazon.com/ko/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&amp;whats-new-cards.sort-order=desc">AWS의
 Athena</a>를 위한) 등이 있습니다. PostgreSQL DB의 JSON 필드는 AWS에서
-구조화된 중첩 배열로(array) 수집되므로, 동일한 필드를 쿼리할 때 다른
-쿼리문을 사용합니다.</p>
+구조화된 중첩 배열로(array) 수집되므로, 동일한 필드를 쿼리하고자 할 때
+다른 쿼리문을 사용합니다.</p>
 <p>R을 사용하는 여러분 모두 잘 아시다시피, R에서는
 <code>{dplyr}</code><a href="#fn4" class="footnote-ref" id="fnref4"
 role="doc-noteref"><sup>4</sup></a> 패키지를 통해 이러한 작업을 데이터에
@@ -2646,8 +2646,7 @@ role="doc-noteref"><sup>4</sup></a> 패키지를 통해 이러한 작업을 데�
 햇다가는요? 생각도 하기 싫습니다.😰 그럼, RDBMS 환경에서 이러한 무거운
 작업을(e.g. computation) 수행하고 필요로 될 때에만 R에다가 가져오면 되지
 않을까요? 예를 들면, 집계된 데이터를 가져와서 보고서용 그림을
-그린다든지. 그렇습니다, 이를 가능하게끔 해주는 패키지에 대해 배워보려고
-합니다.</p>
+그린다든지. 이를 가능하게끔 해주는 패키지에 대해 배워보려고 합니다.</p>
 <p>본 튜토리얼에서는 <code>{dplyr}</code>의 데이터베이스 백엔드 버전이라
 할 수 있는 <code>{dbplyr}</code> 패키지에 대해 배울거에요.
 <code>{dbplyr}</code>은 당신의 RDBMS에 R의 tidyverse 문법을 사용한
