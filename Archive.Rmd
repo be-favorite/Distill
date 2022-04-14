@@ -45,4 +45,4 @@ Zenode: `r icon_link("zenodo", "Zenodo", "https://zenodo.org/record/5599240#.YZN
 
 깃허브 저장소에 아카이브하고있는 스터디 노트입니다.
 
-`r icon_link("github", "Coding-Test", "https://github.com/be-favorite/Study_coding")` `r icon_link("github", "SQL", "https://github.com/be-favorite/Study_SQL")`
+`r icon_link("github", "Tensorflow", "https://github.com/be-favorite/Study_tf")` `r icon_link("github", "Coding-Test", "https://github.com/be-favorite/Study_coding")` `r icon_link("github", "SQL", "https://github.com/be-favorite/Study_SQL")` 
