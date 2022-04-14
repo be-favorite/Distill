@@ -1,6 +1,6 @@
 ---
 title: "방태모"
-image: "images/Profile4.JPG"
+image: "images/Profile3.JPG"
 links:
   - label: '<i class="fab fa-github"></i> GitHub'
     url: "https://github.com/be-favorite"
