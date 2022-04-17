@@ -16,6 +16,8 @@ navbar:
       href: blog.html
     - text: "아카이브"
       href: archive.html
+    - text: "이력서"
+      href: https://resume-taemo.notion.site
     - text: "구독"
       href: subscribe.html
 collections:
