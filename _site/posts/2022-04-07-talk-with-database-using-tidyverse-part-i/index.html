@@ -2596,7 +2596,10 @@ gtag('config', 'G-1QHE9697JG');
 <li><a href="#출력문의-lazy-query-의-의미">출력문의
 <code>lazy query / ??</code>의 의미</a></li>
 </ul></li>
-<li><a href="#db-연결-해제하기">3 DB 연결 해제하기</a></li>
+<li><a href="#db-연결-해제하기">3 DB 연결 해제하기</a>
+<ul>
+<li><a href="#다음-파트에서-배울-내용">다음 파트에서 배울 내용</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -2611,16 +2614,16 @@ href="#ref-naidoo2020" role="doc-biblioref">Naidoo 2020</a>)</span>를
 </aside>
 <p>실무에서는 Data analyst, Data scientist를 가리지 않고 SQL에 관한
 능력을 요구합니다. 우리나라의 채용공고를 둘러보면 Data analyst의 경우
-특히 SQL 스킬이 중요하게 요구되는 듯 합니다. 방대한 양의 데이터를
-저장하고 관리하기 위해 실무에서는 데이터베이스를 사용합니다. 이
+특히 SQL 스킬을 중요하게 요구하는 듯 합니다. 방대한 양의 데이터를
+저장하고 관리하기 위해 실무에서는 데이터베이스를 사용합니다.
 데이터베이스는 종종 관계형 데이터베이스 시스템<a href="#fn1"
 class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a>(이하 RDBMS)이라 불리기도 하죠.
 그리고, 우리는 SQL<a href="#fn2" class="footnote-ref" id="fnref2"
 role="doc-noteref"><sup>2</sup></a> 언어 또는 SQL을 조금 변형한(variant)
-언어를 통해 이 데이터베이스와 이야기를 나눕니다. 여기서 변형이라는 말을
-사용한 이유는, RDBMS를 제공하는 업체에서 표준화된 SQL을 제공하는 경우도
-있지만, 표준화된 SQL을 조금 변형시켜 사용하는 경우도 있기
+언어를 통해 이 데이터베이스에 질의(query)를 합니다. 여기서 변형이라는
+말을 사용한 이유는, RDBMS를 제공하는 업체에서 표준화된 SQL을 제공하는
+경우도 있지만, 표준화된 SQL을 조금 변형시켜 사용하는 경우도 있기
 때문입니다.</p>
 <p>만약 이렇게 특정 업체로부터 제공되는 변형된 RDBMS를 사용해야한다면,
 해당 업체에서 사용하는 특정 SQL dialect<a href="#fn3"
@@ -2690,7 +2693,7 @@ role="doc-noteref"><sup>7</sup></a></li>
 href="https://github.com/apreshill/bakeoff">The Great British Bake
 off</a>에서 만든 데이터를 사용하려고 합니다. 본 예제에서 다룰
 데이터베이스는 <a
-href="https://github.com/be-favorite/Distill/tree/master/_posts/2022-04-04-talk-with-database-using-tidyverse-part-i/data">여기서</a>
+href="https://github.com/be-favorite/Distill/blob/master/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db">여기서</a>
 내려받으세요. <code>{bakeoff}</code> 패키지의 데이터를 이용해 연습에
 사용할 SQLite DB를 만들었습니다. 이 튜토리얼의 원 저자 <a
 href="https://sciencificity-blog.netlify.app/posts/2020-12-12-using-the-tidyverse-with-databases/">Vebash
@@ -2768,8 +2771,9 @@ Naidoo</a>님께 감사의 말을 전합니다.</p>
 <p>이제, 우리가 잘하는 <code>{dplyr}</code>의 함수들을 이용해 마음껏
 DB와 이야기해보죠.</p>
 <ul>
-<li><code>tbl(con, "테이블명")</code>: 연결한 DB(<code>con</code>)으로
-가서 <code>SELECT * FROM 테이블명</code> 실행해줘.</li>
+<li><code>dplyr::tbl(con, "테이블명")</code>: 연결한
+DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
+실행해줘.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2809,8 +2813,8 @@ DB와 이야기해보죠.</p>
 3      1 &quot;Edward \&quot;Edd\&quot; Kimber&quot;    24 Debt collector for Yo… Bradford</code></pre>
 </div>
 <p>데이터베이스와 대화를 나눌 때 마다 초기에 연결해둔 <code>con</code>을
-사용한 다는 점을 유념해주세요. 초기에 불러왔던 <code>con</code>은
-아까처럼 일반적인 SQL 쿼리문을 이용해 질의를 할 때,
+사용한다는 점을 유념해주세요. 초기에 불러왔던 <code>con</code>은
+아까처럼 일반적인 SQL 쿼리문을 이용해 질의를 할 때 뿐만이 아닌
 <code>{dplyr}</code>을 통해 타이디한 파이프라인으로 원하는 테이블을
 가져올 때도 사용됩니다.</p>
 <p>자 이제 예시 상황을 하나 들어서 <code>{dplyr}</code>로 원하는
@@ -2834,9 +2838,9 @@ DB와 이야기해보죠.</p>
 [21] &quot;first_date_us&quot;             &quot;last_date_us&quot;             
 [23] &quot;percent_episodes_appeared&quot; &quot;percent_technical_top3&quot;   </code></pre>
 </div>
-<p>각 제빵대회 우승자가 영국의 일부 지역에서 나왔는지, 아니면 다양한
-다른 지역에서 나왔는지 알고싶은 상황이라고 해봅시다. 우선 다음과 같이
-관심있는 필드만 불러와주겠습니다.</p>
+<p>각 제빵대회 우승자의 출신이 영국의 일부 지역에서 나왔는지, 아니면
+다양한 지역으로부터 우상자가 배출되었는지 알고싶은 상황이라고 해봅시다.
+우선 다음과 같이 관심있는 필드만 불러와주겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
@@ -2887,8 +2891,8 @@ DB와 이야기해보죠.</p>
 7 Barton-Upon-Humber, Lincolnshire      1
 8 Barton-Le-Clay, Bedfordshire          1</code></pre>
 </div>
-<p>이 결과에 따르면, 제빵대회 우승자들은 각기 다른 지역에서
-나왔습니다.</p>
+<p>이 결과에 따르면, 제빵대회 우승자들의 출신 지역은 각기 다르다고
+결론을 내릴 수 있겠네요.</p>
 <h3 id="dplyr-문법을-sql-쿼리문으로">dplyr 문법을 SQL 쿼리문으로</h3>
 <p>앞서 <code>{dplyr}</code>을 이용해 수행한 질의를 SQL 쿼리문으로는
 어떻게 작성할까요? 코드 한 줄이면 손쉽게 알 수 있습니다.😀</p>
@@ -2925,11 +2929,11 @@ ORDER BY `n` DESC</code></pre>
 <h4 id="이런-문장이-출력물에-포함되는-이유">이런 문장이 출력물에
 포함되는 이유</h4>
 <ul>
-<li><p>먼저, 우리가 뒤에서(behind the scenes) 작성한
-<code>dplyr</code>코드는 우리가 연결하려는 DB의 SQL에 해당하는 dialect로
-변환됩니다.</p></li>
-<li><p>그리고, 이 SQL은 DB에 직접적으로 실행됩니다. 즉, 데이터를 먼저
-R로 가져와서 조작하는 것이 아닌 쿼리 자체를 DB에 보내고 DB에서
+<li><p>먼저, 우리가 직접적인 RDBMS 상에서가 아닌 R이라는 공간을 빌려
+뒤에서(behind the scenes) 작성한 <code>dplyr</code>코드는 우리가
+연결하려는 DB의 SQL에 해당하는 dialect로 변환됩니다.</p></li>
+<li><p>즉, SQL은 DB에 직접적으로 실행됩니다. 즉, 데이터를 먼저 R로
+가져와서 조작하는 것이 아닌 쿼리 자체를 DB에 보내고 DB에서
 계산(computation)이 수행됩니다.</p></li>
 <li><p>정리하면, <code>dplyr</code> 파이프라인을 사용해 DB에서 쿼리를
 실행하면, DB에서 계산을 수행하고 실행된 최종 결과의 전체가 아닌 일부를
@@ -2938,9 +2942,9 @@ R에서 보여주는 식입니다.</p></li>
 있습니다.</p></li>
 <li><p><code>??</code>는 “연결 DB <code>con</code>에서 이
 쿼리(파이프라인을 SQL로 변환시킨 것)를 실행했고, 여기 R에서 출력물을
-snippet으로만 가져왔는데, 얼마나 많은 수의 행이 있는지에 관한 메타
-정보까진 캐치하진 못했어. 그저 출력물에 몇 개의 열이 있다는 것 정도만
-캐치했어”라고 이해할 수 있습니다.</p></li>
+스니펫(snippet)으로만 가져왔는데, 얼마나 많은 수의 행이 있는지에 관한
+메타 정보까진 캐치하진 못했어. 그저 출력물에 몇 개의 열이 있다는 것
+정도만 캐치했어”라고 이해할 수 있습니다.</p></li>
 <li><p>이 튜토리얼은 파트 1 입니다. 다음 파트에서 가져온 테이블에 얼마나
 많은 행들이 존재하는 지와 같은 메타 정보들을 R로 어떻게 가져오는지에
 대해 알아볼 예정입니다.</p></li>
@@ -2955,6 +2959,12 @@ snippet으로만 가져왔는데, 얼마나 많은 수의 행이 있는지에 �
 </div>
 <p>연결 해제가 체크는 <code>dbListTable(con)</code>을 실행해보시면
 됩니다. 연결해제가 잘 되었다면 에러문이 출력될겁니다.</p>
+<h3 id="다음-파트에서-배울-내용">다음 파트에서 배울 내용</h3>
+<ul>
+<li><p><code>dplyr</code>에 관해 좀 더 깊게(e.g. 테이블
+조인하기)</p></li>
+<li><p>데이터 R로 가져오기</p></li>
+</ul>
 <div class="sourceCode" id="cb11"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent"
