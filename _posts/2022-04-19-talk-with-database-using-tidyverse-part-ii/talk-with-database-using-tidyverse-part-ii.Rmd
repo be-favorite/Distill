@@ -1,0 +1,38 @@
+---
+title: "tidyverse로 데이터베이스랑 대화하기 - 2편"
+description: |
+     R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!
+author:
+    - name: Taemo Bang
+      URL: https://twitter.com/TaemoBang
+date: "2022-04-19"
+output:
+    distill::distill_article:
+        self_contained: false
+        toc: true
+        toc_depth: 2
+draft: TRUE
+preview: preview.png
+creative_commons: CC BY-NC
+twitter:
+    site: "@TaemoBang"
+    creator: "@TaemoBang"
+categories:
+    - Databases
+    - SQL
+    - SQLiteDB
+    - dbplyr
+    - Tidytool
+    - R
+bibliography: references.bib
+---
+
+```{r distill-setup, include = FALSE}
+# echo - Display code in output document (default = TRUE)
+# eval - Run code in chunk (default = TRUE)
+library(xaringanExtra)
+library(rmarkdown)
+xaringanExtra::use_clipboard()
+```
+
+![Photo by Vedash Naidoo Rubin on Sciencificity's Blog](preview.png){width="700"}

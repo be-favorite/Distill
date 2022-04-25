@@ -19,7 +19,7 @@ Zenode: `r icon_link("zenodo", "Zenodo", "https://zenodo.org/record/5599240#.YZN
 
 ## Tistory 블로그
 
-과거 기술블로그 입니다.
+과거 기술블로그입니다.
 
 `r icon_link("globe", "Blog", "https://be-favorite.tistory.com")`
 
@@ -29,20 +29,20 @@ Zenode: `r icon_link("zenodo", "Zenodo", "https://zenodo.org/record/5599240#.YZN
 
 `r icon_link("globe", "Blog", "https://statisticsplaybook.tistory.com/category/객원칼럼/be-favorite")`
 
-## 논문 아카이브
+## 연구 아카이브
 
-논문과 책, 웹사이트 등을 통해 공부한 모델들을 깃허브 저장소에 아카이브하고 있습니다.
+논문과 책, 웹사이트 등을 통해 공부하고 연구한 것들을 아카이브하고 있습니다.
 
 `r icon_link("github", "Archive", "https://github.com/be-favorite/Paper_archive")`
 
 ## 발표 아카이브
 
-발표 자료 아카이브입니다.
+발표 자료를 아카이브하고 있습니다.
 
 `r icon_link("github", "Archive", "https://github.com/be-favorite/Presentation_archive")`
 
 ## 스터디 노트
 
-깃허브 저장소에 아카이브하고있는 스터디 노트입니다.
+스터디 노트를 아카이브하고 있습니다.
 
 `r icon_link("github", "Tensorflow", "https://github.com/be-favorite/Study_tf")` `r icon_link("github", "Coding-Test", "https://github.com/be-favorite/Study_coding")` `r icon_link("github", "SQL", "https://github.com/be-favorite/Study_SQL")` 
