@@ -1,7 +1,7 @@
 ---
 title: "논문 요약 - Simões et al (2022)"
 description: |
-     프랑스 남부의 CD 발생에 관한 대기오염원 영향 평가 논문 요약
+     프랑스 남부의 심호흡곤란 발생에 관한 대기오염원 영향 평가 논문 요약
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
@@ -12,7 +12,7 @@ output:
         toc: true
         toc_depth: 2
 draft: TRUE
-# preview: preview.jpg
+preview: preview.jpg
 creative_commons: CC BY-NC
 twitter:
     site: "@TaemoBang"
@@ -35,30 +35,50 @@ xaringanExtra::use_clipboard()
 
 <aside>
 
-저만의 논문 요약 방식에 관해서는 여기를 클릭하세요.
+[저만의 논문 요약 방식에 관해서는 여기를 클릭하세요.](https://www.taemobang.com/posts/2022-05-13-how-to-review-a-paper/)
 
 </aside>
 
-오늘은 프랑스 남부 지역의 Cardiac dyspnea(CD, 심호흡곤란) 발생에 미치는 대기오염원 영향 관해 평가한 논문 [@simões2022]을 요약해보려고 합니다. 
+[![Photo by Ella Ivanescu on Unsplash](preview.jpg){width="700"}](https://unsplash.com/photos/JbfhNrpQ_dw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 
-# 1st read
+## 1st read
 
-## Category
+### Category
 
-## Context
+-   Research paper
 
-## Correctness
+### Main Topic
 
-## Contributions
+#### 제목
 
-## Clarity
+-   Cardiac dyspnea risk zones in the South of France identified by geo-pollution trends study - [@simões2022b]
 
-# 2nd read
+#### 주제
 
-## Main Findings
+프랑스 남부 지역의 Cardiac dyspnea(이하 CD, 심호흡곤란) 발생에 미치는 대기오염원($\rm{PM}_{10}$, $\rm{NO}_{2}$, $\rm{O}_{3}$) 영향 평가
 
-## Method
+### Context
 
-## Results
+-   선행 연구들에서 대기오염원에 관한 단기 노출이 심근경색(myocardial infarction), 울혈성심부전(congestive heart failure)과 같은 몇몇 심혈관 병리(cardiovascular pathologies)들에 미치는 영향을 평가하긴 했으나, CD의 경우 이러한 관계를 아직 완전히 입증하지 못함
 
-## Limitations
+- 따라서, 본 연구의 목적은 대기오염원, 기상요인, CD 입원 데이터를 활용해 CD 발생 원인에 관한 메커니즘을 알아보고, 이를 예방하기 위한 정책을 개발하는 것에 있음
+
+- 본 연구의 주요 방법론은 Distributed lag non linear models과 메타분석(Meta Analysis)에 해당함
+
+### Correctness
+
+
+
+### Contributions
+
+### Clarity
+
+## 2nd read
+
+### Main Findings
+
+### Methods
+
+### Results
+
+### Limitations
