@@ -1,0 +1,64 @@
+---
+title: "논문 요약 - Simões et al (2022)"
+description: |
+     프랑스 남부의 CD 발생에 관한 대기오염원 영향 평가 논문 요약
+author:
+    - name: Taemo Bang
+      URL: https://twitter.com/TaemoBang
+date: "2022-05-13"
+output:
+    distill::distill_article:
+        self_contained: false
+        toc: true
+        toc_depth: 2
+draft: TRUE
+# preview: preview.jpg
+creative_commons: CC BY-NC
+twitter:
+    site: "@TaemoBang"
+    creator: "@TaemoBang"
+categories:
+    - Paper
+    - Time Series
+    - DLNM
+    - Meta analysis
+bibliography: references.bib
+---
+
+```{r distill-setup, include = FALSE}
+# echo - Display code in output document (default = TRUE)
+# eval - Run code in chunk (default = TRUE)
+library(xaringanExtra)
+library(rmarkdown)
+xaringanExtra::use_clipboard()
+```
+
+<aside>
+
+저만의 논문 요약 방식에 관해서는 여기를 클릭하세요.
+
+</aside>
+
+오늘은 프랑스 남부 지역의 Cardiac dyspnea(CD, 심호흡곤란) 발생에 미치는 대기오염원 영향 관해 평가한 논문 [@simões2022]을 요약해보려고 합니다. 
+
+# 1st read
+
+## Category
+
+## Context
+
+## Correctness
+
+## Contributions
+
+## Clarity
+
+# 2nd read
+
+## Main Findings
+
+## Method
+
+## Results
+
+## Limitations
