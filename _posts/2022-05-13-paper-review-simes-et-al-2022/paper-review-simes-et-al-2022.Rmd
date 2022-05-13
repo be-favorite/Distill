@@ -35,7 +35,7 @@ xaringanExtra::use_clipboard()
 
 <aside>
 
-[저만의 논문 요약 방식에 관해서는 여기를 클릭하세요.](https://www.taemobang.com/posts/2022-05-13-how-to-review-a-paper/)
+Prerequisite: [논문 요약 방식](https://www.taemobang.com/posts/2022-05-13-how-to-review-a-paper/)
 
 </aside>
 
@@ -55,7 +55,7 @@ xaringanExtra::use_clipboard()
 
 #### 주제
 
-프랑스 남부 지역의 Cardiac dyspnea(이하 CD, 심호흡곤란) 발생에 미치는 대기오염원($\rm{PM}_{10}$, $\rm{NO}_{2}$, $\rm{O}_{3}$) 영향 평가
+- 프랑스 남부 지역의 Cardiac dyspnea(이하 CD, 심호흡곤란) 발생에 미치는 대기오염원($\rm{PM}_{10}$, $\rm{NO}_{2}$, $\rm{O}_{3}$) 영향 평가
 
 ### Context
 
@@ -67,15 +67,27 @@ xaringanExtra::use_clipboard()
 
 ### Correctness
 
+- 기상요인(meteorological variables)을 공변량(coviariates)으로 활용하는데, 다중공선성(multicollinearity)을 피하기 위해 상관이 존재할만한 두 변수 중 하나의 변수만 모형에 포함시킴
 
+- 최대 지연 효과(maximum lag days)는 14일까지 고려하였으나, 이에 관한 합리적 근거는 없음
 
 ### Contributions
 
+- 프랑스 남부 전체 지역의 CD 발생에 관한 대기오염원의 영향을 평가한 첫 번째 연구
+
+- $\rm{NO}_2$, $\rm{O}_3$, $\rm{PM}_{10}$에 단기 노출이 CD로 인한 응급실 방문을 유의하게 증가시킨다는 것에 관한 증거 제시
+
+- 공중 보건 정책을 관한 예측 도구로서 대기오염원 모니터링을 효과적으로 제안함
+
 ### Clarity
+
+- 지금까지 읽어본 바로는 명료하게 잘 쓰인 논문이라고 생각됨
 
 ## 2nd read
 
 ### Main Findings
+
+- $\rm{NO}_2$, $\rm{O}_3$, $\rm{PM}_{10}$ 중 단기 노출이 CD로 인한 응급실 방문에 가장 강한 영향을 미치는 대기오염원은 $\rm{PM}_{10}$이며, $\rm{NO}_2$이 약한 영향을 미침
 
 ### Methods
 
