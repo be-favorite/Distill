@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/2022-05-13-paper-review-simes-et-al-2022/",
+    "title": "논문 요약 - Simões et al (2022)",
+    "description": "프랑스 남부의 심호흡곤란 발생에 관한 대기오염원 영향 평가 논문 요약",
+    "author": [
+      {
+        "name": "Taemo Bang",
+        "url": {}
+      }
+    ],
+    "date": "2022-05-24",
+    "categories": [
+      "Paper",
+      "Time Series",
+      "DLNM",
+      "Meta analysis"
+    ],
+    "contents": "\n\nContents\n1st read\n맺음말\n\nPrerequisite: 논문\n요약 방식\n\n1st read\nCategory\nResearch paper\nMain Topic\n제목\nCardiac dyspnea risk zones in the South of France identified by\ngeo-pollution trends study - (Simões et al. 2022)\n주제\n프랑스 남부 지역의 Cardiac dyspnea(CD, 이하 심호흡곤란) 발생에\n미치는 대기오염원(\\(\\rm{PM}_{10}\\),\n\\(\\rm{NO}_{2}\\), \\(\\rm{O}_{3}\\)) 영향 평가\nContext\n선행 연구들에서 대기오염원에 관한 단기 노출이 심근경색(myocardial\ninfarction), 울혈성심부전(congestive heart failure)과 같은 몇몇 심혈관\n병리(cardiovascular pathologies)들에 미치는 영향을 평가하긴 했으나,\n심호흡곤란의 경우 이러한 관계를 아직 완전히 입증하지 못함\n따라서, 본 연구의 목적은 대기오염원, 기상요인, 심호흡곤란 입원\n데이터를 활용해 심호흡곤란 입원 발생 원인에 관한 메커니즘을 알아보고,\n이를 예방하기 위한 정책을 개발하는 것에 있음\n본 연구의 주요 방법론은 Distributed\nlag non linear model(이하, DLNM)과 메타분석(Meta analysis)에\n해당함\nCorrectness\n기상요인(meteorological factors)들을 공변량(coviariates)으로\n활용하는데, 다중공선성(multicollinearity)을 피하기 위해 상관이\n존재할만한 두 변수 중 하나의 변수만 모형에 포함시킴\n최대 지연 효과(maximum lag days)는 14일까지 고려하였으나, 이에\n관한 합리적 근거는 없다고 보여짐\nContributions\n프랑스 남부 전체 지역의 심호흡곤란 입원 발생에 관한 대기오염원의\n영향을 평가한 첫 번째 연구\n\\(\\rm{NO}_2\\), \\(\\rm{O}_3\\), \\(\\rm{PM}_{10}\\)에 단기 노출이 심호흡곤란으로\n인한 응급실 방문을 증가시킨다는 것에 관한 유의한 증거 제시\n본 논문의 접근 방식은 공중 보건 정책에 관한 예측 도구로서\n대기오염원 모니터링을 효과적으로 제안함\nClarity\n지금까지 읽어본 바로는 명료하게 잘 쓰인 논문이라 생각됨\n맺음말\n본 논문을 통해 실제 각 도시별 DLNM을 이용한 대기오염원 건강영향평가\n수행 후, 메타분석으로 오버롤한 결과를 제시할 수 있음을 확인했습니다.\n메타분석을 어떻게 진행하였는지에 관한 이론적 부분은 자세하게 기술되어\n있지 않아서 두 번째 읽기는 진행하지 않았으나, 도시별 분석 결과를\n메타분석을 통해 종합할 수 있다는 것을 확인하는 것으로는 첫 번째 읽기로도\n충분했습니다.\n본 논문에 쓰인 메타분석은 일반적으로 임상연구에서 수행하는 메타분석을\n다양한 상황에 쓸 수 있도록 일반화하여 확장시킨 형태의 메타분석\n방법론이라고 보시면 됩니다. 해당 방법론을 깊이있게 이해하기 위해서는\n(Sera et al. 2019)을 참고하시면 됩니다.\n해당 논문의 예제 R 소스코드는 여기를\n참고하시면 됩니다. 다양한 형태의 분석을 수행한 뒤에\nlibrary(mixmeta)를 통해 메타분석을 수행하여 결과를 종합하는\n과정을 보여준다는 점에서 큰 의미가 있습니다. 그러나, 정작 제가\n필요로하는 DLNM으로 건강영향평가를 도시별로 수행한 뒤에 메타분석을 하는\n소스코드는 없다는 점이 조금 아쉬웠습니다.😂 그래서, 추가적으로 (Gasparrini, Armstrong,\nand Kenward 2012)에서 제공하는 R\n예제 소스코드를 함께 참고했습니다. 확장된 형태의 메타분석인 (Sera et al. 2019)가 나오기 전이라\nlibrary(mvmeta)를 통해 분석이 진행되긴 합니다만,\nlibrary(mixmeta)와 똑같은 로직으로 분석이 진행되기 때문에\n해당 소스코드를 함께 참고하시면 도시별 DLNM 분석 결과를 메타분석하는\n것을 어렵지 않게 구현하실 수 있을겁니다.\n\n\n\nGasparrini, A., B. Armstrong, and M. G. Kenward. 2012.\n“Multivariate Meta-Analysis for Non-Linear and Other\nMulti-Parameter Associations.” Statistics in Medicine 31\n(29): 3821–39. https://doi.org/10.1002/sim.5471.\n\n\nSera, Francesco, Benedict Armstrong, Marta Blangiardo, and Antonio\nGasparrini. 2019. “An extended mixed-effects framework for\nmeta-analysis.” Statistics in Medicine 38 (29): 5429–44.\nhttps://doi.org/10.1002/sim.8362.\n\n\nSimões, Fanny, Charles Bouveyron, Damien Piga, Damien Borel, Stéphane\nDescombes, Véronique Paquis-Flucklinger, Jaques Levraut, Pierre Gibelin,\nand Silvia Bottini. 2022. “Cardiac Dyspnea Risk Zones in the South\nof France Identified by Geo-Pollution Trends Study.”\nScientific Reports 12 (February). https://doi.org/10.1038/s41598-022-05827-2.\n\n\n\n\n",
+    "preview": "posts/2022-05-13-paper-review-simes-et-al-2022/preview.jpg",
+    "last_modified": "2022-05-25T01:33:36+09:00",
+    "input_file": "paper-review-simes-et-al-2022.knit.md"
+  },
+  {
     "path": "posts/2022-05-13-how-to-review-a-paper/",
     "title": "관심 논문 읽고 요약하기",
     "description": "논문을 읽고 요약하는 나만의 방식",

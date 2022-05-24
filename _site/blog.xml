@@ -13,7 +13,20 @@
       <link>https://taemobang.com/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 12 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>논문 요약 - Simões et al (2022)</title>
+      <dc:creator>Taemo Bang</dc:creator>
+      <link>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022</link>
+      <description>프랑스 남부의 심호흡곤란 발생에 관한 대기오염원 영향 평가 논문 요약</description>
+      <category>Paper</category>
+      <category>Time Series</category>
+      <category>DLNM</category>
+      <category>Meta analysis</category>
+      <guid>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022</guid>
+      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022/preview.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>관심 논문 읽고 요약하기</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -21,7 +34,7 @@
       <description>논문을 읽고 요약하는 나만의 방식</description>
       <category>Paper</category>
       <guid>https://taemobang.com/posts/2022-05-13-how-to-review-a-paper</guid>
-      <pubDate>Thu, 12 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 May 2022 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-05-13-how-to-review-a-paper/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
