@@ -1,7 +1,7 @@
 ---
 title: "논문 요약 - Simões et al (2022)"
 description: |
-     프랑스 남부의 심호흡곤란 발생에 관한 대기오염원 영향 평가 논문 요약
+     프랑스 남부 지역의 심호흡곤란 입원 발생에 관한 대기오염원 영향 평가 논문 요약
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
