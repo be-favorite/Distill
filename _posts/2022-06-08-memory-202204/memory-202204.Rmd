@@ -18,7 +18,9 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
-    - memory
+    - Memory
+    - Resume
+    - Portfolio
 ---
 
 ```{r distill-setup, include = FALSE}
@@ -29,7 +31,7 @@ library(rmarkdown)
 xaringanExtra::use_clipboard()
 ```
 
-[![Photo by Kelly Sikkema on Unsplash](preview.jpg){width="500"}](https://unsplash.com/photos/M6dAnUgiOlQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
+[![Photo by Fredy Jacob on Unsplash](preview.jpg){width="700"}](https://unsplash.com/photos/t0SlmanfFcg?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink)
 
 ## 새로운 스터디를 시작하다
 
@@ -37,7 +39,7 @@ xaringanExtra::use_clipboard()
 
 사실 코딩테스트는 학부생 시절 대학원에 진학하기 전에 잠깐 취업 준비를 해보면서, 대학원을 졸업하고 취업 준비를 하면서 몇 번 치뤘던 적이 있습니다. R이 주 언어인 사람에게 다행스러웠던 것은 이때 치뤘던 코딩테스트들에서는 다행히 R을 지원해줬었다는 점이죠. 두시간 세시간 붙잡고 알고리즘 한두문제를 겨우 풀어서 제출했던 기억이 있습니다. 함수를 다 짜서 제출하면 뭐하나요, 뭣도 모르고 입력을 받아야하는 `input()`도 안해서 테스트케이스는 다 틀리는데 말이죠.😅 네, 당연히 항상 결과는 불합격이었습니다.
 
-### 이제서야 시작한 이유
+### 그래서, 이제서야 시작한 이유는?..
 
 참 부끄럽지만 "내가 이걸 왜 준비해야하지?"라는 고집같은 생각을 했습니다. 내가 개발자도 아니고, Data science를 하고 싶은 사람인데 굳이 알고리즘 문제를 왜 잘 풀어내야하지? 왜 이런 것을 요구하는 걸까? 하는 생각을 했었죠. 지금 생각하면 참 바보같습니다. 아시다시피 요즘 나오는 여러분들이 이름만 대면 알만한 대기업, 빅 플랫폼 기업, 금융 기관의 Data Scientist 나 Data Analyst 채용 공고를 보시면 면접 전형 전에 꼭 코딩테스트가 포함되어 있습니다.[^1] 극 소수의 대기업에서는 면접 전형 전 코딩테스트 대신 사전 과제 또는 Data Analyst의 경우 SQL 쿼리 테스트를 진행하는 경우도 있긴 합니다만, 코딩테스트가 포함된 형태의 채용 전형은 앞으로 기업들 사이에서 더더욱 확대될 것이라고 봅니다.
 
