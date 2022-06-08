@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -1078,10 +1079,6 @@ figure img.external {
   margin-top: 1.5em;
 }
 
-.figure img {
-  width: 100%;
-}
-
 .figure .caption {
   color: rgba(0, 0, 0, 0.6);
   font-size: 12px;
@@ -1911,6 +1908,12 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
+      if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+        var fn = $(this).children()[0]
+        $(this).html(fn.shadowRoot.querySelector("sup"))
+        $(this).id = fn.id
+        fn.remove()
+      }
       var refs = $(this).attr('data-cites').split(" ");
       var refHtml = refs.map(function(ref) {
         return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1925,6 +1928,31 @@ function init_distill() {
         placement: 'bottom-start'
       });
     });
+
+    // fix footnotes in tables (#411)
+    // replacing broken distill.pub feature
+    $('table d-footnote').each(function() {
+      // we replace internal showAtNode methode which is triggered when hovering a footnote
+      this.hoverBox.showAtNode = function(node) {
+        // ported from https://github.com/distillpub/template/pull/105/files
+        calcOffset = function(elem) {
+            let x = elem.offsetLeft;
+            let y = elem.offsetTop;
+            // Traverse upwards until an `absolute` element is found or `elem`
+            // becomes null.
+            while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                x += elem.offsetLeft;
+                y += elem.offsetTop;
+            }
+
+            return { left: x, top: y };
+        }
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+        const bbox = node.getBoundingClientRect();
+        const offset = calcOffset(node);
+        this.show([offset.left + bbox.width, offset.top + bbox.height]);
+      }
+    })
 
     // clear polling timer
     clearInterval(tid);
@@ -2024,6 +2052,8 @@ function init_common() {
   // mark non-body figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
     var figures = $(this).find('img, .html-widget');
+    // ignore leaflet img layers (#106)
+    figures = figures.filter(':not(img[class*="leaflet"])')
     if ($(this).attr('data-layout') !== "l-body") {
       figures.css('width', '100%');
     } else {
@@ -2046,7 +2076,7 @@ function init_common() {
   // get rid of index.html references in header
   if (window.location.protocol !== "file:") {
     $('.distill-site-header a[href]').each(function(i,val) {
-      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
     });
   }
 
@@ -2466,7 +2496,7 @@ d-appendix d-footnote-list a.footnote-backlink {
   color: var(--hover-color, white);
 }</style>
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.14/header-attrs.js"></script>
   <script src="../../site_libs/clipboard-2.0.6/clipboard.min.js"></script>
   <link href="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
   <script src="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
@@ -2751,7 +2781,7 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2767,7 +2797,7 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2785,12 +2815,12 @@ Turn impicit missing values into explicit missing values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2010","2":"cherry","3":"NA"},{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"},{"1":"2014","2":"kiwi","3":"NA"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2806,7 +2836,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"NA"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"NA"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2821,7 +2851,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"0"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"0"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"0"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"0"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2837,7 +2867,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"30"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"30"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"34"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"34"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2855,7 +2885,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"2"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"3"},{"1":"2013","2":"cherry","3":"6"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2873,7 +2903,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"NA"},{"1":"2013","2":"cherry","3":"5"},{"1":"2014","2":"cherry","3":"2"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"10"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"10"},{"1":"2012","2":"cherry","3":"NA"},{"1":"2013","2":"cherry","3":"8"},{"1":"2014","2":"cherry","3":"6"},{"1":"2010","2":"kiwi","3":"5"},{"1":"2011","2":"kiwi","3":"1"},{"1":"2012","2":"kiwi","3":"5"},{"1":"2013","2":"kiwi","3":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2898,7 +2928,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"7"},{"1":"2013","2":"cherry","3":"7"},{"1":"2014","2":"cherry","3":"1"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"4"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"1"},{"1":"2014","2":"cherry","3":"7"},{"1":"2010","2":"kiwi","3":"6"},{"1":"2011","2":"kiwi","3":"3"},{"1":"2012","2":"kiwi","3":"3"},{"1":"2013","2":"kiwi","3":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2915,7 +2945,7 @@ default 옵션에 해당), 각 key 내의 period에서 발생한 결측에 대�
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"5"},{"1":"2012","2":"cherry","3":"7"},{"1":"2013","2":"cherry","3":"1"},{"1":"2014","2":"cherry","3":"1"},{"1":"2010","2":"kiwi","3":"10"},{"1":"2011","2":"kiwi","3":"4"},{"1":"2012","2":"kiwi","3":"3"},{"1":"2013","2":"kiwi","3":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["fruit"],"name":[2],"type":["chr"],"align":["left"]},{"label":["kilo"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"2011","2":"cherry","3":"8"},{"1":"2012","2":"cherry","3":"1"},{"1":"2013","2":"cherry","3":"7"},{"1":"2014","2":"cherry","3":"7"},{"1":"2010","2":"kiwi","3":"6"},{"1":"2011","2":"kiwi","3":"3"},{"1":"2012","2":"kiwi","3":"2"},{"1":"2013","2":"kiwi","3":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -3678,14 +3708,14 @@ href="https://tidyverts.org">https://tidyverts.org</a>.
   <p class="social_footer">
     <span class="article-sharing">
       Share: &nbsp;
-      <a href="https://twitter.com/share?text=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F">
-        <i class="fab fa-twitter"></i>
+      <a href="https://twitter.com/share?text=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F" aria-label="share on twitter">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
       </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F&amp;title=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0">
-        <i class="fab fa-linkedin"></i>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F&amp;title=tidyverse%20principle%EB%A1%9C%20%EC%8B%9C%EA%B3%84%EC%97%B4%20%EC%9E%90%EB%A3%8C%20%EB%B6%84%EC%84%9D%ED%95%98%EA%B8%B0" aria-label="share on linkedin">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
       </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F">
-        <i class="fab fa-facebook"></i>
+      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Ftaemobang.com%2Fposts%2F2022-03-11-do-time-series-analysis-with-tidyverse-principle%2F" aria-label="share on facebook">
+        <i class="fab fa-facebook" aria-hidden="true"></i>
       </a>
     </span>
   </p>

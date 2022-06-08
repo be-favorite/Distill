@@ -13,7 +13,17 @@
       <link>https://taemobang.com/</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 23 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>회고: 2022년 4월</title>
+      <dc:creator>Taemo Bang</dc:creator>
+      <link>https://taemobang.com/posts/2022-06-08-memory-202204</link>
+      <description>2022년 4월 회고</description>
+      <category>memory</category>
+      <guid>https://taemobang.com/posts/2022-06-08-memory-202204</guid>
+      <pubDate>Tue, 07 Jun 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://taemobang.com/posts/2022-06-08-memory-202204/preview.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>논문 요약 - Simões et al (2022)</title>
       <dc:creator>Taemo Bang</dc:creator>
@@ -24,7 +34,7 @@
       <category>DLNM</category>
       <category>Meta analysis</category>
       <guid>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022</guid>
-      <pubDate>Mon, 23 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
       <media:content url="https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
