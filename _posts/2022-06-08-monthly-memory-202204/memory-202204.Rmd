@@ -1,7 +1,7 @@
 ---
 title: "월간 회고록: 2022년 4월"
 description: |
-     2022년 4월 회고
+     새로운 스터디, 이력서와 포트폴리오 제작기
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang

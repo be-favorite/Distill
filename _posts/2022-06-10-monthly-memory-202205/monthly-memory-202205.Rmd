@@ -1,7 +1,7 @@
 ---
 title: "월간 회고록: 2022년 5월"
 description: |
-     2022년 5월 회고
+     실무에서 1년간 메인 연구과제를 수행하며 겪은 크고 작은 난관들
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
@@ -19,6 +19,7 @@ twitter:
     creator: "@TaemoBang"
 categories:
     -  Memory
+    -  Work
 ---
 
 ```{r distill-setup, include = FALSE}
