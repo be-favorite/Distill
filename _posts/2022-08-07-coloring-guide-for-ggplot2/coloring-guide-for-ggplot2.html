@@ -1550,11 +1550,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h3>Contents</h3>
 <ul>
 <li><a href="#준비하기" id="toc-준비하기">준비하기</a></li>
-<li><a href="#색조가-아닌-음영을-활용하자"
-id="toc-색조가-아닌-음영을-활용하자">색조가 아닌 음영을
+<li><a href="#음영을-활용하자" id="toc-음영을-활용하자">음영을
 활용하자</a></li>
-<li><a href="#색조와-음영만으로는-부족해"
-id="toc-색조와-음영만으로는-부족해">색조와 음영만으로는 부족해</a></li>
+<li><a href="#음영만으로는-부족해"
+id="toc-음영만으로는-부족해">음영만으로는 부족해</a></li>
 <li><a href="#전달하고-싶은-내용만-강조하자"
 id="toc-전달하고-싶은-내용만-강조하자">전달하고 싶은 내용만
 강조하자</a></li>
@@ -1575,9 +1574,9 @@ ggplot2를 바탕으로 진행되는 예제이긴 하나, 본 글에서 소개�
 적용이 가능할거라고 봅니다.물론, <code>ggplot2</code>만큼 짧고 가독성
 좋은 코드로 구현이 가능할지는 미지수이지만요.😁</p>
 <aside>
-<p>본 글은 <span class="citation" data-cites="rapp2022">(<a
+본 글은 <span class="citation" data-cites="rapp2022">(<a
 href="#ref-rapp2022" role="doc-biblioref">Rapp 2022</a>)</span>를
-기반으로 작성되었습니다.</p>
+기반으로 작성되었습니다.
 </aside>
 <p>대중들은 말이 아닌 그림을 기억합니다. 그래서, 잘 만들어진 데이터
 시각화는 강력한 힘을 갖습니다. 종종 데이터 시각화를 하시다가 지나치게
@@ -1621,7 +1620,7 @@ Visualization by Claus Wilke</a>를 읽은 뒤, Okabe Ito 컬러 팔레트를
 <span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> <span class='va'>theme_customs</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
-<h2 id="색조가-아닌-음영을-활용하자">색조가 아닌 음영을 활용하자</h2>
+<h2 id="음영을-활용하자">음영을 활용하자</h2>
 <p><code>{ggplot2}</code> 패키지에서 제공하는 <code>mpg</code>
 데이터셋에 자동차 종류 별 빈도를 시각화해봅시다. 전에 충분히 보셨을만한
 데이터라 생각해서, 데이터셋에 관한 설명은 스킵하겠습니다. 이런 방식으로
@@ -1629,8 +1628,9 @@ Visualization by Claus Wilke</a>를 읽은 뒤, Okabe Ito 컬러 팔레트를
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mpg</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, fill <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span>, fill <span class='op'>=</span> <span class='va'>class</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"year"</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="coloring-guide-for-ggplot2_files/figure-html5/mpg1-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
@@ -1733,7 +1733,7 @@ Visualization by Claus Wilke</a>를 읽은 뒤, Okabe Ito 컬러 팔레트를
 </div>
 <p><img src="coloring-guide-for-ggplot2_files/figure-html5/mpg4-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<h2 id="색조와-음영만으로는-부족해">색조와 음영만으로는 부족해</h2>
+<h2 id="음영만으로는-부족해">음영만으로는 부족해</h2>
 <p>충분히 괜찮은 시각화를 했지만, 아쉬운 부분이 하나 있습니다. 인접한
 컬러 블록들에서는 자동차 종류 구분이 쪼금 불편해 보입니다. 이 문제는
 손쉽게 해결해줄 수 있어요. 블록마다 선 하나씩만 그어주면 말이죠. 앞선
