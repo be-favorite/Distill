@@ -18,7 +18,8 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
-    -  Visualization
+    - Visualization
+    - R
 bibliography: references.bib
 ---
 

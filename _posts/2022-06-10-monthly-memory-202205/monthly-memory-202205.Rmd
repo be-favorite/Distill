@@ -19,7 +19,6 @@ twitter:
     creator: "@TaemoBang"
 categories:
     -  Memory
-    -  Work
 bibliography: references.bib
 ---
 

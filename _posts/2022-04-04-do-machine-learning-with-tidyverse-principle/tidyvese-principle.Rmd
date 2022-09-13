@@ -18,9 +18,7 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
-    - Machine Learning
-    - Statistical Learning
-    - Tidytool
+    - Statistical/Machine Learning
     - R
 bibliography: references.bib
 ---

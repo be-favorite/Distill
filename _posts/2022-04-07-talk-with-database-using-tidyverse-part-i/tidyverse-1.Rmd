@@ -18,11 +18,7 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
-    - Databases
     - SQL
-    - SQLiteDB
-    - dbplyr
-    - Tidytool
     - R
 bibliography: references.bib
 ---

@@ -19,7 +19,6 @@ twitter:
   creator: "@TaemoBang"
 categories:
     - Time Series
-    - Tidytool
     - R
 bibliography: references.bib
 ---

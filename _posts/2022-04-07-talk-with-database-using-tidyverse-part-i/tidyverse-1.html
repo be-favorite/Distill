@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -138,7 +139,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse로 데이터베이스랑 대화하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-07"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["Databases","SQL","SQLiteDB","dbplyr","Tidytool","R"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse로 데이터베이스랑 대화하기 - 1편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-07"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","R"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -455,10 +456,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1290,6 +1287,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1304,6 +1307,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1403,6 +1431,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1425,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1464,7 +1494,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="tidyverse-1_files/header-attrs-2.13/header-attrs.js"></script>
+  <script src="tidyverse-1_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="tidyverse-1_files/clipboard-2.0.6/clipboard.min.js"></script>
   <link href="tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
   <script src="tidyverse-1_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
@@ -1502,12 +1532,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>tidyverse로 데이터베이스랑 대화하기 - 1편</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-<div class="dt=tag">Databases</div>
-<div class="dt=tag">SQL</div>
-<div class="dt=tag">SQLiteDB</div>
-<div class="dt=tag">dbplyr</div>
-<div class="dt=tag">Tidytool</div>
-<div class="dt=tag">R</div>
+<div class="dt-tag">SQL</div>
+<div class="dt-tag">R</div>
 </div>
 <!--/radix_placeholder_categories-->
 <p><p>R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될
@@ -1525,23 +1551,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#db-연결하기">1 DB 연결하기</a>
+<li><a href="#db-연결하기" id="toc-db-연결하기">1 DB 연결하기</a>
 <ul>
-<li><a href="#예제용-토이-db">예제용 토이 DB</a></li>
-<li><a href="#sqlite-db-연결하기">SQLite DB 연결하기</a></li>
+<li><a href="#예제용-토이-db" id="toc-예제용-토이-db">예제용 토이
+DB</a></li>
+<li><a href="#sqlite-db-연결하기" id="toc-sqlite-db-연결하기">SQLite DB
+연결하기</a></li>
 </ul></li>
-<li><a href="#db-둘러보고-다뤄보기">2 DB 둘러보고 다뤄보기</a>
+<li><a href="#db-둘러보고-다뤄보기" id="toc-db-둘러보고-다뤄보기">2 DB
+둘러보고 다뤄보기</a>
 <ul>
-<li><a href="#dbi-함수">DBI 함수</a></li>
-<li><a href="#dplyr-함수">dplyr 함수</a></li>
-<li><a href="#dplyr-문법을-sql-쿼리문으로">dplyr 문법을 SQL
+<li><a href="#dbi-함수" id="toc-dbi-함수">DBI 함수</a></li>
+<li><a href="#dplyr-함수" id="toc-dplyr-함수">dplyr 함수</a></li>
+<li><a href="#dplyr-문법을-sql-쿼리문으로"
+id="toc-dplyr-문법을-sql-쿼리문으로">dplyr 문법을 SQL
 쿼리문으로</a></li>
-<li><a href="#출력문의-lazy-query-의-의미">출력문의
+<li><a href="#출력문의-lazy-query-의-의미"
+id="toc-출력문의-lazy-query-의-의미">출력문의
 <code>lazy query / ??</code>의 의미</a></li>
 </ul></li>
-<li><a href="#db-연결-해제하기">3 DB 연결 해제하기</a>
+<li><a href="#db-연결-해제하기" id="toc-db-연결-해제하기">3 DB 연결
+해제하기</a>
 <ul>
-<li><a href="#다음-파트에서-배울-내용">다음 파트에서 배울 내용</a></li>
+<li><a href="#다음-파트에서-배울-내용"
+id="toc-다음-파트에서-배울-내용">다음 파트에서 배울 내용</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -1603,12 +1636,11 @@ role="doc-noteref"><sup>4</sup></a> 패키지를 통해 이러한 작업을 데�
 <code>install.packages("패키지명")</code>을 통해 설치할 수 있습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbi.r-dbi.org'>DBI</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbplyr.tidyverse.org/'>dbplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rsqlite.r-dbi.org'>RSQLite</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/r-dbi/odbc'>odbc</a></span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbi.r-dbi.org'>DBI</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbplyr.tidyverse.org/'>dbplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rsqlite.r-dbi.org'>RSQLite</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/r-dbi/odbc'>odbc</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <ul>
@@ -1651,14 +1683,13 @@ Naidoo</a>님께 감사의 말을 전합니다.</p>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbi.r-dbi.org'>DBI</a></span><span class='op'>)</span> <span class='co'># main DB interface</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span> 
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbplyr.tidyverse.org/'>dbplyr</a></span><span class='op'>)</span> <span class='co'># dplyr back-end for DBs</span>
-
-<span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbConnect.html'>dbConnect</a></span><span class='op'>(</span>drv <span class='op'>=</span> <span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># give me a SQLite connection</span>
-        dbname <span class='op'>=</span> <span class='st'>"data/great_brit_bakeoff.db"</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># What do we have?</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbi.r-dbi.org'>DBI</a></span><span class='op'>)</span> <span class='co'># main DB interface</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span> </span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dbplyr.tidyverse.org/'>dbplyr</a></span><span class='op'>)</span> <span class='co'># dplyr back-end for DBs</span></span>
+<span></span>
+<span><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbConnect.html'>dbConnect</a></span><span class='op'>(</span>drv <span class='op'>=</span> <span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='co'># give me a SQLite connection</span></span>
+<span>        dbname <span class='op'>=</span> <span class='st'>"data/great_brit_bakeoff.db"</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># What do we have?</span></span></code></pre>
 </div>
 <pre><code>          Length            Class             Mode 
                1 SQLiteConnection               S4 </code></pre>
@@ -1671,8 +1702,7 @@ Naidoo</a>님께 감사의 말을 전합니다.</p>
 <p>DBI 함수들의 이름은 꽤 직관적입니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListTables.html'>dbListTables</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># 연결된 테이블 리스트를 보여줘!</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListTables.html'>dbListTables</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># 연결된 테이블 리스트를 보여줘!</span></span></code></pre>
 </div>
 <pre><code> [1] &quot;baker_results&quot;     &quot;bakers&quot;            &quot;bakes&quot;            
  [4] &quot;challenge_results&quot; &quot;challenges&quot;        &quot;episode_results&quot;  
@@ -1681,19 +1711,17 @@ Naidoo</a>님께 감사의 말을 전합니다.</p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListFields.html'>dbListFields</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='co'># 연결한 DB로 가서</span>
-      <span class='st'>"bakers"</span><span class='op'>)</span>   <span class='co'># bakes 테이블에 어떤 필드가 있는지 알려줘!</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListFields.html'>dbListFields</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='co'># 연결한 DB로 가서</span></span>
+<span>      <span class='st'>"bakers"</span><span class='op'>)</span>   <span class='co'># bakes 테이블에 어떤 필드가 있는지 알려줘!</span></span></code></pre>
 </div>
 <pre><code>[1] &quot;series&quot;     &quot;baker_full&quot; &quot;age&quot;        &quot;occupation&quot; &quot;hometown&quot;  </code></pre>
 </div>
 <p>DB에 질의는 다음과 같이 수행할 수 있어요.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM bakers LIMIT 3"</span><span class='op'>)</span> <span class='co'># 쿼리문 실행</span>
-<span class='co'># bakers 테이블에 모든 필드를 가져오는데, 관측치 3개까지만 가져와봐!</span>
-<span class='fu'><a href='https://dbi.r-dbi.org/reference/dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='co'># 결과 출력해줘</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>res</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dbi.r-dbi.org/reference/dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM bakers LIMIT 3"</span><span class='op'>)</span> <span class='co'># 쿼리문 실행</span></span>
+<span><span class='co'># bakers 테이블에 모든 필드를 가져오는데, 관측치 3개까지만 가져와봐!</span></span>
+<span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='co'># 결과 출력해줘</span></span></code></pre>
 </div>
 <pre><code>  series          baker_full age                        occupation
 1      1       Annetha Mills  30                           Midwife
@@ -1706,8 +1734,7 @@ Naidoo</a>님께 감사의 말을 전합니다.</p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='co'># 결과 지우기</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span> <span class='co'># 결과 지우기</span></span></code></pre>
 </div>
 </div>
 <h3 id="dplyr-함수">dplyr 함수</h3>
@@ -1720,40 +1747,38 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"bakers"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"bakers"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code># Source:   table&lt;bakers&gt; [?? x 5]
-# Database: sqlite 3.38.2
-#   [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
-   series baker_full                age occupation            hometown
-    &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;                 &lt;chr&gt;   
- 1      1 &quot;Annetha Mills&quot;            30 Midwife               Essex   
- 2      1 &quot;David Chambers&quot;           31 Entrepreneur          Milton …
- 3      1 &quot;Edward \&quot;Edd\&quot; Kimber&quot;    24 Debt collector for Y… Bradford
- 4      1 &quot;Jasminder Randhawa&quot;       45 Assistant Credit Con… Birming…
- 5      1 &quot;Jonathan Shepherd&quot;        25 Research Analyst      St Alba…
- 6      1 &quot;Lea Harris&quot;               51 Retired               Midloth…
- 7      1 &quot;Louise Brimelow&quot;          44 Police Officer        Manches…
- 8      1 &quot;Mark Whithers&quot;            48 Bus Driver            South W…
- 9      1 &quot;Miranda Gore Browne&quot;      37 Food buyer for Marks… Midhurs…
-10      1 &quot;Ruth Clemens&quot;             31 Retail manager/House… Poynton…
-# … with more rows</code></pre>
+# Database: sqlite 3.39.1 [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
+   series baker_full                age occupation             homet…¹
+    &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;  
+ 1      1 &quot;Annetha Mills&quot;            30 Midwife                Essex  
+ 2      1 &quot;David Chambers&quot;           31 Entrepreneur           Milton…
+ 3      1 &quot;Edward \&quot;Edd\&quot; Kimber&quot;    24 Debt collector for Yo… Bradfo…
+ 4      1 &quot;Jasminder Randhawa&quot;       45 Assistant Credit Cont… Birmin…
+ 5      1 &quot;Jonathan Shepherd&quot;        25 Research Analyst       St Alb…
+ 6      1 &quot;Lea Harris&quot;               51 Retired                Midlot…
+ 7      1 &quot;Louise Brimelow&quot;          44 Police Officer         Manche…
+ 8      1 &quot;Mark Whithers&quot;            48 Bus Driver             South …
+ 9      1 &quot;Miranda Gore Browne&quot;      37 Food buyer for Marks … Midhur…
+10      1 &quot;Ruth Clemens&quot;             31 Retail manager/Housew… Poynto…
+# … with more rows, and abbreviated variable name ¹​hometown
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"bakers"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span> <span class='co'># "SELECT * FROM bakers LIMIT 3"와 동일</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"bakers"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>    <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span> <span class='co'># "SELECT * FROM bakers LIMIT 3"와 동일</span></span></code></pre>
 </div>
-<pre><code># Source:   lazy query [?? x 5]
-# Database: sqlite 3.38.2
-#   [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
-  series baker_full                age occupation             hometown
-   &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;                  &lt;chr&gt;   
-1      1 &quot;Annetha Mills&quot;            30 Midwife                Essex   
-2      1 &quot;David Chambers&quot;           31 Entrepreneur           Milton …
-3      1 &quot;Edward \&quot;Edd\&quot; Kimber&quot;    24 Debt collector for Yo… Bradford</code></pre>
+<pre><code># Source:   SQL [3 x 5]
+# Database: sqlite 3.39.1 [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
+  series baker_full                age occupation              homet…¹
+   &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;chr&gt;                   &lt;chr&gt;  
+1      1 &quot;Annetha Mills&quot;            30 Midwife                 Essex  
+2      1 &quot;David Chambers&quot;           31 Entrepreneur            Milton…
+3      1 &quot;Edward \&quot;Edd\&quot; Kimber&quot;    24 Debt collector for Yor… Bradfo…
+# … with abbreviated variable name ¹​hometown</code></pre>
 </div>
 <p>데이터베이스와 대화를 나눌 때 마다 초기에 연결해둔 <code>con</code>을
 사용한다는 점을 유념해주세요. 초기에 불러왔던 <code>con</code>은
@@ -1765,8 +1790,7 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
 대회에 참가한 제빵사(baker)의 세부 정보 필드가 담겨있습니다:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListFields.html'>dbListFields</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbListFields.html'>dbListFields</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code> [1] &quot;series&quot;                    &quot;baker_full&quot;               
  [3] &quot;baker&quot;                     &quot;age&quot;                      
@@ -1786,13 +1810,11 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
 우선 다음과 같이 관심있는 필드만 불러와주겠습니다.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code># Source:   lazy query [?? x 4]
-# Database: sqlite 3.38.2
-#   [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
+<pre><code># Source:   SQL [?? x 4]
+# Database: sqlite 3.39.1 [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
    series baker     hometown              series_winner
     &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                         &lt;int&gt;
  1      1 Annetha   Essex                             0
@@ -1805,7 +1827,8 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
  8      1 Mark      South Wales                       0
  9      1 Miranda   Midhurst, West Sussex             0
 10      1 Ruth      Poynton, Cheshire                 0
-# … with more rows</code></pre>
+# … with more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <p>24개 열 중 관심있는 4개 열만 불러왔습니다. 이제 제빵대회에 우승한
 사람만 골라낸 뒤(<code>filter()</code>) 우승자들이 영국의 어떤 지역으로
@@ -1813,15 +1836,13 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
 정렬(<code>sort()</code>)을 해보죠.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_winner</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>hometown</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_winner</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>hometown</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
 </div>
-<pre><code># Source:     lazy query [?? x 2]
-# Database:   sqlite 3.38.2
-#   [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
+<pre><code># Source:     SQL [8 x 2]
+# Database:   sqlite 3.39.1 [/Volumes/Essential/Study/Private/Writing/Distill/_posts/2022-04-07-talk-with-database-using-tidyverse-part-i/data/great_brit_bakeoff.db]
 # Ordered by: desc(n)
   hometown                              n
   &lt;chr&gt;                             &lt;int&gt;
@@ -1841,17 +1862,18 @@ DB(<code>con</code>)으로 가서 <code>SELECT * FROM 테이블명</code>
 어떻게 작성할까요? 코드 한 줄이면 손쉽게 알 수 있습니다.😀</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_winner</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>hometown</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/explain.html'>show_query</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/tbl.html'>tbl</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"baker_results"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>series</span>, <span class='va'>baker</span>, <span class='va'>hometown</span>, <span class='va'>series_winner</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_winner</span> <span class='op'>==</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>hometown</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/explain.html'>show_query</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
 </div>
 <pre><code>&lt;SQL&gt;
 SELECT `hometown`, COUNT(*) AS `n`
-FROM (SELECT `series`, `baker`, `hometown`, `series_winner`
-FROM `baker_results`)
+FROM (
+  SELECT `series`, `baker`, `hometown`, `series_winner`
+  FROM `baker_results`
+)
 WHERE (`series_winner` = 1.0)
 GROUP BY `hometown`
 ORDER BY `n` DESC</code></pre>
@@ -1896,8 +1918,7 @@ R에서 보여주는 식입니다.</p></li>
 <p>작업이 끝나면 연결을 해제하는 것을 잊지마세요!</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># db 연결 닫기</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://dbi.r-dbi.org/reference/dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span> <span class='co'># db 연결 닫기</span></span></code></pre>
 </div>
 </div>
 <p>연결 해제가 체크는 <code>dbListTable(con)</code>을 실행해보시면

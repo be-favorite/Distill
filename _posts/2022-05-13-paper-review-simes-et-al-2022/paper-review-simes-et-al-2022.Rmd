@@ -18,10 +18,8 @@ twitter:
     site: "@TaemoBang"
     creator: "@TaemoBang"
 categories:
-    - Paper
     - Time Series
-    - DLNM
-    - Meta analysis
+    - Paper
 bibliography: references.bib
 ---
 

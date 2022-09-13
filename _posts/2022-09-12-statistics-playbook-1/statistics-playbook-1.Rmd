@@ -1,11 +1,11 @@
 ---
 title: "슬기로운 통계생활: #1 통계학 전공자의 대학원 진로 고민"
 description: |
-     취업 준비와 대학원 진학 고민을 함께하며 깨달은 것들
+     취업 준비와 대학원 진학의 기로에서 고민하고 깨달은 것들
 author:
     - name: Taemo Bang
       URL: https://twitter.com/TaemoBang
-date: "2022-08-14"
+date: "2022-09-13"
 output:
     distill::distill_article:
         self_contained: false

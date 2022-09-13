@@ -19,8 +19,6 @@ twitter:
     creator: "@TaemoBang"
 categories:
     - Memory
-    - Resume
-    - Portfolio
 ---
 
 ```{r distill-setup, include = FALSE}
