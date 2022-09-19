@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://taemobang.com/archive.html</loc>
+    <loc>https://distill-taemo.netlify.app/archive.html</loc>
     <lastmod>2022-04-25T23:37:29+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/blog.html</loc>
+    <loc>https://distill-taemo.netlify.app/blog.html</loc>
     <lastmod>2022-04-04T15:08:24+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/</loc>
+    <loc>https://distill-taemo.netlify.app/</loc>
     <lastmod>2022-09-13T14:15:33+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/subscribe.html</loc>
+    <loc>https://distill-taemo.netlify.app/subscribe.html</loc>
     <lastmod>2022-09-17T13:33:22+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-09-12-statistics-playbook-1/</loc>
-    <lastmod>2022-09-15T23:52:59+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-09-12-statistics-playbook-1/</loc>
+    <lastmod>2022-09-19T22:37:31+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-08-07-coloring-guide-for-ggplot2/</loc>
-    <lastmod>2022-09-13T22:44:23+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-08-07-coloring-guide-for-ggplot2/</loc>
+    <lastmod>2022-09-19T22:37:06+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-06-08-monthly-memory-202204/</loc>
-    <lastmod>2022-09-13T22:42:37+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-06-08-monthly-memory-202204/</loc>
+    <lastmod>2022-09-19T22:36:23+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022/</loc>
-    <lastmod>2022-09-13T22:43:25+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-05-24-paper-review-simes-et-al-2022/</loc>
+    <lastmod>2022-09-19T22:36:02+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-05-13-how-to-review-a-paper/</loc>
-    <lastmod>2022-05-13T23:23:41+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-05-13-how-to-review-a-paper/</loc>
+    <lastmod>2022-09-19T22:35:32+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i/</loc>
+    <loc>https://distill-taemo.netlify.app/posts/2022-04-07-talk-with-database-using-tidyverse-part-i/</loc>
     <lastmod>2022-09-13T22:40:30+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle/</loc>
-    <lastmod>2022-09-13T22:39:30+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-04-04-do-machine-learning-with-tidyverse-principle/</loc>
+    <lastmod>2022-09-19T22:34:49+09:00</lastmod>
   </url>
   <url>
-    <loc>https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/</loc>
-    <lastmod>2022-09-13T22:37:20+09:00</lastmod>
+    <loc>https://distill-taemo.netlify.app/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/</loc>
+    <lastmod>2022-09-19T22:33:04+09:00</lastmod>
   </url>
 </urlset>

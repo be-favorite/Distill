@@ -86,66 +86,43 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
-<style>
-  div.csl-bib-body { }
-  div.csl-entry {
-    clear: both;
-    }
-  .hanging div.csl-entry {
-    margin-left:2em;
-    text-indent:-2em;
-  }
-  div.csl-left-margin {
-    min-width:2em;
-    float:left;
-  }
-  div.csl-right-inline {
-    margin-left:2em;
-    padding-left:1em;
-  }
-  div.csl-indent {
-    margin-left: 2em;
-  }
-</style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>관심 논문 읽고 요약하기</title>
+  <title>tidyverse로 데이터베이스랑 대화하기 - 2편</title>
 
-  <meta property="description" itemprop="description" content="논문을 읽고 요약하는 나만의 방식"/>
+  <meta property="description" itemprop="description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
 
   <link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/"/>
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-05-13"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-05-13"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-04-19"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-04-19"/>
   <meta name="article:author" content="Taemo Bang"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="관심 논문 읽고 요약하기"/>
+  <meta property="og:title" content="tidyverse로 데이터베이스랑 대화하기 - 2편"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="논문을 읽고 요약하는 나만의 방식"/>
+  <meta property="og:description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="관심 논문 읽고 요약하기"/>
-  <meta property="twitter:description" content="논문을 읽고 요약하는 나만의 방식"/>
+  <meta property="twitter:title" content="tidyverse로 데이터베이스랑 대화하기 - 2편"/>
+  <meta property="twitter:description" content="R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!"/>
   <meta property="twitter:site" content="@TaemoBang"/>
   <meta property="twitter:creator" content="@TaemoBang"/>
 
   <!--/radix_placeholder_meta_tags-->
   
-  <meta name="citation_reference" content="citation_title=[Paper Review] How to Read a Paper (SIGCOMM 07);citation_publication_date=2022;citation_author=Subin An"/>
-  <meta name="citation_reference" content="citation_title=02. 논문의 종류;citation_publication_date=2012;citation_author=Seonui Hong"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["관심 논문 읽고 요약하기"]},{"type":"character","attributes":{},"value":["논문을 읽고 요약하는 나만의 방식\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-05-13"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["preview.jpg"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["Paper"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","preview","creative_commons","twitter","categories","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["tidyverse로 데이터베이스랑 대화하기 - 2편"]},{"type":"character","attributes":{},"value":["R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","URL"]}},"value":[{"type":"character","attributes":{},"value":["Taemo Bang"]},{"type":"character","attributes":{},"value":["https://twitter.com/TaemoBang"]}]}]},{"type":"character","attributes":{},"value":["2022-04-19"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["preview.png"]},{"type":"character","attributes":{},"value":["CC BY-NC"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["site","creator"]}},"value":[{"type":"character","attributes":{},"value":["@TaemoBang"]},{"type":"character","attributes":{},"value":["@TaemoBang"]}]},{"type":"character","attributes":{},"value":["SQL","R"]},{"type":"character","attributes":{},"value":["references.bib"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["how-to-review-a-paper_files/anchor-4.2.2/anchor.min.js","how-to-review-a-paper_files/bowser-1.9.3/bowser.min.js","how-to-review-a-paper_files/clipboard-2.0.6/clipboard.min.js","how-to-review-a-paper_files/distill-2.2.21/template.v2.js","how-to-review-a-paper_files/header-attrs-2.13/header-attrs.js","how-to-review-a-paper_files/jquery-3.6.0/jquery-3.6.0.js","how-to-review-a-paper_files/jquery-3.6.0/jquery-3.6.0.min.js","how-to-review-a-paper_files/jquery-3.6.0/jquery-3.6.0.min.map","how-to-review-a-paper_files/popper-2.6.0/popper.min.js","how-to-review-a-paper_files/tippy-6.2.7/tippy-bundle.umd.min.js","how-to-review-a-paper_files/tippy-6.2.7/tippy-light-border.css","how-to-review-a-paper_files/tippy-6.2.7/tippy.css","how-to-review-a-paper_files/tippy-6.2.7/tippy.umd.min.js","how-to-review-a-paper_files/webcomponents-2.0.0/webcomponents.js","how-to-review-a-paper_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css","how-to-review-a-paper_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js","preview.jpg","references.bib"]}
+  {"type":"character","attributes":{},"value":["preview.png","references.bib"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1495,20 +1472,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="how-to-review-a-paper_files/header-attrs-2.14/header-attrs.js"></script>
-  <script src="how-to-review-a-paper_files/clipboard-2.0.6/clipboard.min.js"></script>
-  <link href="how-to-review-a-paper_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
-  <script src="how-to-review-a-paper_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/clipboard-2.0.6/clipboard.min.js"></script>
+  <link href="talk-with-database-using-tidyverse-part-ii_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+  <script src="talk-with-database-using-tidyverse-part-ii_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
   <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
-  <script src="how-to-review-a-paper_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <script src="how-to-review-a-paper_files/popper-2.6.0/popper.min.js"></script>
-  <link href="how-to-review-a-paper_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="how-to-review-a-paper_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="how-to-review-a-paper_files/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="how-to-review-a-paper_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="how-to-review-a-paper_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="how-to-review-a-paper_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="how-to-review-a-paper_files/distill-2.2.21/template.v2.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/popper-2.6.0/popper.min.js"></script>
+  <link href="talk-with-database-using-tidyverse-part-ii_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="talk-with-database-using-tidyverse-part-ii_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="talk-with-database-using-tidyverse-part-ii_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="talk-with-database-using-tidyverse-part-ii_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1520,7 +1497,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"관심 논문 읽고 요약하기","description":"논문을 읽고 요약하는 나만의 방식","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-13T00:00:00.000+09:00","citationText":"Bang, 2022"}
+{"title":"tidyverse로 데이터베이스랑 대화하기 - 2편","description":"R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!","authors":[{"author":"Taemo Bang","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-04-19T00:00:00.000+09:00","citationText":"Bang, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1530,194 +1507,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>관심 논문 읽고 요약하기</h1>
+<h1>tidyverse로 데이터베이스랑 대화하기 - 2편</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-<div class="dt-tag">Paper</div>
+<div class="dt-tag">SQL</div>
+<div class="dt-tag">R</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>논문을 읽고 요약하는 나만의 방식</p></p>
+<p><p>R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될
+필요는 없어요!</p></p>
 </div>
 
 <div class="d-byline">
   Taemo Bang  
   
-<br/>2022-05-13
+<br/>2022-04-19
 </div>
 
 <div class="d-article">
-<div class="d-contents d-contents-float">
-<nav class="l-text toc figcaption" id="TOC">
-<h3>Contents</h3>
-<ul>
-<li><a href="#st-read" id="toc-st-read">1st read</a></li>
-<li><a href="#nd-read" id="toc-nd-read">2nd read</a></li>
-<li><a href="#맺음말" id="toc-맺음말">맺음말</a></li>
-</ul>
-</nav>
-</div>
-<p><a
-href="https://unsplash.com/photos/CKlHKtCJZKk?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditShareLink"><img
-src="preview.jpg" width="700"
-alt="Photo by Aaron Burden on Unsplash" /></a></p>
-<aside>
-<p>이 글은 <span class="citation" data-cites="an2022">(<a
-href="#ref-an2022" role="doc-biblioref">An 2022</a>)</span>을 기반으로
-작성되었습니다.</p>
-</aside>
-<p>논문 읽기가 초심자에게는 만만치않은 작업인 만큼, 논문을 정리하는
-자기만의 방식을 만들어 놓는 것은 참 중요합니다. 저 또한 아직 초심자라고
-생각하고 있는데요, 오늘은 제가 관심있는 논문을 읽고 정리하는 방식에 대해
-얘기해보려고 합니다. 제가 스스로 터득한 방법을 소개드리는 것은 아닙니다.
-논문을 읽고 정리하는 좋은 방식이 있나 싶어 검색을 하던 도중 좋은 글<span
-class="citation" data-cites="an2022">(<a href="#ref-an2022"
-role="doc-biblioref">An 2022</a>)</span>을 발견하게 됐고, 이 글을
-바탕으로 저만의 방식을 정립해봤습니다. 좋은 글을 써주신 안수빈님께
-감사의 마음을 전합니다.</p>
-<p>논문 요약은 <strong>1st read(첫 번째 읽기)</strong>, <strong>2nd
-read(두 번째 읽기)</strong> 2가지 섹션으로 진행할 것입니다. <strong>1st
-read</strong>의 결과에 따라 <strong>2nd read</strong>는 진행되지 않을
-수도 있습니다.</p>
-<h2 id="st-read">1st read</h2>
-<p>첫 번째 읽기의 핵심은 빠르게 읽으며 논문의 큰 그림을 파악하는
-것이라고 합니다. 5분에서 10분 정도 다음 순서에 따라 읽으라고
-권합니다.</p>
-<ol type="1">
-<li><p><strong>제목(title)</strong>, <strong>초록(abstract)</strong>,
-<strong>소개(introduction)</strong>를 집중해서 읽으세요.</p></li>
-<li><p><strong>섹션(section)</strong>과 <strong>하위
-섹션(subsection)</strong>의 세부내용은 무시하고 제목만
-읽으세요.</p></li>
-<li><p><strong>결론(conclusion)</strong>을 읽으세요.</p></li>
-<li><p><strong>참고문헌(reference)</strong>을 보며 저자가 인용한 논문,
-이전에 읽은 논문에 대해 가볍게 체크하세요.</p></li>
-</ol>
-<p>먼저 <strong>1st read</strong>에서는 논문을 빠르게 읽으면서 파악한
-전반적인 그림에 관해 기술합니다. <strong>첫 번째 읽기</strong>를
-하고나서는 다음의 여섯 가지(<strong>5C</strong> + <strong>1M</strong>)를
-답할 줄 알아야 하며, 본 블로그에서 요약할 논문들 또한 다음과 같은
-섹션으로 요약하려고 합니다.</p>
-<ul>
-<li><p><strong>Category</strong>: 논문의 종류</p></li>
-<li><p><strong>Main Topic</strong>: 논문 제목 및 주제</p></li>
-<li><p><strong>Context</strong>: 다른 페이퍼들과의 관계, 문제를 풀기
-위해 사용한 이론적 바탕</p></li>
-<li><p><strong>Correctness</strong>: 논문에 필요한 가정의
-명확성</p></li>
-<li><p><strong>Contributions</strong>: 논문의 핵심 기여</p></li>
-<li><p><strong>Clarity</strong>: 논문의 가독성, 명료함</p></li>
-</ul>
-<p>논문에 필요한 가정의 명확성(<strong>Correctness</strong>)은 제 경우
-보통 방법론 부분에서 모델에서 요구하는 가정이나 모델링 과정의 각 단계가
-합리적인 근거로 진행 되었는지에 관심이 있으므로, 첫 번째 읽기에서
-<strong>Method</strong> 부분을 빠르게 검토해보는 과정이 필요로 될 것
-같습니다. 아울러, 논문의 가독성과 명확성(<strong>Clarity</strong>)에
-관한 부분은 잘 아는 분야가 아니라면 감히 기술하기 어려울 것 같습니다.
-때때로 생략할 수도 있는 부분입니다.😅 그리고, 논문의
-종류(<strong>Category</strong>)는 이 글<span class="citation"
-data-cites="hong2012">(<a href="#ref-hong2012" role="doc-biblioref">Hong
-2012</a>)</span>을 참고하세요. <strong>5C</strong> +
-<strong>1M</strong>을 바탕으로 논문을 더 읽을지 말지 선택할 것입니다. 더
-읽지 않는 결정을 한다면, 대부분은 다음의 이유일 겁니다.</p>
-<ul>
-<li><p>관심이 없는 내용</p></li>
-<li><p>해당 논문을 읽기엔 사전 지식이 부족</p></li>
-<li><p>저자의 가정이 모호 또는 불명확</p></li>
-</ul>
-<p>만약, 꼭 읽어야만 하는 논문임에도 해당 논문을 읽기에 사전 지식이
-부족하다면, 참고문헌(reference)들을 다시 검토해보면서 관심있는 연구
-분야의 핵심 연구라고 생각 되는 것을 찾아내 읽어보는 과정을 가져야
-할겁니다. 또는, 논문에 쓰인 방법론에 관한 이해가 안되어 있는 상태라면
-해당 방법론의 Method paper나 Review paper를 찾아보는 것도 큰 도움이 될
-겁니다.</p>
-<h2 id="nd-read">2nd read</h2>
-<p><strong>2nd read</strong>에서는 좀 더 세부적인 내용에 집중하라고
-합니다. 단, 증명같은 디테일은 무시한채 말이죠. 핵심 사항을 노트에 적거나
-테두리에 본인의 의견을 써놓는 것을 권장합니다. 두 번째 읽기는 약 1시간
-정도가 소모됩니다. 처음 접하는 분야의 논문이나 개인의 논문 독해 실력에
-따라 훨씬 더 많은 시간이 소요될 수도 있습니다. 다음과 같은 사항에
-주목하여 읽으세요.</p>
-<ol type="1">
-<li><p><strong>Figure</strong>, <strong>Diagram, Table</strong> 등 논문
-내 다양한 도표와 일러스트레이션을 주의깊게 보세요. 특히, Data Science에
-관심이 있는 분들이라면 그래프를 잘 봐야합니다. 그래프의 <span
-class="math inline">\(x\)</span>축, <span
-class="math inline">\(y\)</span>축, 테이블의 행과 열이 의미하는 바 등을
-확인하고 이를 통해 저자가 주장하고자 하는 바가 무엇인지 한마디로 정리할
-줄 알아야합니다. 물론, 이 부분은 저자가 확실하게 주장하고자 하는 바를
-가지고 시각화, 테이블 작성를 수행했다는 전제 하에 있습니다.</p></li>
-<li><p>아직 읽지 않은 연관 논문을 체크하세요. 이 과정은 논문의 배경 지식
-또는 특정 방법론에 관한 Method paper인 경우 해당 방법론의 모티베이션을
-공부하는데 도움이 됩니다.</p></li>
-</ol>
-<p>두 번째 읽기가 끝난 상태에서 우리가 바라는 희망사항은 다음과
-같습니다:</p>
-<ul>
-<li><p>논문의 핵심 내용 이해</p></li>
-<li><p>논문의 핵심 주장에 대해 근거와 함께 요약할 수 있어야 함</p></li>
-</ul>
-<p>그래서, 두 번째 읽기를 끝낸 논문은 다음과 같은 섹션으로 상세한 추가
-요약을 수행할 예정입니다.</p>
-<ul>
-<li><p><strong>Main Findings</strong>: 논문의 핵심 주장과 뒷받침
-근거</p></li>
-<li><p><strong>Methods</strong>: <strong>Main Findings</strong>에 사용된
-핵심 방법론에 관한 내용</p></li>
-<li><p><strong>Results</strong>: <strong>Main Findings</strong>외 다른
-연구 결과</p></li>
-<li><p><strong>Limitations</strong>: 연구의 한계점</p></li>
-</ul>
-<p><strong>Main Findings</strong>외 다른 연구 결과에 해당하는
-<strong>Results</strong>와 연구의 한계점(<strong>Limitations</strong>)는
-때때로 생략될 수 있습니다.</p>
-<p>두 번째 읽기는 당신이 관심있어 하지만, 당신의 전문 연구 분야는 아닌
-논문에 적합하다고 합니다. 하지만, 저는 제 전문 연구 분야도 위와 같은 두
-번째 읽기를 통해 추가적으로 세부적인 요약을 수행할 예정입니다. 전문 연구
-분야라면 훨씬 더 빠르게 두 번째 읽기를 할 수 있겠죠. 그러나, 여러 이유로
-두 번째 읽기에도 이해가 안될 수도 있습니다:</p>
-<ol type="1">
-<li><p>이 주제나 내용이 새로워서 전문 용어나 약어에 익숙하지
-않음</p></li>
-<li><p>저자가 사용한 방법론이나 연구 결과를 낼 때 사용된 테크닉이 이해가
-안됨</p></li>
-<li><p>합리적 근거가 부족한 주장 또는 너무 많은 레퍼런스</p></li>
-<li><p>피곤해서!</p></li>
-</ol>
-<p>이럴 때 3가지 선택지를 제안합니다.</p>
-<ol type="1">
-<li><p>논문을 치우세요. 그리고, 해당 논문의 내용이 커리어에 무관하기를
-바라세요.</p></li>
-<li><p>배경 지식을 공부하고 다시 읽으세요.</p></li>
-<li><p>노력해보고 세 번째 읽기를 해보세요.</p></li>
-</ol>
-<p>거인의 어깨 위에 올라서서 세상을 바라보라고 하는데, 거인에 어깨 위에
-올라서는 것 조차 참 어렵습니다..😭</p>
-<h2 id="맺음말">맺음말</h2>
-<p>앞으로 제 블로그에 읽은 논문들을 요약하는 글을 작성하기에 앞서, 논문
-요약 방식에 대한 설명이 필요할 것 같아서 쓰게 된 글입니다. 논문 요약
-방식에 정답은 없습니다. 각자의 논문 요약 방식에 대해 나눠보는 것도 참
-흥미로운 대화 거리가 될 것 같네요. 참고한 글<span class="citation"
-data-cites="an2022">(<a href="#ref-an2022" role="doc-biblioref">An
-2022</a>)</span>에 더 좋은 내용이 많습니다. 그리고, 해당 글의 <strong>세
-번째 읽기</strong>, <strong>문헌 조사</strong> 등 <strong>“논문
-쓰기”</strong>에 도움이 될 만한 내용들 또한 기술이 되어있습니다. 다시 한
-번 좋은 글 작성해주신 안수빈님께 감사의 말씀을 전합니다. 저도 아직 많이
-부족하지만, 이 글이 첫 논문을 접하는 분들께 조금이나마 도움이 됐으면
-합니다.🙏</p>
+<figure>
+<img src="preview.png" width="700"
+alt="Photo by Vedash Naidoo Rubin on Sciencificity’s Blog" />
+<figcaption aria-hidden="true">Photo by Vedash Naidoo Rubin on
+Sciencificity’s Blog</figcaption>
+</figure>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div id="refs" class="references csl-bib-body hanging-indent"
-role="doc-bibliography">
-<div id="ref-an2022" class="csl-entry" role="doc-biblioentry">
-An, Subin. 2022. <span>“[Paper Review] How to Read a Paper (SIGCOMM
-07).”</span> <a
-href="https://ansubin.com/paper-review-how-to-read-a-paper/">https://ansubin.com/paper-review-how-to-read-a-paper/</a>.
-</div>
-<div id="ref-hong2012" class="csl-entry" role="doc-biblioentry">
-Hong, Seonui. 2012. <span>“02. 논문의 종류.”</span> <a
-href="http://www.campuskorea.net/bbs/board.php?bo_table=any_tip1&amp;wr_id=30">http://www.campuskorea.net/bbs/board.php?bo_table=any_tip1&amp;wr_id=30</a>.
-</div>
-</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -1725,15 +1540,6 @@ href="http://www.campuskorea.net/bbs/board.php?bo_table=any_tip1&amp;wr_id=30">h
 <div class="d-appendix">
 </div>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

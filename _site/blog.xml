@@ -2,102 +2,102 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <title>방태모의 블로그</title>
-    <link>https://taemobang.com/</link>
-    <atom:link href="https://taemobang.com/blog.xml" rel="self" type="application/rss+xml"/>
+    <link>https://distill-taemo.netlify.app</link>
+    <atom:link href="https://distill-taemo.netlify.app/blog.xml" rel="self" type="application/rss+xml"/>
     <description>방태모의 개인/기술 블로그입니다. 
 통계학, 시계열, 통계적학습과 기계학습, R에 관한 내용을 주로 다룹니다.
 </description>
     <image>
       <title>방태모의 블로그</title>
-      <url>https://taemobang.com/images/favicon.png</url>
-      <link>https://taemobang.com/</link>
+      <url>https://distill-taemo.netlify.app/images/favicon.png</url>
+      <link>https://distill-taemo.netlify.app</link>
     </image>
     <generator>Distill</generator>
     <lastBuildDate>Mon, 12 Sep 2022 00:00:00 +0000</lastBuildDate>
     <item>
       <title>슬기로운 통계생활: #1 통계학 전공자의 대학원 진로 고민</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-09-12-statistics-playbook-1</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-09-12-statistics-playbook-1</link>
       <description>취업 준비와 대학원 진학의 기로에서 고민하고 깨달은 것들</description>
       <category>Statistics Playbook</category>
-      <guid>https://taemobang.com/posts/2022-09-12-statistics-playbook-1</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-09-12-statistics-playbook-1</guid>
       <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-09-12-statistics-playbook-1/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-09-12-statistics-playbook-1/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>ggplot2 컬러링 가이드</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-08-07-coloring-guide-for-ggplot2</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-08-07-coloring-guide-for-ggplot2</link>
       <description>더 적은 수의 컬러로 직관적인 시각화를 수행하는 방법</description>
       <category>Visualization</category>
       <category>R</category>
-      <guid>https://taemobang.com/posts/2022-08-07-coloring-guide-for-ggplot2</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-08-07-coloring-guide-for-ggplot2</guid>
       <pubDate>Sun, 14 Aug 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-08-07-coloring-guide-for-ggplot2/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-08-07-coloring-guide-for-ggplot2/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>월간 회고록: 2022년 4월</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-06-08-monthly-memory-202204</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-06-08-monthly-memory-202204</link>
       <description>새로운 스터디, 이력서와 포트폴리오 제작기</description>
       <category>Memory</category>
-      <guid>https://taemobang.com/posts/2022-06-08-monthly-memory-202204</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-06-08-monthly-memory-202204</guid>
       <pubDate>Wed, 08 Jun 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-06-08-monthly-memory-202204/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-06-08-monthly-memory-202204/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>논문 요약 - Simões et al (2022)</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-05-24-paper-review-simes-et-al-2022</link>
       <description>프랑스 남부 지역의 심호흡곤란 입원 발생에 관한 대기오염원 영향 평가 논문 요약</description>
       <category>Time Series</category>
       <category>Paper</category>
-      <guid>https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-05-24-paper-review-simes-et-al-2022</guid>
       <pubDate>Tue, 24 May 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-05-13-paper-review-simes-et-al-2022/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-05-24-paper-review-simes-et-al-2022/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>관심 논문 읽고 요약하기</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-05-13-how-to-review-a-paper</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-05-13-how-to-review-a-paper</link>
       <description>논문을 읽고 요약하는 나만의 방식</description>
       <category>Paper</category>
-      <guid>https://taemobang.com/posts/2022-05-13-how-to-review-a-paper</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-05-13-how-to-review-a-paper</guid>
       <pubDate>Fri, 13 May 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-05-13-how-to-review-a-paper/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-05-13-how-to-review-a-paper/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>tidyverse로 데이터베이스랑 대화하기 - 1편</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</link>
       <description>R을 통해 데이터베이스 관련 작업을 한다면, 꼭 SQL 전문가가 될 필요는 없어요!</description>
       <category>SQL</category>
       <category>R</category>
-      <guid>https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-04-07-talk-with-database-using-tidyverse-part-i</guid>
       <pubDate>Thu, 07 Apr 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-04-07-talk-with-database-using-tidyverse-part-i/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-04-07-talk-with-database-using-tidyverse-part-i/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>tidyvese principle로 머신러닝 하기</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-04-04-do-machine-learning-with-tidyverse-principle</link>
       <description>tidymodels ecosystem 소개</description>
       <category>Statistical/Machine Learning</category>
       <category>R</category>
-      <guid>https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-04-04-do-machine-learning-with-tidyverse-principle</guid>
       <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-04-04-do-machine-learning-with-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-04-04-do-machine-learning-with-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
       <title>tidyverse principle로 시계열 자료 분석하기</title>
       <dc:creator>Taemo Bang</dc:creator>
-      <link>https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle</link>
+      <link>https://distill-taemo.netlify.app/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle</link>
       <description>tidyverts ecosystem 소개</description>
       <category>Time Series</category>
       <category>R</category>
-      <guid>https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle</guid>
+      <guid>https://distill-taemo.netlify.app/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle</guid>
       <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://taemobang.com/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
+      <media:content url="https://distill-taemo.netlify.app/posts/2022-03-11-do-time-series-analysis-with-tidyverse-principle/preview.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
